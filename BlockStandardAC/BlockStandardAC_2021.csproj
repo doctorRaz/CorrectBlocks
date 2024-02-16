@@ -125,6 +125,9 @@
     <Compile Include="..\BlockStandardNC\RemAnnot.cs">
       <Link>RemAnnot.cs</Link>
     </Compile>
+    <Compile Include="..\BlockStandardNC\saveMod.cs">
+      <Link>saveMod.cs</Link>
+    </Compile>
     <Compile Include="..\BlockStandardNC\UtilServise.cs">
       <Link>UtilServise.cs</Link>
     </Compile>

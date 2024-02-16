@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 
 using System.Reflection;
+using Microsoft.Win32;
+using Teigha.DatabaseServices;
+using HostMgd.ApplicationServices;
+using System.IO;
+
+
+
+
 
 #if NC
 using App = HostMgd.ApplicationServices;
@@ -25,12 +33,130 @@ namespace drz.Tools
     /// <summary>Служебные утилиты</summary>
     class McUtilServise
     {
+        #region Registry 
+              
+        internal class RegistryMod
+        {
+            internal RegistryMod()
+            {
+                RegistryKey curUserKey = Registry.CurrentUser;
 
+                startupKey = curUserKey.OpenSubKey(HostApplicationServices.Current.RegistryProductRootKey);
+
+                profilKey = startupKey.OpenSubKey(Path.Combine( profiles, sActiveProfile));
+            }
+
+            //Val
+            RegistryKey InitDirKey;
+            internal Object objSaveInitDir
+            {
+                get
+                {
+                    InitDirKey = profilKey.OpenSubKey(ioSaveProjects);
+                    return InitDirKey.GetValue(propSaveInitDir);
+                }
+                set
+                {
+                    InitDirKey = profilKey.OpenSubKey(ioSaveProjects, true);
+                    InitDirKey.SetValue(propSaveInitDir, value);
+                    InitDirKey.Close();
+                }
+
+            }
+
+            internal Object objOpenInitDir
+            {
+                get
+                {
+                    InitDirKey = profilKey.OpenSubKey(ioAllOpenFileFormats);
+                    return InitDirKey.GetValue(propOpenInitDir);
+                }
+                set
+                {
+                    InitDirKey = profilKey.OpenSubKey(ioAllOpenFileFormats, true);
+                    InitDirKey.SetValue(propOpenInitDir, value);
+                }
+            }
+
+            internal Object objUserCfgDir => startupKey.GetValue(propUserDataDir);
+
+            //KEY
+            RegistryKey startupKey { get; }
+            RegistryKey profilKey { get; }
+
+            //Const
+
+            const string profiles = "Profiles";
+
+            const string ioSaveProjects = @"IO\SaveProjects";
+
+            const string ioAllOpenFileFormats = @"IO\AllOpenFileFormats";
+
+
+            static readonly string sActiveProfile = App.Application.GetSystemVariable("CCONFIGURATION").ToString();
+
+            //---
+            //PROP
+            const string propSaveInitDir = "SaveInitDir";
+
+            const string propOpenInitDir = "OpenInitDir";
+
+            const string propUserDataDir = "UserDataDir";
+
+        }
+
+        /// <summary>
+        /// Gets the initialize dir.
+        /// <br>HKEY_CURRENT_USER\SOFTWARE\Nanosoft\nanoCAD x64\23.1\Profiles\<Profile></Profile>\IO\</br>
+        /// </summary>
+        /// <param name="sInitDir">The s initialize dir.
+        /// <br>SaveInitDir</br>
+        /// <br>OpenInitDir</br>
+        /// </param>
+        /// <returns>Path</returns>
+        internal static string GetInitDir(string sInitDir)
+        {
+            //диалог save
+            // HKEY_CURRENT_USER\SOFTWARE\Nanosoft\nanoCAD x64\23.1\Profiles\SPDS\IO\SaveProjects SaveInitDir
+            //опен
+            // HKEY_CURRENT_USER\SOFTWARE\Nanosoft\nanoCAD x64\23.1\Profiles\SPDS\IO\AllOpenFileFormats OpenInitDir
+
+            /*
+            //Database db = HostApplicationServices.WorkingDatabase;
+            //Document doc = App.Application.DocumentManager.MdiActiveDocument;
+            //Editor ed = doc.Editor;
+            //dynamic comDoc = doc.AcadDocument;
+            //dynamic sActiveProfile = comDoc.Application.Preferences.Profiles.ActiveProfile;
+            //var ppp2 = App.Application.GetSystemVariable("CPROFILE");
+            */
+
+            //профиль нанокад SPDS Mex Def
+            string sActiveProfile = App.Application.GetSystemVariable("CCONFIGURATION").ToString();
+
+            RegistryKey curUserKey = Registry.CurrentUser;
+
+            RegistryKey startupKey = curUserKey.OpenSubKey(HostApplicationServices.Current.RegistryProductRootKey);
+            RegistryKey initDirKey = startupKey.OpenSubKey(@"Profiles\"
+                                                        + sActiveProfile
+                                                        + @"\IO\SaveProjects"
+                                                        );
+
+            string sSaveInitDir = initDirKey.GetValue(sInitDir).ToString();
+
+            startupKey.Close();
+            initDirKey.Close();
+
+            return sSaveInitDir;
+        }
+
+
+
+        #endregion
 
         #region  СЛУЖЕБНЫЕ
- 
- 
- 
+
+
+
 
         /// <summary> Расшифровка исключений </summary>
         /// <param name="ex">Исключение</param>

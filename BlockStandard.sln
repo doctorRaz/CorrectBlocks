@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.33328.57
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlockStandardNC", "BlockStandardNC\BlockStandardNC.csproj", "{045A02B6-25B6-4CB9-A82D-962632A33D83}"
 EndProject
@@ -10,6 +10,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlockStandardAC_2023", "BlockStandardAC\BlockStandardAC_2023.csproj", "{7548E40F-A58F-47B6-AEF5-A8AAACE5C15D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlockStandardAC_2018", "BlockStandardAC\BlockStandardAC_2018.csproj", "{6639C2D0-E869-47E6-892D-0ECB5D422549}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleNF", "ConsoleNF\ConsoleNF.csproj", "{C86FDC81-7996-46F3-BF53-053B3FEA5EF3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Новая папка1", "Новая папка1", "{B09B258E-0725-4463-A284-C15FDF4E9172}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,10 @@ Global
 		{6639C2D0-E869-47E6-892D-0ECB5D422549}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6639C2D0-E869-47E6-892D-0ECB5D422549}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6639C2D0-E869-47E6-892D-0ECB5D422549}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C86FDC81-7996-46F3-BF53-053B3FEA5EF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C86FDC81-7996-46F3-BF53-053B3FEA5EF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C86FDC81-7996-46F3-BF53-053B3FEA5EF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C86FDC81-7996-46F3-BF53-053B3FEA5EF3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

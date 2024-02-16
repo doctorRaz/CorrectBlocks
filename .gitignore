@@ -11,7 +11,8 @@
 *.sln.docstates
 desktop.ini
 @resourse
-Serialize test
+ConsoleNF
+
 old
 
 # User-specific files (MonoDevelop/Xamarin Studio)

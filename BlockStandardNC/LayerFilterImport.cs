@@ -15,9 +15,9 @@ using HostMgd.EditorInput;
 
 using Teigha.DatabaseServices;
 using Teigha.Runtime;
-  
+
 using Teigha.LayerManager;
-  
+
 using Db = Teigha.DatabaseServices;
 #elif AC
 using Autodesk.AutoCAD.LayerManager;
@@ -47,6 +47,7 @@ namespace drz.Tools
         public static void LFilterImp()
         {
             string sFilName = string.Empty;
+
             // set full path of container file that contains desired layer filter
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
@@ -74,11 +75,11 @@ namespace drz.Tools
                 MessageBox.Show("Could not find file !");
                 return;
             }
-
+       
             DocumentCollection dm = App.Application.DocumentManager;
 
             Document doc = dm.MdiActiveDocument;
- 
+
             Database db = doc.Database;
 
             Editor ed = doc.Editor;

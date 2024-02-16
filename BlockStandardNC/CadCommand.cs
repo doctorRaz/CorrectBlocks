@@ -3,6 +3,8 @@
 #if NC
 using HostMgd.ApplicationServices;
 
+using QuickSaveAs;
+
 using System;
 
 using App = HostMgd.ApplicationServices;
@@ -39,6 +41,10 @@ namespace drz.Tools
         /// </value>
         internal static bool IsLisp { get; set; }
 
+#if NC
+        #region Lsp
+
+
         /// <summary>
         /// LWSs the specified sender.
         /// </summary>
@@ -68,17 +74,23 @@ namespace drz.Tools
         {
             IsLisp = false;
         }
+
+        #endregion
+#endif
         #region INIT
         public void Initialize()
         {
-            App.DocumentCollection dm = App.Application.DocumentManager;
-            Ed.Editor ed = dm.MdiActiveDocument.Editor;
+            //think добавить проверку есть ли doc
 
+            App.DocumentCollection dm = App.Application.DocumentManager;
+
+#if NC
             dm.MdiActiveDocument.LispWillStart += new LispWillStartEventHandler(lws);
             dm.MdiActiveDocument.LispEnded += new EventHandler(lwe);
             dm.MdiActiveDocument.LispCancelled += new EventHandler(lwc);
+#endif
 
-
+            Ed.Editor ed = dm.MdiActiveDocument.Editor;
             //!+Вывожу список команд определенных в библиотеке
             ed.WriteMessage("\nStart list of commands: \n");
             string sCom =
@@ -121,12 +133,27 @@ namespace drz.Tools
         /// <summary>
         /// Saves the mod.
         /// </summary>
-        [Rtm.CommandMethod("drz_save",Rtm.CommandFlags.Session)]
+        [Rtm.CommandMethod("drz_save")]
+        //[Rtm.CommandMethod("drz_save",Rtm.CommandFlags.Session)]
         public static void drzSaveMod()
         {
             saveMod.SaveMod();
         }
 
+        /// <summary>
+        /// DRZs the q save mod.by kpbic
+        /// </summary>
+        [Rtm.CommandMethod("drz_Qsave")]
+        public static void drzQSaveMod()
+        {
+            qsave.QuickSaveCommand();
+        }
+
+        [Rtm.CommandMethod("QSAVEAS")]
+        public static void QSAVEAS()
+        {
+            QS.QuickSaveAs();
+        }
         #endregion
 
         #region Remove Annotate
@@ -134,7 +161,8 @@ namespace drz.Tools
         /// <summary>
         /// Отключение аннотативности ВСЕХ блоков атрибуты на местах Бушман
         /// </summary>
-        [Rtm.CommandMethod("drz_rem_anntB", Rtm.CommandFlags.Session | Rtm.CommandFlags.Modal)]
+        [Rtm.CommandMethod("drz_rem_anntB")]
+        //[Rtm.CommandMethod("drz_rem_anntB", Rtm.CommandFlags.Session | Rtm.CommandFlags.Modal)]
         public static void Blc_Remov_anntB_cmd()
         {
             RemovAnnotate.Rem_annt(false);
@@ -142,7 +170,8 @@ namespace drz.Tools
         /// <summary>
         /// Отключение аннотативности ВСЕХ блоков атрибуты на местах Бушман + снять аннотативность с сущностекй
         /// </summary>
-        [Rtm.CommandMethod("drz_rem_anntBent", Rtm.CommandFlags.Session | Rtm.CommandFlags.Modal)]
+        [Rtm.CommandMethod("drz_rem_anntBent")]
+        //[Rtm.CommandMethod("drz_rem_anntBent", Rtm.CommandFlags.Session | Rtm.CommandFlags.Modal)]
         public static void Blc_Remov_anntBent_cmd()
         {
             RemovAnnotate.Rem_annt(false, true);
@@ -151,7 +180,8 @@ namespace drz.Tools
         /// <summary>
         /// Отключение аннотативности ВСЕХ блоков полный сброс атрибутов Джилман
         /// </summary>
-        [Rtm.CommandMethod("drz_rem_anntG", Rtm.CommandFlags.Session | Rtm.CommandFlags.Modal)]
+        [Rtm.CommandMethod("drz_rem_anntG")]
+        //[Rtm.CommandMethod("drz_rem_anntG", Rtm.CommandFlags.Session | Rtm.CommandFlags.Modal)]
         public static void Blc_Remov_anntG_cmd()
         {
             RemovAnnotate.Rem_annt(true);
@@ -165,7 +195,8 @@ namespace drz.Tools
         /// https://www.caduser.ru/forum/post278685.html#p278685
         /// Импорт фильтров слоев из файла в активный файл
         /// </summary>
-        [Rtm.CommandMethod("drz_LayerImport", Rtm.CommandFlags.Session | Rtm.CommandFlags.Modal)]
+        [Rtm.CommandMethod("drz_LayerImport")]
+        //[Rtm.CommandMethod("drz_LayerImport", Rtm.CommandFlags.Session | Rtm.CommandFlags.Modal)]
         public void LayerFilterImport()
         {
             LFI.LFilterImp();
@@ -179,7 +210,8 @@ namespace drz.Tools
         /// <summary>
         /// Move to bottom in blocks wipe out
         /// </summary>
-        [Rtm.CommandMethod("drz_WipBot", Rtm.CommandFlags.Modal)]
+        [Rtm.CommandMethod("drz_WipBot")]
+        //[Rtm.CommandMethod("drz_WipBot", Rtm.CommandFlags.Modal)]
         public void Blc_WipeoutToBotton()
         {
             WipBot.WipeoutToBotton();
@@ -191,7 +223,8 @@ namespace drz.Tools
         /// <summary>
         /// Крутит в выбранных блоках ВСЕ атрибуты в ноль
         /// </summary>
-        [Rtm.CommandMethod("drz_AtrRotateSel", Rtm.CommandFlags.Modal)]
+        [Rtm.CommandMethod("drz_AtrRotateSel")]
+        //[Rtm.CommandMethod("drz_AtrRotateSel", Rtm.CommandFlags.Modal)]
         public void AttS_RotateSelect()
         {
             //? сделать по аналогии с топить маскировки блоков
@@ -201,7 +234,8 @@ namespace drz.Tools
         /// <summary>
         /// Крутит в блоке ВСЕ атрибуты в ноль
         /// </summary>
-        [Rtm.CommandMethod("drz_AtrRotateAll", Rtm.CommandFlags.Modal)]
+        [Rtm.CommandMethod("drz_AtrRotateAll")]
+        //[Rtm.CommandMethod("drz_AtrRotateAll", Rtm.CommandFlags.Modal)]
         public void AttS_Rotate()
         {
             AtrRotate.AttAllRotate();
@@ -221,7 +255,8 @@ namespace drz.Tools
         /// <summary>
         /// Синхронизация атрибутов от Андрея Бушмана
         /// </summary>
-        [Rtm.CommandMethod("drz_AtrSynch", Rtm.CommandFlags.Modal)]
+        [Rtm.CommandMethod("drz_AtrSynch")]
+        //[Rtm.CommandMethod("drz_AtrSynch", Rtm.CommandFlags.Modal)]
         public static void Att_MySynch()
         {
             AttSynch.mySynch();
@@ -231,7 +266,8 @@ namespace drz.Tools
         /// Синхронизация атрибутов от Gilles Chanteau (Грубое обновление)
         /// </summary>
 
-        [Rtm.CommandMethod("drz_AtrSynchHard", Rtm.CommandFlags.Modal)]
+        [Rtm.CommandMethod("drz_AtrSynchHard")]
+        //[Rtm.CommandMethod("drz_AtrSynchHard", Rtm.CommandFlags.Modal)]
         public void Att_MySynchHard()
         {
             AttSynch.mySynchHard();
