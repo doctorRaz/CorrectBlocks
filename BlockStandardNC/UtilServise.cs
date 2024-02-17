@@ -34,7 +34,7 @@ namespace drz.Tools
     class McUtilServise
     {
         #region Registry 
-              
+              // think обернуть в using
         internal class RegistryMod
         {
             internal RegistryMod()
