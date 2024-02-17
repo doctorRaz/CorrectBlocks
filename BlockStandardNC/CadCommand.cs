@@ -26,7 +26,7 @@ using Rtm = Autodesk.AutoCAD.Runtime;
 
 namespace drz.Tools
 {
-    /// <summary> Все входы в печать 
+    /// <summary> Вызов всех модулей 
     /// <br>добавил импорт фильтров слоев</br>
     /// <br>выбор блоков для вращения атрибутов </br> 
     /// 
@@ -43,7 +43,7 @@ namespace drz.Tools
 
 #if NC
         #region Lsp
-
+// think убрать подписки и все что их касается, решение отличать команду от лисп выражения есть
 
         /// <summary>
         /// LWSs the specified sender.
