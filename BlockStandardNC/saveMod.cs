@@ -21,20 +21,22 @@ using HostMgd.Windows;
 
 
 using Teigha.DatabaseServices;
-using Teigha.Runtime;
+using Rtm=Teigha.Runtime;
 #else
 
 using Autodesk.AutoCAD.Windows;
 using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.EditorInput;
 using Autodesk.AutoCAD.ApplicationServices;
+using Rtm = Autodesk.AutoCAD.Runtime;
 
 
 #endif
 
 namespace drz.Tools
 {
-    /*public*/
+    //? нифига не доделано, слепил в кучу, шоб хоть както работал из ком строки аналог автокадовского СОХРАНИТЬ
+    //сохраняет только в последней версии и только в dwg
     class saveMod
     {
         /// <summary>
@@ -52,7 +54,7 @@ namespace drz.Tools
 
             string sSaveDir;
 
-            McUtilServise.RegistryMod rm=new McUtilServise.RegistryMod();
+            McUtilServise.RegistryMod rm = new McUtilServise.RegistryMod();
 
             bool isFilExist = File.Exists(sFilName);
             if (isFilExist)
@@ -61,7 +63,7 @@ namespace drz.Tools
             }
             else
             {
-                             sSaveDir = rm.objSaveInitDir.ToString();
+                sSaveDir = rm.objSaveInitDir.ToString();
             }
 
 
@@ -76,29 +78,29 @@ namespace drz.Tools
             pfso.DeriveInitialFilenameFromDrawingName = true;
             pfso.InitialFileName = doc.Name;
             pfso.InitialDirectory = sSaveDir;
-            
 
-           /*
-            //pfso.PreferCommandLine = true;  
-            //pfso.Filter = "2018 (*.dwg)|*.dwg|"
-            //            + "2013 (*.dwg)|*.dwg|"
-            //            + "2010 (*.dwg)|*.dwg|"
-            //            + "2007 (*.dwg)|*.dwg|"
-            //            + "2004 (*.dwg)|*.dwg|"
-            //            + "2000 (*.dwg)|*.dwg"
-            //;
-            //pfso.FilterIndex = 0;
-           */
+
+            /*
+             //pfso.PreferCommandLine = true;  
+             //pfso.Filter = "2018 (*.dwg)|*.dwg|"
+             //            + "2013 (*.dwg)|*.dwg|"
+             //            + "2010 (*.dwg)|*.dwg|"
+             //            + "2007 (*.dwg)|*.dwg|"
+             //            + "2004 (*.dwg)|*.dwg|"
+             //            + "2000 (*.dwg)|*.dwg"
+             //;
+             //pfso.FilterIndex = 0;
+            */
             object cmdactive = Application.GetSystemVariable("CMDACTIVE");
 
-            if((int)cmdactive==0)
+            if ((int)cmdactive == 0)
             {//window
-                pfso.PreferCommandLine = false; 
-                            }
+                pfso.PreferCommandLine = false;
+            }
             else
             {//cmd
                 pfso.PreferCommandLine = true;
-                pfso.Message = "Сохранить файл:\t\t<"+Path.Combine(pfso.InitialDirectory,pfso.InitialFileName) +">";
+                pfso.Message = "Сохранить файл: <" + Path.Combine(pfso.InitialDirectory, pfso.InitialFileName) + ">";
             }
 
             PromptFileNameResult pfnr = ed.GetFileNameForSave(pfso);
@@ -106,6 +108,9 @@ namespace drz.Tools
             if (pfnr.Status != PromptStatus.OK) return;
 
             string fileSaveName = pfnr.StringResult;
+            //? затычка шоб это работало 
+            fileSaveName =Path.ChangeExtension(fileSaveName, "dwg");
+
             //? поведение АК
             /*
                 файл вообще без каталога посылает нах (можем писать в последнюю сохраненную)
@@ -132,8 +137,8 @@ namespace drz.Tools
 
 
 
-            //save path 
-            rm.objSaveInitDir=Path.GetDirectoryName(fileSaveName);
+            //? вот не надо этот путь сохранять save path from registry
+            //rm.objSaveInitDir = Path.GetDirectoryName(fileSaveName);
 
 
             //https://adn-cis.org/forum/index.php?topic=9134.msg37359#msg37359
@@ -141,12 +146,12 @@ namespace drz.Tools
             //think обернуть  try catch обработать
             try
             {
-            db.SaveAs(fileSaveName, DwgVersion.Current);
+                db.SaveAs(fileSaveName, DwgVersion.Current);
             }
-            catch (Teigha.Runtime.Exception ex)
-            { 
-            ed.WriteMessage(ex.Message);
-            ed.WriteMessage(ex.StackTrace);
+            catch (Rtm.Exception ex)
+            {
+                ed.WriteMessage(ex.Message);
+                ed.WriteMessage(ex.StackTrace);
             }
 
 

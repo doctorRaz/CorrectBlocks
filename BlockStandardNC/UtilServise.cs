@@ -4,20 +4,22 @@ using System.Windows.Forms;
 
 using System.Reflection;
 using Microsoft.Win32;
-using Teigha.DatabaseServices;
-using HostMgd.ApplicationServices;
 using System.IO;
 
 
 
 
 
+
 #if NC
+using Teigha.DatabaseServices;
+using HostMgd.ApplicationServices;
 using App = HostMgd.ApplicationServices;
 using Ed = HostMgd.EditorInput;
 using Rtm = Teigha.Runtime;
 #elif AC
 
+using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.ApplicationServices;
 using App = Autodesk.AutoCAD.ApplicationServices;
 using Cad = Autodesk.AutoCAD.ApplicationServices.Application;
@@ -40,9 +42,11 @@ namespace drz.Tools
             internal RegistryMod()
             {
                 RegistryKey curUserKey = Registry.CurrentUser;
-
+#if NC
                 startupKey = curUserKey.OpenSubKey(HostApplicationServices.Current.RegistryProductRootKey);
-
+#else
+                startupKey = curUserKey.OpenSubKey(HostApplicationServices.Current.UserRegistryProductRootKey);
+#endif
                 profilKey = startupKey.OpenSubKey(Path.Combine( profiles, sActiveProfile));
             }
 
@@ -135,7 +139,11 @@ namespace drz.Tools
 
             RegistryKey curUserKey = Registry.CurrentUser;
 
+#if NC
             RegistryKey startupKey = curUserKey.OpenSubKey(HostApplicationServices.Current.RegistryProductRootKey);
+#else
+            RegistryKey startupKey = curUserKey.OpenSubKey(HostApplicationServices.Current.UserRegistryProductRootKey);
+#endif
             RegistryKey initDirKey = startupKey.OpenSubKey(@"Profiles\"
                                                         + sActiveProfile
                                                         + @"\IO\SaveProjects"
@@ -151,7 +159,7 @@ namespace drz.Tools
 
 
 
-        #endregion
+#endregion
 
         #region  СЛУЖЕБНЫЕ
 
@@ -290,7 +298,7 @@ namespace drz.Tools
             return null;
         }
 #endif
-        #endregion
+#endregion
 
         #endregion
 

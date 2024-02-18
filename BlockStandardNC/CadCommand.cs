@@ -2,10 +2,13 @@
 
 #if NC
 using HostMgd.ApplicationServices;
+using HostMgd.EditorInput;
 
 using QuickSaveAs;
 
 using System;
+
+using Teigha.DatabaseServices;
 
 using App = HostMgd.ApplicationServices;
 using Ed = HostMgd.EditorInput;
@@ -20,6 +23,11 @@ using Db = Autodesk.AutoCAD.DatabaseServices;
 using Gem = Autodesk.AutoCAD.Geometry;
 using Ed = Autodesk.AutoCAD.EditorInput;
 using Rtm = Autodesk.AutoCAD.Runtime;
+using Autodesk.AutoCAD.Windows;
+
+using Autodesk.AutoCAD.EditorInput;
+using Autodesk.AutoCAD.ApplicationServices;
+
 
 #endif
 [assembly: Rtm.CommandClass(typeof(drz.Tools.CadCommand))]
@@ -140,6 +148,37 @@ namespace drz.Tools
             saveMod.SaveMod();
         }
 
+#if DEBUG
+        [Rtm.CommandMethod("ссс")]
+        public static void SaveTest()
+        {
+            Database db = HostApplicationServices.WorkingDatabase;
+            Document doc = Application.DocumentManager.MdiActiveDocument;
+            Editor ed = doc.Editor;
+            ed.WriteMessage("CCC Ok");
+            //---Y
+
+            PromptSaveFileOptions pfso = new PromptSaveFileOptions("Сохранить файл: ");
+            pfso.Filter =
+                          "Drawing (*.dwg)|*.dwg|"
+                        + "Design Web Format (*.dwf)|*.dwf|"
+                        + "All files (*.*)|*.*";
+            pfso.DialogCaption = "DialogCaption";
+            pfso.DialogName = "DialogName";
+            pfso.DeriveInitialFilenameFromDrawingName = true;
+            pfso.InitialFileName = doc.Name;
+            pfso.InitialDirectory = @"c:\temp\00";
+
+            PromptFileNameResult pfnr = ed.GetFileNameForSave(pfso);
+
+            if (pfnr.Status != PromptStatus.OK) return;
+
+            string fileSaveName = pfnr.StringResult;
+
+            db.SaveAs(fileSaveName, DwgVersion.Current);
+        }
+#endif
+
         /// <summary>
         /// DRZs the q save mod.by kpbic
         /// </summary>
@@ -149,12 +188,14 @@ namespace drz.Tools
             qsave.QuickSaveCommand();
         }
 
+#if NC
         [Rtm.CommandMethod("QSAVEAS")]
         public static void QSAVEAS()
         {
             QS.QuickSaveAs();
         }
-        #endregion
+#endif
+#endregion
 
         #region Remove Annotate
 
@@ -356,6 +397,6 @@ namespace drz.Tools
 
         #endregion
 
-        #endregion
+#endregion
     }
 }
