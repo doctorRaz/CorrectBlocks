@@ -1,4 +1,4 @@
-﻿using HostMgd.ApplicationServices;
+using HostMgd.ApplicationServices;
 using HostMgd.EditorInput;
 
 using Teigha.DatabaseServices;

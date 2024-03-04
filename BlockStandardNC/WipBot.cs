@@ -1,4 +1,4 @@
-﻿
+
 #if NC
 using HostMgd.ApplicationServices;
 using HostMgd.EditorInput;
