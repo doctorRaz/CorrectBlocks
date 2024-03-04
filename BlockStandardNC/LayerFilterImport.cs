@@ -1,24 +1,20 @@
 using System.IO;
 using System.Windows.Forms;
 
-
-
-
-
+using DialogResult = System.Windows.Forms.DialogResult;
 
 #if NC
+
 using App = HostMgd.ApplicationServices;
-using Ed = HostMgd.EditorInput;
-using Rtm = Teigha.Runtime;
+
 using HostMgd.ApplicationServices;
 using HostMgd.EditorInput;
 
 using Teigha.DatabaseServices;
-using Teigha.Runtime;
-
 using Teigha.LayerManager;
 
 using Db = Teigha.DatabaseServices;
+
 #elif AC
 using Autodesk.AutoCAD.LayerManager;
 using Autodesk.AutoCAD.ApplicationServices;
@@ -30,11 +26,10 @@ using Db = Autodesk.AutoCAD.DatabaseServices;
 using Gem = Autodesk.AutoCAD.Geometry;
 using Ed = Autodesk.AutoCAD.EditorInput;
 using Rtm = Autodesk.AutoCAD.Runtime;
-
 #endif
 
 
-using DialogResult = System.Windows.Forms.DialogResult;
+
 
 namespace drz.Tools
 {
@@ -42,7 +37,7 @@ namespace drz.Tools
     {
         /// <summary>
         /// https://www.caduser.ru/forum/post278685.html#p278685
-        /// Импорт фильтров слоев из файла в активный файл
+        /// РРјРїРѕСЂС‚ С„РёР»СЊС‚СЂРѕРІ СЃР»РѕРµРІ РёР· С„Р°Р№Р»Р° РІ Р°РєС‚РёРІРЅС‹Р№ С„Р°Р№Р»
         /// </summary>
         public static void LFilterImp()
         {
@@ -64,9 +59,9 @@ namespace drz.Tools
         }
 
         /// <summary>
-        /// Импорт слоев в активный файл
+        /// РРјРїРѕСЂС‚ СЃР»РѕРµРІ РІ Р°РєС‚РёРІРЅС‹Р№ С„Р°Р№Р»
         /// </summary>
-        /// <param name="sourcefile">Путь к файлу с фильтрами</param>
+        /// <param name="sourcefile">РџСѓС‚СЊ Рє С„Р°Р№Р»Сѓ СЃ С„РёР»СЊС‚СЂР°РјРё</param>
         public static void ImportLFilterFromFile(string sourcefile)
         {
             // Find the file containing layer filter to clone
