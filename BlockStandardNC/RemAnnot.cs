@@ -35,16 +35,16 @@ namespace drz.Tools
 {
     public class RemovAnnotate
     {
-        // идея https://adn-cis.org/forum/index.php?topic=10382.msg48321#msg48321
+        // РёРґРµСЏ https://adn-cis.org/forum/index.php?topic=10382.msg48321#msg48321
 
       
         /// <summary>
-        /// Отключение аннотативности ВСЕХ блоков
+        /// РћС‚РєР»СЋС‡РµРЅРёРµ Р°РЅРЅРѕС‚Р°С‚РёРІРЅРѕСЃС‚Рё Р’РЎР•РҐ Р±Р»РѕРєРѕРІ
         /// </summary>
-        /// <param name="bHowHardAtrSynx">true - полный сброс атрибутов<br>false - оставить атрибуты на местах</br></param>
+        /// <param name="bHowHardAtrSynx">true - РїРѕР»РЅС‹Р№ СЃР±СЂРѕСЃ Р°С‚СЂРёР±СѓС‚РѕРІ<br>false - РѕСЃС‚Р°РІРёС‚СЊ Р°С‚СЂРёР±СѓС‚С‹ РЅР° РјРµСЃС‚Р°С…</br></param>
         /// <param name="bHowDfx"> 
-        /// <br>true - сбросить анотативность с примитивов</br>
-        /// <br>false - примитивы не трогать</br></param>
+        /// <br>true - СЃР±СЂРѕСЃРёС‚СЊ Р°РЅРѕС‚Р°С‚РёРІРЅРѕСЃС‚СЊ СЃ РїСЂРёРјРёС‚РёРІРѕРІ</br>
+        /// <br>false - РїСЂРёРјРёС‚РёРІС‹ РЅРµ С‚СЂРѕРіР°С‚СЊ</br></param>
         public static void Rem_annt(bool bHowHardAtrSynx = true, bool bHowDfx = false)
         {
             Document doc = App.Application.DocumentManager.MdiActiveDocument;
@@ -73,7 +73,7 @@ namespace drz.Tools
                     {
                         DBObject obj = tr.GetObject(btr.ObjectId, OpenMode.ForWrite, false, true);
 
-                        //!отключаем аннотативность
+                        //!РѕС‚РєР»СЋС‡Р°РµРј Р°РЅРЅРѕС‚Р°С‚РёРІРЅРѕСЃС‚СЊ
                         //if (obj.Annotative == AnnotativeStates.False)
                         if (obj.Annotative == AnnotativeStates.True)
                         {
@@ -81,15 +81,15 @@ namespace drz.Tools
                             obj.Annotative = AnnotativeStates.False;
                             count++;
                             // by razygraevaa on 12.10.2023 at 8:00
-                            //? бага портит настройки дин блоков, не отличает их от атрибутов
+                            //? Р±Р°РіР° РїРѕСЂС‚РёС‚ РЅР°СЃС‚СЂРѕР№РєРё РґРёРЅ Р±Р»РѕРєРѕРІ, РЅРµ РѕС‚Р»РёС‡Р°РµС‚ РёС… РѕС‚ Р°С‚СЂРёР±СѓС‚РѕРІ
                             //if (bHowHardAtrSynx)
                             //{
-                            //    //!жестко синхроним атрибуты Жиль Шанто
+                            //    //!Р¶РµСЃС‚РєРѕ СЃРёРЅС…СЂРѕРЅРёРј Р°С‚СЂРёР±СѓС‚С‹ Р–РёР»СЊ РЁР°РЅС‚Рѕ
                             //    ExtensionMethods.SynchronizeAttributes(btr);
                             //}
                             //else
                             //{
-                            //    //!атрибуты оставить на местах Бушман
+                            //    //!Р°С‚СЂРёР±СѓС‚С‹ РѕСЃС‚Р°РІРёС‚СЊ РЅР° РјРµСЃС‚Р°С… Р‘СѓС€РјР°РЅ
                             //    btr.AttSync(false, true, false);
                             //}
                         }
@@ -111,7 +111,7 @@ namespace drz.Tools
                                 opts.AddAllowedClass(typeof(Table), false);
                                 opts.AddAllowedClass(typeof(Hatch), false);
                             */
-                            // тут цикл по пространству перебираем
+                            // С‚СѓС‚ С†РёРєР» РїРѕ РїСЂРѕСЃС‚СЂР°РЅСЃС‚РІСѓ РїРµСЂРµР±РёСЂР°РµРј
                             foreach (ObjectId brId in btr)
                             {
                                 RXClass rxOb = brId.ObjectClass;
@@ -126,7 +126,7 @@ namespace drz.Tools
                                     DBObject obj = tr.GetObject(brId, OpenMode.ForWrite, false, true);
                                     if (obj != null)
                                     {
-                                        // отключаем аннотативность
+                                        // РѕС‚РєР»СЋС‡Р°РµРј Р°РЅРЅРѕС‚Р°С‚РёРІРЅРѕСЃС‚СЊ
                                         //if (obj.Annotative == AnnotativeStates.False)
                                         if (obj.Annotative == AnnotativeStates.True)
                                         {
