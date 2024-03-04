@@ -1,4 +1,4 @@
-//using static Samples;//.AutoCAD.DatabaseServices.BlockTableRecordExtensionMethods;
+﻿//using static Samples;//.AutoCAD.DatabaseServices.BlockTableRecordExtensionMethods;
 
 //using Microsoft.VisualBasic.ApplicationServices;
 using Bushman.AutoCAD.DatabaseServices;
