@@ -6,11 +6,6 @@ using System.Reflection;
 using Microsoft.Win32;
 using System.IO;
 
-
-
-
-
-
 #if NC
 using Teigha.DatabaseServices;
 using HostMgd.ApplicationServices;
@@ -30,7 +25,7 @@ using Rtm = Autodesk.AutoCAD.Runtime;
 
 #endif
 
-namespace drz.Tools
+namespace DrzCadTools
 {
     /// <summary>Служебные утилиты</summary>
     class McUtilServise
@@ -304,9 +299,6 @@ namespace drz.Tools
 
 
         #endregion
-
-
-
-
+        
     }
 }

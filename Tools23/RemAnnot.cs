@@ -31,7 +31,7 @@ using Rtm = Autodesk.AutoCAD.Runtime;
 
 #endif
 
-namespace drz.Tools
+namespace DrzCadTools
 {
     public class RemovAnnotate
     {

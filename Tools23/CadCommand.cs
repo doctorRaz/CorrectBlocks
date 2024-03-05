@@ -1,12 +1,9 @@
-
+using System;
 
 #if NC
 using HostMgd.ApplicationServices;
 using HostMgd.EditorInput;
 
-using QuickSaveAs;
-
-using System;
 
 using Teigha.DatabaseServices;
 
@@ -16,23 +13,20 @@ using Rtm = Teigha.Runtime;
 
 #elif AC
 
+using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.DatabaseServices;
+using Autodesk.AutoCAD.EditorInput;
+using Autodesk.AutoCAD.Windows;
 using App = Autodesk.AutoCAD.ApplicationServices;
 using Cad = Autodesk.AutoCAD.ApplicationServices.Application;
 using Db = Autodesk.AutoCAD.DatabaseServices;
-using Gem = Autodesk.AutoCAD.Geometry;
 using Ed = Autodesk.AutoCAD.EditorInput;
+using Gem = Autodesk.AutoCAD.Geometry;
 using Rtm = Autodesk.AutoCAD.Runtime;
-using Autodesk.AutoCAD.Windows;
-
-using Autodesk.AutoCAD.EditorInput;
-using Autodesk.AutoCAD.ApplicationServices;
-
-
 #endif
-[assembly: Rtm.CommandClass(typeof(drz.Tools.CadCommand))]
+using drz.Tools;
 
-namespace drz.Tools
+namespace DrzCadTools
 {
     /// <summary> Вызов всех модулей 
     /// <br>добавил импорт фильтров слоев</br>

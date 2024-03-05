@@ -1,6 +1,5 @@
 using System.IO;
 using System.Windows.Forms;
-
 using DialogResult = System.Windows.Forms.DialogResult;
 
 #if NC
@@ -27,9 +26,6 @@ using Gem = Autodesk.AutoCAD.Geometry;
 using Ed = Autodesk.AutoCAD.EditorInput;
 using Rtm = Autodesk.AutoCAD.Runtime;
 #endif
-
-
-
 
 namespace drz.Tools
 {

@@ -40,11 +40,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="hostdbmgd">
-      <HintPath>c:\SDK_NC\NC_SDK_22.0.5944.3726.6053\include-x64\hostdbmgd.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\SDK\nano20\hostdbmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="hostmgd">
-      <HintPath>c:\SDK_NC\NC_SDK_22.0.5944.3726.6053\include-x64\hostmgd.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\SDK\nano20\hostmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -57,24 +57,45 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AttSynch.cs" />
-    <Compile Include="AttRotate.cs" />
-    <Compile Include="BlockNormalized.cs" />
-    <Compile Include="BlockTableRecordExtensionMethods.cs" />
-    <Compile Include="CadCommand.cs" />
-    <Compile Include="ExtensionMethods.cs" />
-    <Compile Include="LayerFilterImport.cs" />
+    <Compile Include="..\Tools23\AttRotate.cs">
+      <Link>AttRotate.cs</Link>
+    </Compile>
+    <Compile Include="..\Tools23\AttSynch.cs">
+      <Link>AttSynch.cs</Link>
+    </Compile>
+    <Compile Include="..\Tools23\BlockNormalized.cs">
+      <Link>BlockNormalized.cs</Link>
+    </Compile>
+    <Compile Include="..\Tools23\BlockTableRecordExtensionMethods.cs">
+      <Link>BlockTableRecordExtensionMethods.cs</Link>
+    </Compile>
+    <Compile Include="..\Tools23\CadCommand.cs">
+      <Link>CadCommand.cs</Link>
+    </Compile>
+    <Compile Include="..\Tools23\ExtensionMethods.cs">
+      <Link>ExtensionMethods.cs</Link>
+    </Compile>
+    <Compile Include="..\Tools23\LayerFilterImport.cs">
+      <Link>LayerFilterImport.cs</Link>
+    </Compile>
+    <Compile Include="..\Tools23\RemAnnot.cs">
+      <Link>RemAnnot.cs</Link>
+    </Compile>
+    <Compile Include="..\Tools23\saveMod.cs">
+      <Link>saveMod.cs</Link>
+    </Compile>
+    <Compile Include="..\Tools23\UtilServise.cs">
+      <Link>UtilServise.cs</Link>
+    </Compile>
+    <Compile Include="..\Tools23\WipBot.cs">
+      <Link>WipBot.cs</Link>
+    </Compile>
+    <Compile Include="..\Tools23\WorkingDatabaseSwitcher.cs">
+      <Link>WorkingDatabaseSwitcher.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="temp\qsave.cs" />
-    <Compile Include="RemAnnot.cs" />
-    <Compile Include="saveMod.cs" />
-    <Compile Include="UtilServise.cs" />
-    <Compile Include="WipBot.cs" />
-    <Compile Include="WorkingDatabaseSwitcher.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="RemoveAnnotation\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>

@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 using Teigha.DatabaseServices;
 using Teigha.Runtime;
 
-namespace NCadSettings
+namespace DrzCadTools
 {
     public class RegistrySettings
     {
@@ -98,7 +98,7 @@ namespace NCadSettings
 }
 
 
-namespace drz.Tools
+namespace DrzCadTools
 {
     class qsave
     {
@@ -127,18 +127,18 @@ namespace drz.Tools
 
             PromptKeywordOptions options = new PromptKeywordOptions($"\nВыберите формат файла ");
             List<FileFormat> formatsList = new List<FileFormat>
-        {
-            new FileFormat("Acad 2018 dwg", DwgVersion.AC1032),
-            new FileFormat("Acad 2013 dwg", DwgVersion.AC1027),
-            new FileFormat("Acad 2010 dwg", DwgVersion.AC1024),
-            new FileFormat("Acad 2007 dwg", DwgVersion.AC1021),
-            new FileFormat("Acad 2004 dwg", DwgVersion.AC1800),
-            new FileFormat("Acad 2018 dxf", DwgVersion.AC1032, true),
-            new FileFormat("Acad 2013 dxf", DwgVersion.AC1027, true),
-            new FileFormat("Acad 2010 dwg", DwgVersion.AC1024, true),
-            new FileFormat("Acad 2007 dwg", DwgVersion.AC1021, true),
-            new FileFormat("Acad 2004 dwg", DwgVersion.AC1800, true),
-        };
+            {
+                //new FileFormat("Acad 2018 dwg", DwgVersion.AC1032),
+                new FileFormat("Acad 2013 dwg", DwgVersion.AC1027),
+                new FileFormat("Acad 2010 dwg", DwgVersion.AC1024),
+                new FileFormat("Acad 2007 dwg", DwgVersion.AC1021),
+                new FileFormat("Acad 2004 dwg", DwgVersion.AC1800),
+                //new FileFormat("Acad 2018 dxf", DwgVersion.AC1032, true),
+                new FileFormat("Acad 2013 dxf", DwgVersion.AC1027, true),
+                new FileFormat("Acad 2010 dwg", DwgVersion.AC1024, true),
+                new FileFormat("Acad 2007 dwg", DwgVersion.AC1021, true),
+                new FileFormat("Acad 2004 dwg", DwgVersion.AC1800, true),
+            };
 
             /*
             AC1032 = 0x21  2018 Final
@@ -194,7 +194,7 @@ namespace drz.Tools
 }
 
 
-namespace QuickSaveAs
+namespace DrzCadTools
 
 {
     //https://www.keanw.com/2009/10/implementing-a-quick-saveas-command-in-autocad-using-net.html
