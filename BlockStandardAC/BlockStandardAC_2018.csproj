@@ -106,9 +106,6 @@
     <Compile Include="..\Tools23\BlockNormalized.cs">
       <Link>BlockNormalized.cs</Link>
     </Compile>
-    <Compile Include="..\Tools23\BlockTableRecordExtensionMethods.cs">
-      <Link>BlockTableRecordExtensionMethods.cs</Link>
-    </Compile>
     <Compile Include="..\Tools23\CadCommand.cs">
       <Link>CadCommand.cs</Link>
     </Compile>
@@ -121,17 +118,14 @@
     <Compile Include="..\Tools23\CadCommands\QSaveAsCmd.cs">
       <Link>CadCommands\QSaveAsCmd.cs</Link>
     </Compile>
-    <Compile Include="..\Tools23\ExtensionMethods.cs">
-      <Link>ExtensionMethods.cs</Link>
+    <Compile Include="..\Tools23\Extensions\BlockTableRecordExtensions.cs">
+      <Link>Extensions\BlockTableRecordExtensions.cs</Link>
     </Compile>
     <Compile Include="..\Tools23\LayerFilterImport.cs">
       <Link>LayerFilterImport.cs</Link>
     </Compile>
     <Compile Include="..\Tools23\RemAnnot.cs">
       <Link>RemAnnot.cs</Link>
-    </Compile>
-    <Compile Include="..\Tools23\saveMod.cs">
-      <Link>saveMod.cs</Link>
     </Compile>
     <Compile Include="..\Tools23\UtilServise.cs">
       <Link>UtilServise.cs</Link>

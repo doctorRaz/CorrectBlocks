@@ -1,9 +1,7 @@
 //using static Samples;//.AutoCAD.DatabaseServices.BlockTableRecordExtensionMethods;
 
 //using Microsoft.VisualBasic.ApplicationServices;
-using Bushman.AutoCAD.DatabaseServices;
-
-using GillesChanteau;
+using DrzCadTools.Extensions;
 
 
 #if NC
@@ -111,8 +109,8 @@ namespace drz.Tools
                         btr = (BlockTableRecord)t.GetObject(bt[br.Name], OpenMode.ForRead);
                     }
 
+                    btr.SynchronizeAttributes();
 
-                    ExtensionMethods.SynchronizeAttributes(btr);
                     t.Commit();
                 }
             }
