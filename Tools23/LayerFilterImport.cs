@@ -1,30 +1,28 @@
 using System.IO;
 using System.Windows.Forms;
+
 using DialogResult = System.Windows.Forms.DialogResult;
+
+
 
 #if NC
 
-using App = HostMgd.ApplicationServices;
-
+using HostMgd.ApplicationServices;
+using Application = HostMgd.ApplicationServices.Application;
 using HostMgd.ApplicationServices;
 using HostMgd.EditorInput;
 
 using Teigha.DatabaseServices;
 using Teigha.LayerManager;
 
-using Db = Teigha.DatabaseServices;
+using  Teigha.DatabaseServices;
 
 #elif AC
+using Application = Autodesk.AutoCAD.ApplicationServices.Application;
 using Autodesk.AutoCAD.LayerManager;
 using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.EditorInput;
 using Autodesk.AutoCAD.DatabaseServices;
-using App = Autodesk.AutoCAD.ApplicationServices;
-using Cad = Autodesk.AutoCAD.ApplicationServices.Application;
-using Db = Autodesk.AutoCAD.DatabaseServices;
-using Gem = Autodesk.AutoCAD.Geometry;
-using Ed = Autodesk.AutoCAD.EditorInput;
-using Rtm = Autodesk.AutoCAD.Runtime;
 #endif
 
 namespace drz.Tools
@@ -58,7 +56,7 @@ namespace drz.Tools
         /// Импорт слоев в активный файл
         /// </summary>
         /// <param name="sourcefile">Путь к файлу с фильтрами</param>
-        public static void ImportLFilterFromFile(string sourcefile)
+        private static void ImportLFilterFromFile(string sourcefile)
         {
             // Find the file containing layer filter to clone
             if (!File.Exists(sourcefile))
@@ -67,7 +65,7 @@ namespace drz.Tools
                 return;
             }
        
-            DocumentCollection dm = App.Application.DocumentManager;
+            DocumentCollection dm = Application.DocumentManager;
 
             Document doc = dm.MdiActiveDocument;
 
@@ -77,14 +75,14 @@ namespace drz.Tools
 
             try
             {
-                using (Db.Database db0 = new Db.Database(false, false))
+                using (Database db0 = new Database(false, false))
                 {
 #if NC
-                    db0.ReadDwgFile(sourcefile, Db.FileOpenMode.OpenForReadAndAllShare, false, "", false);
+                    db0.ReadDwgFile(sourcefile, FileOpenMode.OpenForReadAndAllShare, false, "", false);
 #else
-                    db0.ReadDwgFile(sourcefile, Db.FileOpenMode.OpenForReadAndAllShare, false, "");
+                    db0.ReadDwgFile(sourcefile, FileOpenMode.OpenForReadAndAllShare, false, "");
 #endif
-                    Db.HostApplicationServices.WorkingDatabase = db0;
+                    HostApplicationServices.WorkingDatabase = db0;
 
                     using (Transaction sourcetr = db0.TransactionManager.StartTransaction())
                     {
@@ -118,13 +116,13 @@ namespace drz.Tools
                     }
                 }
 
-                Db.HostApplicationServices.WorkingDatabase = db;
+                HostApplicationServices.WorkingDatabase = db;
                 ed.WriteMessage("\nFilter import completed successfully");
             }
 
             catch (System.Exception ex)
             {
-                App.Application.ShowAlertDialog(string.Format("\n{0}\n{1}", ex.Message, ex.StackTrace));
+                Application.ShowAlertDialog(string.Format("\n{0}\n{1}", ex.Message, ex.StackTrace));
             }
         }
     }
