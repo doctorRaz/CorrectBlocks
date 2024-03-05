@@ -1,9 +1,6 @@
 using System.IO;
 using System.Windows.Forms;
-
-using DialogResult = System.Windows.Forms.DialogResult;
-
-
+using DrzCadTools.Infrastructure;
 
 #if NC
 
@@ -15,7 +12,7 @@ using HostMgd.EditorInput;
 using Teigha.DatabaseServices;
 using Teigha.LayerManager;
 
-using  Teigha.DatabaseServices;
+using Teigha.DatabaseServices;
 
 #elif AC
 using Application = Autodesk.AutoCAD.ApplicationServices.Application;
@@ -42,26 +39,28 @@ namespace drz.Tools
             {
                 openFileDialog.Filter = "All supported formats (*.dwg;*.dws;*.dwt;*.dxf)|*.dwg;*.dws;*.dwt;*.dxf";
                 openFileDialog.Title = "Select drawing file to import layer filters";
-                if (openFileDialog.ShowDialog() != DialogResult.OK)
+                if (openFileDialog.ShowDialog() != System.Windows.Forms.DialogResult.OK)
                 {
                     return;
                 }
                 sFilName = openFileDialog.FileName;
             }
 
-            ImportLFilterFromFile(sFilName);
+            MessageService msgService = new MessageService();
+
+            ImportLFilterFromFile(sFilName, msgService);
         }
 
         /// <summary>
         /// Импорт слоев в активный файл
         /// </summary>
         /// <param name="sourcefile">Путь к файлу с фильтрами</param>
-        private static void ImportLFilterFromFile(string sourcefile)
+        private static void ImportLFilterFromFile(string sourcefile, MessageService MsgService)
         {
             // Find the file containing layer filter to clone
             if (!File.Exists(sourcefile))
             {
-                MessageBox.Show("Could not find file !");
+                MsgService.ErrorMessage("Could not find file !");
                 return;
             }
        
@@ -72,7 +71,7 @@ namespace drz.Tools
             Database db = doc.Database;
 
             Editor ed = doc.Editor;
-
+            
             try
             {
                 using (Database db0 = new Database(false, false))
@@ -117,12 +116,12 @@ namespace drz.Tools
                 }
 
                 HostApplicationServices.WorkingDatabase = db;
-                ed.WriteMessage("\nFilter import completed successfully");
+                MsgService.ConsoleMessage("Filter import completed successfully");
             }
 
             catch (System.Exception ex)
             {
-                Application.ShowAlertDialog(string.Format("\n{0}\n{1}", ex.Message, ex.StackTrace));
+                MsgService.ExceptionMessage(ex);
             }
         }
     }

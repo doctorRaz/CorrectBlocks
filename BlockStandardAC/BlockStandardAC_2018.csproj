@@ -121,6 +121,9 @@
     <Compile Include="..\Tools23\Extensions\BlockTableRecordExtensions.cs">
       <Link>Extensions\BlockTableRecordExtensions.cs</Link>
     </Compile>
+    <Compile Include="..\Tools23\Infrastructure\MessageService.cs">
+      <Link>Infrastructure\MessageService.cs</Link>
+    </Compile>
     <Compile Include="..\Tools23\LayerFilterImport.cs">
       <Link>LayerFilterImport.cs</Link>
     </Compile>

@@ -157,10 +157,7 @@ namespace DrzCadTools
 #endregion
 
         #region  СЛУЖЕБНЫЕ
-
-
-
-
+        
         /// <summary> Расшифровка исключений </summary>
         /// <param name="ex">Исключение</param>
         /// <param name="sResp">Доп текст</param>
