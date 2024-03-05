@@ -112,6 +112,15 @@
     <Compile Include="..\Tools23\CadCommand.cs">
       <Link>CadCommand.cs</Link>
     </Compile>
+    <Compile Include="..\Tools23\CadCommands\DrzQsaveCmd.cs">
+      <Link>CadCommands\DrzQsaveCmd.cs</Link>
+    </Compile>
+    <Compile Include="..\Tools23\CadCommands\DrzSaveCmd.cs">
+      <Link>CadCommands\DrzSaveCmd.cs</Link>
+    </Compile>
+    <Compile Include="..\Tools23\CadCommands\QSaveAsCmd.cs">
+      <Link>CadCommands\QSaveAsCmd.cs</Link>
+    </Compile>
     <Compile Include="..\Tools23\ExtensionMethods.cs">
       <Link>ExtensionMethods.cs</Link>
     </Compile>
@@ -138,6 +147,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

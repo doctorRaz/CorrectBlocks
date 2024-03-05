@@ -45,7 +45,7 @@ namespace DrzCadTools
 
 #if NC
         #region Lsp
-// think убрать подписки и все что их касается, решение отличать команду от лисп выражения есть
+        // think убрать подписки и все что их касается, решение отличать команду от лисп выражения есть
 
         /// <summary>
         /// LWSs the specified sender.
@@ -132,15 +132,6 @@ namespace DrzCadTools
         #region Command
 
         #region Save
-        /// <summary>
-        /// Saves the mod.
-        /// </summary>
-        [Rtm.CommandMethod("drz_save")]
-        //[Rtm.CommandMethod("drz_save",Rtm.CommandFlags.Session)]
-        public static void drzSaveMod()
-        {
-            saveMod.SaveMod();
-        }
 
 #if DEBUG
         [Rtm.CommandMethod("ссс")]
@@ -173,23 +164,7 @@ namespace DrzCadTools
         }
 #endif
 
-        /// <summary>
-        /// DRZs the q save mod.by kpbic
-        /// </summary>
-        [Rtm.CommandMethod("drz_Qsave")]
-        public static void drzQSaveMod()
-        {
-            qsave.QuickSaveCommand();
-        }
-
-#if NC
-        [Rtm.CommandMethod("QSAVEAS")]
-        public static void QSAVEAS()
-        {
-            QS.QuickSaveAs();
-        }
-#endif
-#endregion
+        #endregion
 
         #region Remove Annotate
 
@@ -391,6 +366,6 @@ namespace DrzCadTools
 
         #endregion
 
-#endregion
+        #endregion
     }
 }
