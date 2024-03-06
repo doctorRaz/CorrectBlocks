@@ -294,7 +294,7 @@ namespace DrzCadTools
         [Rtm.CommandMethod("drz_blc_WipBot")]
         public void Blc_WipBot()
         {
-            NLB.FBlkSet fBlck = NLB.FBlkSet.fWipeBott;
+            NLB.BlockNormalizeSettingsEnum fBlck = NLB.BlockNormalizeSettingsEnum.SetWipeoutBack;
             NLB.GetBlc(fBlck);
         }
 
@@ -315,7 +315,7 @@ namespace DrzCadTools
         [Rtm.CommandMethod("drz_blc_EntityToZero")]
         public void Blc_Zero()
         {
-            NLB.FBlkSet fBlck = NLB.FBlkSet.fLayerEnZero;
+            NLB.BlockNormalizeSettingsEnum fBlck = NLB.BlockNormalizeSettingsEnum.SetLayer0;
             NLB.GetBlc(fBlck);
         }
 
@@ -325,7 +325,7 @@ namespace DrzCadTools
         [Rtm.CommandMethod("drz_blc_ColorByLayer")]
         public void Blc_Color()
         {
-            NLB.FBlkSet fBlck = NLB.FBlkSet.fColorBL;
+            NLB.BlockNormalizeSettingsEnum fBlck = NLB.BlockNormalizeSettingsEnum.ColorByLayer;
             NLB.GetBlc(fBlck);
         }
         /// <summary>
@@ -334,13 +334,13 @@ namespace DrzCadTools
         [Rtm.CommandMethod("drz_blc_AllPropByLayer")]
         public void Blc_AllBL()
         {
-            NLB.FBlkSet fBlck = NLB.FBlkSet.fExplodeOn
-                                | NLB.FBlkSet.fScaleEqOn
-                                | NLB.FBlkSet.fTypeBL
-                                | NLB.FBlkSet.fColorBL
-                                | NLB.FBlkSet.fWeightBL
-                                | NLB.FBlkSet.fLayerEnZero
-                                | NLB.FBlkSet.fWipeBott
+            NLB.BlockNormalizeSettingsEnum fBlck = NLB.BlockNormalizeSettingsEnum.SetBlockExplodeable
+                                | NLB.BlockNormalizeSettingsEnum.EqualScaleOn
+                                | NLB.BlockNormalizeSettingsEnum.SetByLayer
+                                | NLB.BlockNormalizeSettingsEnum.ColorByLayer
+                                | NLB.BlockNormalizeSettingsEnum.LineweightByLayer
+                                | NLB.BlockNormalizeSettingsEnum.SetLayer0
+                                | NLB.BlockNormalizeSettingsEnum.SetWipeoutBack
                                   ;
             NLB.GetBlc(fBlck);
         }
@@ -351,13 +351,13 @@ namespace DrzCadTools
         [Rtm.CommandMethod("drz_blc_AllPropByBlock")]
         public void Blc_AllBB()
         {
-            NLB.FBlkSet fBlck = NLB.FBlkSet.fExplodeOn
-                                | NLB.FBlkSet.fScaleEqOn
-                                | NLB.FBlkSet.fTypeBB
-                                | NLB.FBlkSet.fColorBB
-                                | NLB.FBlkSet.fWeightBB
-                                | NLB.FBlkSet.fLayerEnZero
-                                | NLB.FBlkSet.fWipeBott
+            NLB.BlockNormalizeSettingsEnum fBlck = NLB.BlockNormalizeSettingsEnum.SetBlockExplodeable
+                                | NLB.BlockNormalizeSettingsEnum.EqualScaleOn
+                                | NLB.BlockNormalizeSettingsEnum.SetByBlock
+                                | NLB.BlockNormalizeSettingsEnum.ColorByBlock
+                                | NLB.BlockNormalizeSettingsEnum.LineweightByBlock
+                                | NLB.BlockNormalizeSettingsEnum.SetLayer0
+                                | NLB.BlockNormalizeSettingsEnum.SetWipeoutBack
                                  ;
             NLB.GetBlc(fBlck);
         }
