@@ -47,10 +47,12 @@ namespace drz.Tools
         {
             Database db = HostApplicationServices.WorkingDatabase;
             Document doc = Application.DocumentManager.MdiActiveDocument;
-            Editor ed = doc.Editor;
+            Editor ed = doc.Editor;            
 
             //ful name
             string sFilName = doc.Name;
+
+            sFilName = Path.GetFullPath(sFilName);//затычка если файл открыт по относительному пути
 
             string sSaveDir;
 
