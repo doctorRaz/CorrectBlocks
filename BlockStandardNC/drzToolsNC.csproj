@@ -47,6 +47,7 @@
       <HintPath>c:\SDK_NC\NC_SDK_22.0.5944.3726.6053\include-x64\hostmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms" />
@@ -57,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LFIO.cs" />
     <Compile Include="AttSynch.cs" />
     <Compile Include="AttRotate.cs" />
     <Compile Include="BlockNormalized.cs" />
