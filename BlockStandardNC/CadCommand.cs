@@ -47,11 +47,11 @@ namespace drz.Tools
         /// <value>
         ///   <c>true</c> if this instance is lisp; otherwise, <c>false</c>.
         /// </value>
-        internal static bool IsLisp { get; set; }
+        internal static bool IsLisp { get; set; }//x прибить
 
 #if NC
         #region Lsp
-// think убрать подписки и все что их касается, решение отличать команду от лисп выражения есть
+        // think убрать подписки и все что их касается, решение отличать команду от лисп выражения есть
 
         /// <summary>
         /// LWSs the specified sender.
@@ -117,9 +117,8 @@ namespace drz.Tools
                 "drz_LayerImport" + "\tИмпорт фильтров слоев dwg to dwg\n)" +
                 "drz_FiltExp" + "\tЭкспорт фильтров слоев в txt\n)" +
                 "drz_FiltImp" + "\tИмпорт фильтров слоев в txt\n)" +
-                "drz_rem_anntb" + "\tОтключение аннотативности ВСЕХ блоков\n" +
-                "drz_rem_anntG" + "\tОтключение аннотативности ВСЕХ блоков\n" +
-                "drz_rem_anntBent" + "\tОтключение аннотативности ВСЕХ блоков + снять аннотативность с сущностей\n"
+                "drz_rem_annt" + "\tОтключение аннотативности ВСЕХ блоков\n" +
+                "drz_rem_anntE" + "\tОтключение аннотативности ВСЕХ блоков + снять аннотативность с сущностей\n"
                 ;
             ed.WriteMessage(sCom);
             ed.WriteMessage("\nEnd list of commands\n");
@@ -197,35 +196,25 @@ namespace drz.Tools
             QS.QuickSaveAs();
         }
 #endif
-#endregion
+        #endregion
 
         #region Remove Annotate
 
         /// <summary>
-        /// Отключение аннотативности ВСЕХ блоков атрибуты на местах Бушман
+        /// Отключение аннотативности ВСЕХ блоков
         /// </summary>
-        [Rtm.CommandMethod("drz_rem_anntB")]
+        [Rtm.CommandMethod("drz_rem_annt")]
         //[Rtm.CommandMethod("drz_rem_anntB", Rtm.CommandFlags.Session | Rtm.CommandFlags.Modal)]
-        public static void Blc_Remov_anntB_cmd()
+        public static void BlcRemovAnntCmd()
         {
             RemovAnnotate.Rem_annt(false);
         }
         /// <summary>
-        /// Отключение аннотативности ВСЕХ блоков атрибуты на местах Бушман + снять аннотативность с сущностекй
+        /// Отключение аннотативности ВСЕХ блоков + снять аннотативность с сущностекй
         /// </summary>
-        [Rtm.CommandMethod("drz_rem_anntBent")]
+        [Rtm.CommandMethod("drz_rem_anntE")]
         //[Rtm.CommandMethod("drz_rem_anntBent", Rtm.CommandFlags.Session | Rtm.CommandFlags.Modal)]
-        public static void Blc_Remov_anntBent_cmd()
-        {
-            RemovAnnotate.Rem_annt(false, true);
-        }
-
-        /// <summary>
-        /// Отключение аннотативности ВСЕХ блоков полный сброс атрибутов Джилман
-        /// </summary>
-        [Rtm.CommandMethod("drz_rem_anntG")]
-        //[Rtm.CommandMethod("drz_rem_anntG", Rtm.CommandFlags.Session | Rtm.CommandFlags.Modal)]
-        public static void Blc_Remov_anntG_cmd()
+        public static void BlcRemovAnntEntCmd()
         {
             RemovAnnotate.Rem_annt(true);
         }
@@ -418,6 +407,6 @@ namespace drz.Tools
 
         #endregion
 
-#endregion
+        #endregion
     }
 }

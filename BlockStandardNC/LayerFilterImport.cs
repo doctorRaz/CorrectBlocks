@@ -46,8 +46,8 @@ namespace drz.Tools
             // set full path of container file that contains desired layer filter
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                openFileDialog.Filter = "All supported formats (*.dwg;*.dws;*.dwt;*.dxf)|*.dwg;*.dws;*.dwt;*.dxf";
-                openFileDialog.Title = "Select drawing file to import layer filters";
+                openFileDialog.Filter = "Все поддерживаемые форматы (*.dwg;*.dws;*.dwt;*.dxf)|*.dwg;*.dws;*.dwt;*.dxf";
+                openFileDialog.Title = "Выберите чертеж для импорта фильтров слоев";
                 if (openFileDialog.ShowDialog() != DialogResult.OK)
                 {
                     return;

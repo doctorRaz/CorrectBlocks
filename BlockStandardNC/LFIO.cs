@@ -39,7 +39,7 @@ namespace drz.Tools
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
             {
                 saveFileDialog.Filter = "Layer Filter Export (*.lfe)|*.lfe";
-                saveFileDialog.Title = "Экспортироать фильтры слоев";
+                saveFileDialog.Title = "Сохранить файл фильтра слоев";
                 saveFileDialog.OverwritePrompt = false;
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
@@ -164,7 +164,7 @@ namespace drz.Tools
                 using (OpenFileDialog openFileDialog = new OpenFileDialog())
                 {
                     openFileDialog.Filter = "Layer Filter Export (*.lfe)|*.lfe";
-                    openFileDialog.Title = "Импортировать фильтры слоев";
+                    openFileDialog.Title = "Открыть файл фильтров слоев";
                     if (openFileDialog.ShowDialog() == DialogResult.OK)
                     {
                         FltExt.Clear();
