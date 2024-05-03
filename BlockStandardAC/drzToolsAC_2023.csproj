@@ -91,6 +91,7 @@
       <HintPath>..\..\SDK\AC2023\inc\AdWindows.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms" />
@@ -121,6 +122,9 @@
     </Compile>
     <Compile Include="..\BlockStandardNC\LayerFilterImport.cs">
       <Link>LayerFilterImport.cs</Link>
+    </Compile>
+    <Compile Include="..\BlockStandardNC\LFIO.cs">
+      <Link>LFIO.cs</Link>
     </Compile>
     <Compile Include="..\BlockStandardNC\RemAnnot.cs">
       <Link>RemAnnot.cs</Link>

@@ -10,12 +10,41 @@ using System.Windows.Forms;
 using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.CompilerServices;
 using Microsoft.Win32;
+ 
+
+
+using DialogResult = System.Windows.Forms.DialogResult;
+
+
+ 
+ 
+
+ 
+
+#if NC
+
+using App = HostMgd.ApplicationServices;
+
+using HostMgd.ApplicationServices;
+using HostMgd.EditorInput;
 
 using Teigha.DatabaseServices;
 using Teigha.LayerManager;
 
-using App = HostMgd.ApplicationServices;
-using DialogResult = System.Windows.Forms.DialogResult;
+using Db = Teigha.DatabaseServices;
+
+#elif AC
+using Autodesk.AutoCAD.LayerManager;
+using Autodesk.AutoCAD.ApplicationServices;
+using Autodesk.AutoCAD.EditorInput;
+using Autodesk.AutoCAD.DatabaseServices;
+using App = Autodesk.AutoCAD.ApplicationServices;
+using Cad = Autodesk.AutoCAD.ApplicationServices.Application;
+using Db = Autodesk.AutoCAD.DatabaseServices;
+using Gem = Autodesk.AutoCAD.Geometry;
+using Ed = Autodesk.AutoCAD.EditorInput;
+using Rtm = Autodesk.AutoCAD.Runtime;
+#endif
 
 //using DialogResult = Teigha.LayerManager.DialogResult;
 
@@ -94,7 +123,7 @@ namespace drz.Tools
                             using (Transaction transaction = database.TransactionManager.StartTransaction())
                             {
                                 //LayerTable layerTable = (LayerTable)database.LayerTableId.GetObject(1);
-                                LayerTable layerTable = (LayerTable)database.LayerTableId.GetObject(Teigha.DatabaseServices.OpenMode.ForWrite);// by razygraevaa on 25.03.2024 at 12:39
+                                LayerTable layerTable = (LayerTable)database.LayerTableId.GetObject(Db.OpenMode.ForWrite);// by razygraevaa on 25.03.2024 at 12:39
                                 try
                                 {
                                     foreach (object obj2 in layerGroup.LayerIds)
@@ -266,7 +295,7 @@ namespace drz.Tools
                                         obj2 = new LayerGroup();
                                         using (Transaction transaction = database.TransactionManager.StartTransaction())
                                         {
-                                            LayerTable layerTable = (LayerTable)database.LayerTableId.GetObject(Teigha.DatabaseServices.OpenMode.ForWrite);
+                                            LayerTable layerTable = (LayerTable)database.LayerTableId.GetObject(Db.OpenMode.ForWrite);
                                             List<string> list3 = new List<string>(text5.Split(new char[] { ',' }));
                                             try
                                             {
