@@ -1,15 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.34601.136
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "drzToolsNC", "BlockStandardNC\drzToolsNC.csproj", "{045A02B6-25B6-4CB9-A82D-962632A33D83}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "drzCorrectBlocksNC", "NC\drzCorrectBlocksNC.csproj", "{045A02B6-25B6-4CB9-A82D-962632A33D83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "drzToolsAC_2021", "BlockStandardAC\drzToolsAC_2021.csproj", "{7F5168DC-0FEC-4082-A595-85B25AEB0F32}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "drzCorrectBlocksAC_2021", "AC\drzCorrectBlocksAC_2021.csproj", "{7F5168DC-0FEC-4082-A595-85B25AEB0F32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "drzToolsAC_2023", "BlockStandardAC\drzToolsAC_2023.csproj", "{7548E40F-A58F-47B6-AEF5-A8AAACE5C15D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "drzCorrectBlocksAC_2023", "AC\drzCorrectBlocksAC_2023.csproj", "{7548E40F-A58F-47B6-AEF5-A8AAACE5C15D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "drzToolsAC_2018", "BlockStandardAC\drzToolsAC_2018.csproj", "{6639C2D0-E869-47E6-892D-0ECB5D422549}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "drzCorrectBlocksAC_2018", "AC\drzCorrectBlocksAC_2018.csproj", "{6639C2D0-E869-47E6-892D-0ECB5D422549}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleNF", "ConsoleNF\ConsoleNF.csproj", "{C86FDC81-7996-46F3-BF53-053B3FEA5EF3}"
 EndProject

@@ -5,12 +5,12 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{6639C2D0-E869-47E6-892D-0ECB5D422549}</ProjectGuid>
+    <ProjectGuid>{7F5168DC-0FEC-4082-A595-85B25AEB0F32}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>drz</RootNamespace>
-    <AssemblyName>BlockStandardAC_2018</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <AssemblyName>drzCorrectBlocksAC_2021</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -40,55 +40,55 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AcCoreMgd">
-      <HintPath>C:\ObjectARX_SDK\2018\inc\AcCoreMgd.dll</HintPath>
+      <HintPath>C:\ObjectARX_SDK\2021\inc\AcCoreMgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="AcCui">
-      <HintPath>C:\ObjectARX_SDK\2018\inc\AcCui.dll</HintPath>
+      <HintPath>C:\ObjectARX_SDK\2021\inc\AcCui.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="AcDbMgd">
-      <HintPath>C:\ObjectARX_SDK\2018\inc\AcDbMgd.dll</HintPath>
+      <HintPath>C:\ObjectARX_SDK\2021\inc\AcDbMgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="acdbmgdbrep">
-      <HintPath>C:\ObjectARX_SDK\2018\inc\acdbmgdbrep.dll</HintPath>
+      <HintPath>C:\ObjectARX_SDK\2021\inc\acdbmgdbrep.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="AcDx">
-      <HintPath>C:\ObjectARX_SDK\2018\inc\AcDx.dll</HintPath>
+      <HintPath>C:\ObjectARX_SDK\2021\inc\AcDx.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="AcMgd">
-      <HintPath>C:\ObjectARX_SDK\2018\inc\AcMgd.dll</HintPath>
+      <HintPath>C:\ObjectARX_SDK\2021\inc\AcMgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="AcMr">
-      <HintPath>C:\ObjectARX_SDK\2018\inc\AcMr.dll</HintPath>
+      <HintPath>C:\ObjectARX_SDK\2021\inc\AcMr.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="AcSeamless">
-      <HintPath>C:\ObjectARX_SDK\2018\inc\AcSeamless.dll</HintPath>
+      <HintPath>C:\ObjectARX_SDK\2021\inc\AcSeamless.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="AcTcMgd">
-      <HintPath>C:\ObjectARX_SDK\2018\inc\AcTcMgd.dll</HintPath>
+      <HintPath>C:\ObjectARX_SDK\2021\inc\AcTcMgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="AcWindows">
-      <HintPath>C:\ObjectARX_SDK\2018\inc\AcWindows.dll</HintPath>
+      <HintPath>C:\ObjectARX_SDK\2021\inc\AcWindows.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="AdUIMgd">
-      <HintPath>C:\ObjectARX_SDK\2018\inc\AdUIMgd.dll</HintPath>
+      <HintPath>C:\ObjectARX_SDK\2021\inc\AdUIMgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="AdUiPalettes">
-      <HintPath>C:\ObjectARX_SDK\2018\inc\AdUiPalettes.dll</HintPath>
+      <HintPath>C:\ObjectARX_SDK\2021\inc\AdUiPalettes.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="AdWindows">
-      <HintPath>C:\ObjectARX_SDK\2018\inc\AdWindows.dll</HintPath>
+      <HintPath>C:\ObjectARX_SDK\2021\inc\AdWindows.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -101,40 +101,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\BlockStandardNC\AttRotate.cs">
+    <Compile Include="..\NC\AttRotate.cs">
       <Link>AttRotate.cs</Link>
     </Compile>
-    <Compile Include="..\BlockStandardNC\AttSynch.cs">
+    <Compile Include="..\NC\AttSynch.cs">
       <Link>AttSynch.cs</Link>
     </Compile>
-    <Compile Include="..\BlockStandardNC\BlockNormalized.cs">
+    <Compile Include="..\NC\BlockNormalized.cs">
       <Link>BlockNormalized.cs</Link>
     </Compile>
-    <Compile Include="..\BlockStandardNC\BlockTableRecordExtensionMethods.cs">
+    <Compile Include="..\NC\BlockTableRecordExtensionMethods.cs">
       <Link>BlockTableRecordExtensionMethods.cs</Link>
     </Compile>
-    <Compile Include="..\BlockStandardNC\CadCommand.cs">
+    <Compile Include="..\NC\CadCommand.cs">
       <Link>CadCommand.cs</Link>
     </Compile>
-    <Compile Include="..\BlockStandardNC\ExtensionMethods.cs">
+    <Compile Include="..\NC\ExtensionMethods.cs">
       <Link>ExtensionMethods.cs</Link>
     </Compile>
-    <Compile Include="..\BlockStandardNC\LayerFilterImport.cs">
+    <Compile Include="..\NC\LayerFilterImport.cs">
       <Link>LayerFilterImport.cs</Link>
     </Compile>
-    <Compile Include="..\BlockStandardNC\RemAnnot.cs">
+    <Compile Include="..\NC\RemAnnot.cs">
       <Link>RemAnnot.cs</Link>
     </Compile>
-    <Compile Include="..\BlockStandardNC\saveMod.cs">
+    <Compile Include="..\NC\saveMod.cs">
       <Link>saveMod.cs</Link>
     </Compile>
-    <Compile Include="..\BlockStandardNC\UtilServise.cs">
+    <Compile Include="..\NC\UtilServise.cs">
       <Link>UtilServise.cs</Link>
     </Compile>
-    <Compile Include="..\BlockStandardNC\WipBot.cs">
+    <Compile Include="..\NC\WipBot.cs">
       <Link>WipBot.cs</Link>
     </Compile>
-    <Compile Include="..\BlockStandardNC\WorkingDatabaseSwitcher.cs">
+    <Compile Include="..\NC\WorkingDatabaseSwitcher.cs">
       <Link>WorkingDatabaseSwitcher.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

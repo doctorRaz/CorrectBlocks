@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>drz</RootNamespace>
-    <AssemblyName>BlockStandardAC_2023</AssemblyName>
+    <AssemblyName>drzCorrectBlocks_AC2023</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -102,43 +102,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\BlockStandardNC\AttRotate.cs">
+    <Compile Include="..\NC\AttRotate.cs">
       <Link>AttRotate.cs</Link>
     </Compile>
-    <Compile Include="..\BlockStandardNC\AttSynch.cs">
+    <Compile Include="..\NC\AttSynch.cs">
       <Link>AttSynch.cs</Link>
     </Compile>
-    <Compile Include="..\BlockStandardNC\BlockNormalized.cs">
+    <Compile Include="..\NC\BlockNormalized.cs">
       <Link>BlockNormalized.cs</Link>
     </Compile>
-    <Compile Include="..\BlockStandardNC\BlockTableRecordExtensionMethods.cs">
+    <Compile Include="..\NC\BlockTableRecordExtensionMethods.cs">
       <Link>BlockTableRecordExtensionMethods.cs</Link>
     </Compile>
-    <Compile Include="..\BlockStandardNC\CadCommand.cs">
+    <Compile Include="..\NC\CadCommand.cs">
       <Link>CadCommand.cs</Link>
     </Compile>
-    <Compile Include="..\BlockStandardNC\ExtensionMethods.cs">
+    <Compile Include="..\NC\ExtensionMethods.cs">
       <Link>ExtensionMethods.cs</Link>
     </Compile>
-    <Compile Include="..\BlockStandardNC\LayerFilterImport.cs">
+    <Compile Include="..\NC\LayerFilterImport.cs">
       <Link>LayerFilterImport.cs</Link>
     </Compile>
-    <Compile Include="..\BlockStandardNC\LFIO.cs">
+    <Compile Include="..\NC\LFIO.cs">
       <Link>LFIO.cs</Link>
     </Compile>
-    <Compile Include="..\BlockStandardNC\RemAnnot.cs">
+    <Compile Include="..\NC\RemAnnot.cs">
       <Link>RemAnnot.cs</Link>
     </Compile>
-    <Compile Include="..\BlockStandardNC\saveMod.cs">
+    <Compile Include="..\NC\saveMod.cs">
       <Link>saveMod.cs</Link>
     </Compile>
-    <Compile Include="..\BlockStandardNC\UtilServise.cs">
+    <Compile Include="..\NC\UtilServise.cs">
       <Link>UtilServise.cs</Link>
     </Compile>
-    <Compile Include="..\BlockStandardNC\WipBot.cs">
+    <Compile Include="..\NC\WipBot.cs">
       <Link>WipBot.cs</Link>
     </Compile>
-    <Compile Include="..\BlockStandardNC\WorkingDatabaseSwitcher.cs">
+    <Compile Include="..\NC\WorkingDatabaseSwitcher.cs">
       <Link>WorkingDatabaseSwitcher.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
