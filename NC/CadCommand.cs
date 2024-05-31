@@ -114,9 +114,6 @@ namespace drz.Tools
                 "drz_blc_AllPropByBlock" + "\tВсе свойства по блоку\n" +
                 "drz_AtrSynch" + "\tСинхронизация атрибутов от Андрея Бушмана\n" +
                 "drz_AtrSynchHard" + "\tСинхронизация атрибутов от Gilles Chanteau (Грубое обновление)\n" +
-                "drz_LayerImport" + "\tИмпорт фильтров слоев dwg to dwg\n)" +
-                "drz_FiltExp" + "\tЭкспорт фильтров слоев в txt\n)" +
-                "drz_FiltImp" + "\tИмпорт фильтров слоев в txt\n)" +
                 "drz_rem_annt" + "\tОтключение аннотативности ВСЕХ блоков\n" +
                 "drz_rem_anntE" + "\tОтключение аннотативности ВСЕХ блоков + снять аннотативность с сущностей\n"
                 ;
