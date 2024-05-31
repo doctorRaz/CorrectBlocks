@@ -221,41 +221,7 @@ namespace drz.Tools
 
         #endregion
 
-        #region Импорт фильтров слоев
-
-        /// <summary>
-        /// https://www.caduser.ru/forum/post278685.html#p278685
-        /// Импорт фильтров слоев из файла в активный файл
-        /// </summary>
-        [Rtm.CommandMethod("drz_LayerImport")]
-        //[Rtm.CommandMethod("drz_LayerImport", Rtm.CommandFlags.Session | Rtm.CommandFlags.Modal)]
-        public static void LayerFilterImport()
-        {
-            LFI.LFilterImp();
-
-        }
-
-        /// <summary>
-        /// Импорт фильтров слоев DotSoft dnSpy
-        /// </summary>
-        [Rtm.CommandMethod("drz_FiltImp")]
-        public static void FltImp()
-        {
-            LFIO.FilterImport();
-        }
-
-        /// <summary>
-        /// Экспорт фильтров слоев DotSoft dnSpy
-        /// </summary>
-        [Rtm.CommandMethod("drz_FiltExp")]
-        public static void FltExp()
-        {
-            LFIO.FilterExport();
-        }
-
-
-        #endregion
-
+      
         #region Маскировки
 
         /// <summary>

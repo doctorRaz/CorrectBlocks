@@ -120,12 +120,6 @@
     <Compile Include="..\NC\ExtensionMethods.cs">
       <Link>ExtensionMethods.cs</Link>
     </Compile>
-    <Compile Include="..\NC\LayerFilterImport.cs">
-      <Link>LayerFilterImport.cs</Link>
-    </Compile>
-    <Compile Include="..\NC\LFIO.cs">
-      <Link>LFIO.cs</Link>
-    </Compile>
     <Compile Include="..\NC\RemAnnot.cs">
       <Link>RemAnnot.cs</Link>
     </Compile>
