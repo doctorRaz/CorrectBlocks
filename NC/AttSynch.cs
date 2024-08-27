@@ -1,9 +1,9 @@
 //using static Samples;//.AutoCAD.DatabaseServices.BlockTableRecordExtensionMethods;
 
 //using Microsoft.VisualBasic.ApplicationServices;
-using Bushman.AutoCAD.DatabaseServices;
+//using Bushman.AutoCAD.DatabaseServices;
 
-using GillesChanteau;
+//using GillesChanteau;
 
 
 #if NC
@@ -31,7 +31,7 @@ using PlatformDb = Autodesk.AutoCAD;
 using Trtm = Autodesk.AutoCAD.Runtime;
 #endif
 
-namespace drz.Tools
+namespace drz.CorrectBlocks
 {
     /// <summary>
     /// Синхронизация атрибутов

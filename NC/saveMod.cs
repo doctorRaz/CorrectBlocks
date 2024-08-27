@@ -33,7 +33,7 @@ using Rtm = Autodesk.AutoCAD.Runtime;
 
 #endif
 
-namespace drz.Tools
+namespace drz.CorrectBlocks
 {
     //? нифига не доделано, слепил в кучу, шоб хоть както работал из ком строки аналог автокадовского СОХРАНИТЬ
     //сохраняет только в последней версии и только в dwg

@@ -4,7 +4,7 @@
 using HostMgd.ApplicationServices;
 using HostMgd.EditorInput;
 
-using QuickSaveAs;
+//using QuickSaveAs;
 
 using System;
 
@@ -30,9 +30,9 @@ using Autodesk.AutoCAD.ApplicationServices;
 
 
 #endif
-[assembly: Rtm.CommandClass(typeof(drz.Tools.CadCommand))]
+[assembly: Rtm.CommandClass(typeof(drz.CorrectBlocks.CadCommand))]
 
-namespace drz.Tools
+namespace drz.CorrectBlocks
 {
     /// <summary> Вызов всех модулей 
     /// <br>добавил импорт фильтров слоев</br>

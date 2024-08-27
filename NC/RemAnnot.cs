@@ -1,7 +1,7 @@
 
-using Bushman.AutoCAD.DatabaseServices;
+//using Bushman.AutoCAD.DatabaseServices;
 
-using GillesChanteau;
+//using GillesChanteau;
 
 
 
@@ -31,7 +31,7 @@ using Rtm = Autodesk.AutoCAD.Runtime;
 
 #endif
 
-namespace drz.Tools
+namespace drz.CorrectBlocks
 {
     public class RemovAnnotate
     {

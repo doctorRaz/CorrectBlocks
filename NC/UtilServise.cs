@@ -30,7 +30,7 @@ using Rtm = Autodesk.AutoCAD.Runtime;
 
 #endif
 
-namespace drz.Tools
+namespace drz.CorrectBlocks
 {
     /// <summary>Служебные утилиты</summary>
     class McUtilServise

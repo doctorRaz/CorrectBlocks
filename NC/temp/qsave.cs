@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 using Teigha.DatabaseServices;
 using Teigha.Runtime;
 
-namespace NCadSettings
+namespace drz.CorrectBlocks
 {
     public class RegistrySettings
     {
@@ -98,7 +98,7 @@ namespace NCadSettings
 }
 
 
-namespace drz.Tools
+namespace drz.CorrectBlocks
 {
     class qsave
     {
@@ -194,7 +194,7 @@ namespace drz.Tools
 }
 
 
-namespace QuickSaveAs
+namespace drz.CorrectBlocks
 
 {
     //https://www.keanw.com/2009/10/implementing-a-quick-saveas-command-in-autocad-using-net.html

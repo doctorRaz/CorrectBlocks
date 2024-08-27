@@ -57,7 +57,7 @@ using Trtm = Autodesk.AutoCAD.Runtime;
 using Platform = Autodesk.AutoCAD;
 using PlatformDb = Autodesk.AutoCAD;
 #endif
-namespace drz.Tools
+namespace drz.CorrectBlocks
 {
     /// <summary>
     ///<br> для чего?</br>
@@ -445,7 +445,7 @@ namespace drz.Tools
                         IEnumerable<BlockTableRecord> blockTableRecords = bt.Cast<ObjectId>()
                           .Select(id => tr.GetObject(id, OpenMode.ForRead) as BlockTableRecord)
                           .Where(btr => btr != null)
-                          .Where(btr => btr.IsDependent == false)
+                          .Where(btr => btr.IsDependent == false)// TODO переделать чтоб менять масштаб внешним ссылкам
                           .Where(btr => btr.IsFromExternalReference == false)
                           .Where(btr => btr.IsLayout == false);
 
@@ -519,7 +519,7 @@ namespace drz.Tools
                 btr = (BlockTableRecord)tr.GetObject(br.BlockTableRecord, OpenMode.ForRead);
                 if (!btrOID.ContainsKey(btr.ObjectId)
                     && !btr.IsFromExternalReference
-                    && !btr.IsDependent)
+                    && !btr.IsDependent)//TODO для внешних ссылок
                 {
                     RebuildBlk(btr, tr, fBlck);
                 }

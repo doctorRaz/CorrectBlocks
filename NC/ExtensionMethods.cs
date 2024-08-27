@@ -31,7 +31,7 @@ SynchronizeAttributes()
 <EDIT: corrected an issue w/ constant attributes>
 *
  */
-namespace GillesChanteau
+namespace drz.CorrectBlocks
 {
     /// <summary>
     /// Это простой и "грубой силы" метод, чтобы имитировать команду ATTSYNC. Он заменяет существующие AttributeReferences из вставленных BlockReferences на новые из BlockTableRecord AttributeDefinitions.

@@ -18,7 +18,7 @@ using Autodesk.AutoCAD.EditorInput;
 using Autodesk.AutoCAD.Runtime;
 using Autodesk.AutoCAD.Geometry;
 #endif
-namespace Bushman.AutoCAD.DatabaseServices
+namespace drz.CorrectBlocks
 {
     /// <summary>
     /// Методы расширений для объектов класса Autodesk.AutoCAD.DatabaseServices.BlockTableRecord
