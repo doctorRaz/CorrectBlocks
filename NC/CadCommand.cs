@@ -147,11 +147,12 @@ namespace drz.CorrectBlocks
         }
 
 #if DEBUG
-        [Rtm.CommandMethod("ссс")]
+        [Rtm.CommandMethod("drz_SAVE_TEST")]
         public static void SaveTest()
         {
-            Database db = HostApplicationServices.WorkingDatabase;
+            //Database db = HostApplicationServices.WorkingDatabase;
             Document doc = Application.DocumentManager.MdiActiveDocument;
+            Database db = doc.Database;
             Editor ed = doc.Editor;
             ed.WriteMessage("CCC Ok");
             //---Y
@@ -187,7 +188,7 @@ namespace drz.CorrectBlocks
         }
 
 #if NC
-        [Rtm.CommandMethod("QSAVEAS")]
+        [Rtm.CommandMethod("drz_QSAVEAS")]
         public static void QSAVEAS()
         {
             QS.QuickSaveAs();
@@ -218,7 +219,7 @@ namespace drz.CorrectBlocks
 
         #endregion
 
-      
+
         #region Маскировки
 
         /// <summary>

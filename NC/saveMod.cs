@@ -21,7 +21,7 @@ using HostMgd.Windows;
 
 
 using Teigha.DatabaseServices;
-using Rtm=Teigha.Runtime;
+using Rtm = Teigha.Runtime;
 #else
 
 using Autodesk.AutoCAD.Windows;
@@ -45,9 +45,10 @@ namespace drz.CorrectBlocks
         //[CommandMethod("drz_save")]
         public static void SaveMod()
         {
-            Database db = HostApplicationServices.WorkingDatabase;
+            //Database db = HostApplicationServices.WorkingDatabase;
             Document doc = Application.DocumentManager.MdiActiveDocument;
-            Editor ed = doc.Editor;            
+            Database db = doc.Database;
+            Editor ed = doc.Editor;
 
             //ful name
             string sFilName = doc.Name;
@@ -111,7 +112,7 @@ namespace drz.CorrectBlocks
 
             string fileSaveName = pfnr.StringResult;
             //? затычка шоб это работало 
-            fileSaveName =Path.ChangeExtension(fileSaveName, "dwg");
+            fileSaveName = Path.ChangeExtension(fileSaveName, "dwg");
 
             //? поведение АК
             /*
@@ -148,7 +149,10 @@ namespace drz.CorrectBlocks
             //think обернуть  try catch обработать
             try
             {
-                db.SaveAs(fileSaveName, DwgVersion.Current);
+                // Database dbOld=HostApplicationServices.WorkingDatabase;
+                db.SaveAs(fileSaveName, DwgVersion.Current);//? 0 меняет путь к основному чертежу, походу бага написать?
+            
+                // HostApplicationServices.WorkingDatabase= dbOld;
             }
             catch (Rtm.Exception ex)
             {
