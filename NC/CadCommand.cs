@@ -110,6 +110,7 @@ namespace drz.CorrectBlocks
                 "drz_blc_SetDlg" + "\tДиалоговая настройки нормализации блоков\n" +
                 "drz_blc_EntityToZero" + "\tПримитивы на слой 0\n" +
                 "drz_blc_ColorByLayer" + "\tЦвет примитивов по слою\n" +
+                "drz_blc_ColorByBlock" + "\tЦвет примитивов по блоку\n" +
                 "drz_blc_AllPropByLayer" + "\tВсе свойства по слою\n" +
                 "drz_blc_AllPropByBlock" + "\tВсе свойства по блоку\n" +
                 "drz_AtrSynch" + "\tСинхронизация атрибутов от Андрея Бушмана\n" +
@@ -328,16 +329,27 @@ namespace drz.CorrectBlocks
         /// Цвет  примитивов по слою
         /// </summary>
         [Rtm.CommandMethod("drz_blc_ColorByLayer")]
-        public void Blc_Color()
+        public void Blc_Color_Layer()
         {
             NLB.FBlkSet fBlck = NLB.FBlkSet.fColorBL;
             NLB.GetBlc(fBlck);
         }
+
+        /// <summary>
+        /// Цвет  примитивов по блоку
+        /// </summary>
+        [Rtm.CommandMethod("drz_blc_ColorByBlock")]
+        public void Blc_Color_Block()
+        {
+            NLB.FBlkSet fBlck = NLB.FBlkSet.fColorBB;
+            NLB.GetBlc(fBlck);
+        }
+
         /// <summary>
         /// Все свойства по слою
         /// </summary>
         [Rtm.CommandMethod("drz_blc_AllPropByLayer")]
-        public void Blc_AllBL()
+        public void Blc_All_Layer()
         {
             NLB.FBlkSet fBlck = NLB.FBlkSet.fExplodeOn
                                 | NLB.FBlkSet.fScaleEqOn
@@ -354,7 +366,7 @@ namespace drz.CorrectBlocks
         /// Все свойства по блоку
         /// </summary>
         [Rtm.CommandMethod("drz_blc_AllPropByBlock")]
-        public void Blc_AllBB()
+        public void Blc_All_Block()
         {
             NLB.FBlkSet fBlck = NLB.FBlkSet.fExplodeOn
                                 | NLB.FBlkSet.fScaleEqOn
