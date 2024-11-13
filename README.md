@@ -1,4 +1,4 @@
- # drzTools
+ # drzTools.CorrectBlocks
 > Disclaimer 
 [В начале разработки]\
 Вы тестируете этот код на свой страх и риск\
