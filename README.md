@@ -21,3 +21,4 @@
 `drz_rem_annt` Отключение аннотативности ВСЕХ блоков\
 `drz_rem_anntE` Отключение аннотативности ВСЕХ блоков + снять аннотативность с сущностей
 
+[Описание сборника](https://doctorraz.blogspot.com/2024/05/drztools-nanocad.html "drzTools.CorrectBlocks. Утилиты для работы с блоками")
