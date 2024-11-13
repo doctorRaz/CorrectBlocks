@@ -6,9 +6,9 @@
 >
 
 ## Collection of utilities for working with nanoCAD and AutoCAD blocks
-## _[Описание на blogspot](https://doctorraz.blogspot.com/2024/05/drztools-nanocad.html "drzTools.CorrectBlocks. Утилиты для работы с блоками")_
+_[Описание на blogspot](https://doctorraz.blogspot.com/2024/05/drztools-nanocad.html "drzTools.CorrectBlocks. Утилиты для работы с блоками")_
 <br> 
-
+***
 > `drz_WipBot`	Маскировки ВСЕХ блоков на задний план\
 `drz_blc_WipBot`	Маскировки ВЫБРАННЫХ блоков на задний план\
 `drz_AtrRotateSel`	Крутит в ВЫБРАННЫХ блоках ВСЕ атрибуты в ноль\
