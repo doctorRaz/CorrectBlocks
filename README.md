@@ -1,13 +1,14 @@
-# drzTools
->Disclaimer 
+ # drzTools
+> Disclaimer 
 [В начале разработки]\
 Вы тестируете этот код на свой страх и риск\
 Если что то поломается я не виноват **:)**
 
 ## Сборник утилит для работы с блоками нано и авто CAD
-### [Описание на blogspot](https://doctorraz.blogspot.com/2024/05/drztools-nanocad.html "drzTools.CorrectBlocks. Утилиты для работы с блоками")
- 
- > `drz_WipBot`	Маскировки ВСЕХ блоков на задний план\
+## _[Описание на blogspot](https://doctorraz.blogspot.com/2024/05/drztools-nanocad.html "drzTools.CorrectBlocks. Утилиты для работы с блоками")_
+<br> 
+
+> `drz_WipBot`	Маскировки ВСЕХ блоков на задний план\
 `drz_blc_WipBot`	Маскировки ВЫБРАННЫХ блоков на задний план\
 `drz_AtrRotateSel`	Крутит в ВЫБРАННЫХ блоках ВСЕ атрибуты в ноль\
 `drz_AtrRotateAll`	Крутит в блоке ВСЕ атрибуты в ноль\
