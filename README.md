@@ -5,7 +5,7 @@
 Если что то поломается я не виноват **:)**
 
 ## Сборник утилит для работы с блоками нано и авто CAD
-# [Описание на blogspot](https://doctorraz.blogspot.com/2024/05/drztools-nanocad.html "drzTools.CorrectBlocks. Утилиты для работы с блоками")
+### [Описание на blogspot](https://doctorraz.blogspot.com/2024/05/drztools-nanocad.html "drzTools.CorrectBlocks. Утилиты для работы с блоками")
  
  > `drz_WipBot`	Маскировки ВСЕХ блоков на задний план\
 `drz_blc_WipBot`	Маскировки ВЫБРАННЫХ блоков на задний план\
