@@ -5,7 +5,7 @@
 Если что то поломается я не виноват **:)**
 >
 
-## Сборник утилит для работы с блоками нано и авто CAD
+## Collection of utilities for working with nanoCAD and AutoCAD blocks
 ## _[Описание на blogspot](https://doctorraz.blogspot.com/2024/05/drztools-nanocad.html "drzTools.CorrectBlocks. Утилиты для работы с блоками")_
 <br> 
 
