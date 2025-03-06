@@ -40,11 +40,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="hostdbmgd">
-      <HintPath>..\..\..\..\..\..\SDK\nano20\hostdbmgd.dll</HintPath>
+      <HintPath>..\..\SDK\NC22\include-x64\hostdbmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="hostmgd">
-      <HintPath>..\..\..\..\..\..\SDK\nano20\hostmgd.dll</HintPath>
+      <HintPath>..\..\SDK\NC22\include-x64\hostmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
