@@ -199,22 +199,7 @@ namespace DrzCadTools
 
         #endregion
 
-        #region Импорт фильтров слоев
-
-        /// <summary>
-        /// https://www.caduser.ru/forum/post278685.html#p278685
-        /// Импорт фильтров слоев из файла в активный файл
-        /// </summary>
-        [Rtm.CommandMethod("drz_LayerImport")]
-        //[Rtm.CommandMethod("drz_LayerImport", Rtm.CommandFlags.Session | Rtm.CommandFlags.Modal)]
-        public void LayerFilterImport()
-        {
-            LFI.LFilterImp();
-
-        }
-
-        #endregion
-
+   
         #region Маскировки
 
         /// <summary>
