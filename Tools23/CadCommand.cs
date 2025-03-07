@@ -34,63 +34,13 @@ namespace DrzCadTools
     /// </summary>
     class CadCommand : Rtm.IExtensionApplication
     {
-        /// <summary>
-        /// Gets or sets a value indicating whether this instance is lisp.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if this instance is lisp; otherwise, <c>false</c>.
-        /// </value>
-        internal static bool IsLisp { get; set; }
-
-#if NC
-        #region Lsp
-        // think убрать подписки и все что их касается, решение отличать команду от лисп выражения есть
-
-        /// <summary>
-        /// LWSs the specified sender.
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="args">The <see cref="LispWillStartEventArgs"/> instance containing the event data.</param>
-        private /*static*/ void lws(object sender, LispWillStartEventArgs args)
-        {
-            IsLisp = true;
-        }
-
-        /// <summary>
-        /// Lwes the specified sender.
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="args">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private /*static*/ void lwe(object sender, EventArgs args)
-        {
-            IsLisp = false;
-        }
-
-        /// <summary>
-        /// LispCancelled хз когда вызывается
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="args">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private /*static*/ void lwc(object sender, EventArgs args)
-        {
-            IsLisp = false;
-        }
-
-        #endregion
-#endif
         #region INIT
         public void Initialize()
         {
             //think добавить проверку есть ли doc
 
             App.DocumentCollection dm = App.Application.DocumentManager;
-
-#if NC
-            dm.MdiActiveDocument.LispWillStart += new LispWillStartEventHandler(lws);
-            dm.MdiActiveDocument.LispEnded += new EventHandler(lwe);
-            dm.MdiActiveDocument.LispCancelled += new EventHandler(lwc);
-#endif
-
+            
             Ed.Editor ed = dm.MdiActiveDocument.Editor;
             //!+Вывожу список команд определенных в библиотеке
             ed.WriteMessage("\nStart list of commands: \n");
