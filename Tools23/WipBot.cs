@@ -11,7 +11,7 @@ using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.EditorInput;
 using Autodesk.AutoCAD.Runtime;
 #endif
-namespace drz.CorrectBlocks
+namespace drz.Tools
 {
     /*Топит маскировку внутри всех блоков
      */

@@ -1,21 +1,11 @@
-
-//using Bushman.AutoCAD.DatabaseServices;
-
-//using GillesChanteau;
-
-
-
-
-
 #if NC
+using HostMgd.ApplicationServices;
+using HostMgd.EditorInput;
+using Teigha.DatabaseServices;
+using Teigha.Runtime;
 using App = HostMgd.ApplicationServices;
 using Ed = HostMgd.EditorInput;
 using Rtm = Teigha.Runtime;
-using HostMgd.ApplicationServices;
-using HostMgd.EditorInput;
-
-using Teigha.DatabaseServices;
-using Teigha.Runtime;
 
 #elif AC
 using Autodesk.AutoCAD.Runtime;
@@ -31,7 +21,7 @@ using Rtm = Autodesk.AutoCAD.Runtime;
 
 #endif
 
-namespace drz.CorrectBlocks
+namespace DrzCadTools
 {
     public class RemovAnnotate
     {

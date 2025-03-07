@@ -57,7 +57,7 @@ using Trtm = Autodesk.AutoCAD.Runtime;
 using Platform = Autodesk.AutoCAD;
 using PlatformDb = Autodesk.AutoCAD;
 #endif
-namespace drz.CorrectBlocks
+namespace drz.Tools
 {
     /// <summary>
     ///<br> для чего?</br>
@@ -84,39 +84,39 @@ namespace drz.CorrectBlocks
         /// Перечисления параметров нормализации блока
         /// </summary>
         [Flags()]
-        public enum FBlkSet : int
+        public enum BlockNormalizeSettingsEnum
         {
             /// <summary>умолчание </summary>
-            fNone = 0,
+            Default = 0,
             //тип Entity если оба нули, значит не менять
             /// <summary>тип Entity по слою </summary>
-            fTypeBL = 1 << 1,
+            SetByLayer = 1 << 1,
             /// <summary> тип Entity по блоку</summary>
-            fTypeBB = 1 << 2,
+            SetByBlock = 1 << 2,
             //цвет если оба нули, значит не менять
             /// <summary> цвет Entity по слою</summary>
-            fColorBL = 1 << 3,
+            ColorByLayer = 1 << 3,
             /// <summary> цвет Entity по блоку</summary>
-            fColorBB = 1 << 4,
+            ColorByBlock = 1 << 4,
             // вес Entity если оба нули, значит не менять
             /// <summary> вес Entity по слою</summary>
-            fWeightBL = 1 << 5,
+            LineweightByLayer = 1 << 5,
             /// <summary> вес Entity по блоку</summary>
-            fWeightBB = 1 << 6,
+            LineweightByBlock = 1 << 6,
             /// <summary>trye-Entity на слой zero<br>false-Entity слой не менять</br></summary>
-            fLayerEnZero = 1 << 7,
+            SetLayer0 = 1 << 7,
             /// <summary>trye-топить маскировку<br>false-не топить маскировку</br>  </summary>
-            fWipeBott = 1 << 8,
+            SetWipeoutBack = 1 << 8,
             //одинаковые масштабы Block если оба нули, значит не менять
             /// <summary>одинаковые масштабы Block On</summary>
-            fScaleEqOn = 1 << 10,
+            EqualScaleOn = 1 << 10,
             /// <summary>одинаковые масштабы Block Off</summary>
-            fScaleEqOff = 1 << 11,
+            EqualScaleOff = 1 << 11,
             //Разрешить расчленение Block если оба нули, значит не менять
             /// <summary>Explodable Block On</summary>
-            fExplodeOn = 1 << 12,
+            SetBlockExplodeable = 1 << 12,
             /// <summary>Explodable Block Off</summary>
-            fExplodeOff = 1 << 13
+            SetBlockUnexplodeable = 1 << 13
         }
 
 
@@ -142,11 +142,11 @@ namespace drz.CorrectBlocks
             */
 
             Document doc = Application.DocumentManager.MdiActiveDocument;
-          // by razygraevaa on 24.08.2023 at 12:06  Database db = doc.Database;
+
             if (doc == null) return;
             Editor ed = doc.Editor;
 
-            FBlkSet fBlck = FBlkSet.fNone;
+            BlockNormalizeSettingsEnum fBlck = BlockNormalizeSettingsEnum.Default;
 
             PromptKeywordOptions pko = new PromptKeywordOptions("\nРазрешить расчленение блоков? ")
             {
@@ -165,11 +165,11 @@ namespace drz.CorrectBlocks
                 }
                 else if (pr.StringResult == "Да")
                 {
-                    fBlck |= FBlkSet.fExplodeOn;
+                    fBlck |= BlockNormalizeSettingsEnum.SetBlockExplodeable;
                 }
                 else if (pr.StringResult == "Нет")
                 {
-                    fBlck |= FBlkSet.fExplodeOff;
+                    fBlck |= BlockNormalizeSettingsEnum.SetBlockUnexplodeable;
                 }
             }
             else
@@ -194,11 +194,11 @@ namespace drz.CorrectBlocks
                 }
                 else if (pr.StringResult == "Да")
                 {
-                    fBlck |= FBlkSet.fScaleEqOn;
+                    fBlck |= BlockNormalizeSettingsEnum.EqualScaleOn;
                 }
                 else if (pr.StringResult == "Нет")
                 {
-                    fBlck |= FBlkSet.fScaleEqOff;
+                    fBlck |= BlockNormalizeSettingsEnum.EqualScaleOff;
                 }
             }
             else
@@ -220,15 +220,15 @@ namespace drz.CorrectBlocks
             {
                 if (pr.StringResult == "неМенять")
                 {
-                    //пропускаем fTypeBB
+                    //пропускаем SetByBlock
                 }
                 else if (pr.StringResult == "поСлою")
                 {
-                    fBlck |= FBlkSet.fTypeBL;
+                    fBlck |= BlockNormalizeSettingsEnum.SetByLayer;
                 }
                 else if (pr.StringResult == "поБлоку")
                 {
-                    fBlck |= FBlkSet.fTypeBB;
+                    fBlck |= BlockNormalizeSettingsEnum.SetByBlock;
                 }
             }
             else
@@ -250,15 +250,15 @@ namespace drz.CorrectBlocks
             {
                 if (pr.StringResult == "неМенять")
                 {
-                    //пропускаем fTypeBB
+                    //пропускаем SetByBlock
                 }
                 else if (pr.StringResult == "поСлою")
                 {
-                    fBlck |= FBlkSet.fColorBL;
+                    fBlck |= BlockNormalizeSettingsEnum.ColorByLayer;
                 }
                 else if (pr.StringResult == "поБлоку")
                 {
-                    fBlck |= FBlkSet.fColorBB;
+                    fBlck |= BlockNormalizeSettingsEnum.ColorByBlock;
                 }
             }
             else
@@ -284,11 +284,11 @@ namespace drz.CorrectBlocks
                 }
                 else if (pr.StringResult == "поСлою")
                 {
-                    fBlck |= FBlkSet.fWeightBL;
+                    fBlck |= BlockNormalizeSettingsEnum.LineweightByLayer;
                 }
                 else if (pr.StringResult == "поБлоку")
                 {
-                    fBlck |= FBlkSet.fWeightBB;
+                    fBlck |= BlockNormalizeSettingsEnum.LineweightByBlock;
                 }
             }
             else
@@ -313,7 +313,7 @@ namespace drz.CorrectBlocks
                 }
                 else if (pr.StringResult == "Да")
                 {
-                    fBlck |= FBlkSet.fLayerEnZero;
+                    fBlck |= BlockNormalizeSettingsEnum.SetLayer0;
                 }
             }
             else
@@ -338,14 +338,14 @@ namespace drz.CorrectBlocks
                 }
                 else if (pr.StringResult == "Да")
                 {
-                    fBlck |= FBlkSet.fWipeBott;
+                    fBlck |= BlockNormalizeSettingsEnum.SetWipeoutBack;
                 }
             }
             else
             {
                 return;
             }
-            if (fBlck != FBlkSet.fNone)
+            if (fBlck != BlockNormalizeSettingsEnum.Default)
             {
                 GetBlc(fBlck);
             }
@@ -357,7 +357,7 @@ namespace drz.CorrectBlocks
         /// <summary>
         /// "Тонкая" нормализация блоков
         /// </summary>
-        public static void GetBlc(FBlkSet fBlck)
+        public static void GetBlc(BlockNormalizeSettingsEnum fBlck)
         {
             Document doc = Application.DocumentManager.MdiActiveDocument;
             Database db = doc.Database;
@@ -445,7 +445,7 @@ namespace drz.CorrectBlocks
                         IEnumerable<BlockTableRecord> blockTableRecords = bt.Cast<ObjectId>()
                           .Select(id => tr.GetObject(id, OpenMode.ForRead) as BlockTableRecord)
                           .Where(btr => btr != null)
-                          .Where(btr => btr.IsDependent == false)// TODO переделать чтоб менять масштаб внешним ссылкам
+                          .Where(btr => btr.IsDependent == false)
                           .Where(btr => btr.IsFromExternalReference == false)
                           .Where(btr => btr.IsLayout == false);
 
@@ -484,7 +484,7 @@ namespace drz.CorrectBlocks
         /// </summary>
         /// <param name="brId">ObjectId выбранного блока </param>
         /// <param name="fBlck">Прокидываем дальше ключи параметров нормализации блоков</param>
-        public static void CheckBlock(ObjectId brId, Transaction tr, FBlkSet fBlck)
+        public static void CheckBlock(ObjectId brId, Transaction tr, BlockNormalizeSettingsEnum fBlck)
         {
 
             //Document doc = Application.DocumentManager.MdiActiveDocument;
@@ -519,7 +519,7 @@ namespace drz.CorrectBlocks
                 btr = (BlockTableRecord)tr.GetObject(br.BlockTableRecord, OpenMode.ForRead);
                 if (!btrOID.ContainsKey(btr.ObjectId)
                     && !btr.IsFromExternalReference
-                    && !btr.IsDependent)//TODO для внешних ссылок
+                    && !btr.IsDependent)
                 {
                     RebuildBlk(btr, tr, fBlck);
                 }
@@ -533,7 +533,7 @@ namespace drz.CorrectBlocks
         /// <param name="tr"></param>
         /// <param name="fBlck"></param>
         /// 
-        public static bool RebuildBlk(BlockTableRecord btr, Transaction tr, FBlkSet fBlck)
+        public static bool RebuildBlk(BlockTableRecord btr, Transaction tr, BlockNormalizeSettingsEnum fBlck)
         {
             if (btrOID.ContainsKey(btr.ObjectId))//тут словарик статик, проверка на дубликаты
                 return false;//уходим
@@ -542,9 +542,9 @@ namespace drz.CorrectBlocks
             //тип линии
             string stypeEn = "ByLayer";
             bool btypeEn = true;
-            if (fBlck.HasFlag(FBlkSet.fTypeBB))//если по блоку
+            if (fBlck.HasFlag(BlockNormalizeSettingsEnum.SetByBlock))//если по блоку
                 stypeEn = "ByBlock";
-            else if (fBlck.HasFlag(FBlkSet.fTypeBL))//по слою
+            else if (fBlck.HasFlag(BlockNormalizeSettingsEnum.SetByLayer))//по слою
                 stypeEn = "ByLayer";
             else//никак
                 btypeEn = false;
@@ -552,9 +552,9 @@ namespace drz.CorrectBlocks
             //вес
             LineWeight weightEn = LineWeight.ByLayer;
             bool bweightEn = true;
-            if (fBlck.HasFlag(FBlkSet.fWeightBB))//если по блоку
+            if (fBlck.HasFlag(BlockNormalizeSettingsEnum.LineweightByBlock))//если по блоку
                 weightEn = LineWeight.ByBlock;
-            else if (fBlck.HasFlag(FBlkSet.fWeightBL))
+            else if (fBlck.HasFlag(BlockNormalizeSettingsEnum.LineweightByLayer))
                 weightEn = LineWeight.ByLayer;
             else
                 bweightEn = false;
@@ -562,9 +562,9 @@ namespace drz.CorrectBlocks
             //цвет
             short icolorEn = 256;//по умолчанию по слою
             bool bcolorEn = true;
-            if (fBlck.HasFlag(FBlkSet.fColorBB))//если по блоку
+            if (fBlck.HasFlag(BlockNormalizeSettingsEnum.ColorByBlock))//если по блоку
                 icolorEn = 0;
-            else if (fBlck.HasFlag(FBlkSet.fColorBL))
+            else if (fBlck.HasFlag(BlockNormalizeSettingsEnum.ColorByLayer))
                 icolorEn = 256;
             else
                 bcolorEn = false;
@@ -574,25 +574,25 @@ namespace drz.CorrectBlocks
 
             //тут меняем общие свойства блока 
             //масштаб, 
-            if (fBlck.HasFlag(FBlkSet.fScaleEqOn) && (btr.BlockScaling != BlockScaling.Uniform))//одинаковые вкл
+            if (fBlck.HasFlag(BlockNormalizeSettingsEnum.EqualScaleOn) && (btr.BlockScaling != BlockScaling.Uniform))//одинаковые вкл
             {
                 btr.UpgradeOpen();
                 btr.BlockScaling = BlockScaling.Uniform;//общий масштаб
 
             }
-            else if (fBlck.HasFlag(FBlkSet.fScaleEqOff) && (btr.BlockScaling != BlockScaling.Any))//одинаковые выкл
+            else if (fBlck.HasFlag(BlockNormalizeSettingsEnum.EqualScaleOff) && (btr.BlockScaling != BlockScaling.Any))//одинаковые выкл
             {
                 btr.UpgradeOpen();
                 btr.BlockScaling = BlockScaling.Any;//свой масштаб
             }
 
-            //расчленение fExplodeOn fExplodeOff
-            if (fBlck.HasFlag(FBlkSet.fExplodeOn) && !btr.Explodable)//вкл
+            //расчленение SetBlockExplodeable SetBlockUnexplodeable
+            if (fBlck.HasFlag(BlockNormalizeSettingsEnum.SetBlockExplodeable) && !btr.Explodable)//вкл
             {
                 btr.UpgradeOpen();
                 btr.Explodable = true; //разрешаем разбивать блоки
             }
-            else if (fBlck.HasFlag(FBlkSet.fExplodeOff) && btr.Explodable)//выкл
+            else if (fBlck.HasFlag(BlockNormalizeSettingsEnum.SetBlockUnexplodeable) && btr.Explodable)//выкл
             {
                 btr.UpgradeOpen();
                 btr.Explodable = false;
@@ -642,7 +642,7 @@ namespace drz.CorrectBlocks
                         //слой зеро "*ADSK_CONSTRAINTS"
                         //Contains
                         //https://docs.microsoft.com/ru-ru/dotnet/csharp/how-to/search-strings#code-try-2
-                        if (fBlck.HasFlag(FBlkSet.fLayerEnZero)
+                        if (fBlck.HasFlag(BlockNormalizeSettingsEnum.SetLayer0)
                             && ent.Layer != layerEn
                             && !ent.Layer.Contains("*")
                             )
@@ -652,7 +652,7 @@ namespace drz.CorrectBlocks
                         }
 
                         //топим маскировки
-                        if (fBlck.HasFlag(FBlkSet.fWipeBott))
+                        if (fBlck.HasFlag(BlockNormalizeSettingsEnum.SetWipeoutBack))
                         {
                             Wipeout wpt = ent as Wipeout;
                             if (wpt != null)//если маскировка
