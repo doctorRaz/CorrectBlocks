@@ -197,7 +197,7 @@ namespace DrzCadTools
         /// <summary>
         /// Move to bottom in blocks wipe out
         /// </summary>
-        [Rtm.CommandMethod("drz_WipBot")]
+        [Rtm.CommandMethod("drz_WipBot")]//ok
         //[Rtm.CommandMethod("drz_WipBot", Rtm.CommandFlags.Modal)]
         public void Blc_WipeoutToBotton()
         {
@@ -210,7 +210,7 @@ namespace DrzCadTools
         /// <summary>
         /// Крутит в выбранных блоках ВСЕ атрибуты в ноль
         /// </summary>
-        [Rtm.CommandMethod("drz_AtrRotateSel")]
+        [Rtm.CommandMethod("drz_AtrRotateSel")]//ok
         //[Rtm.CommandMethod("drz_AtrRotateSel", Rtm.CommandFlags.Modal)]
         public void AttS_RotateSelect()
         {
@@ -221,7 +221,7 @@ namespace DrzCadTools
         /// <summary>
         /// Крутит в блоке ВСЕ атрибуты в ноль
         /// </summary>
-        [Rtm.CommandMethod("drz_AtrRotateAll")]
+        [Rtm.CommandMethod("drz_AtrRotateAll")]//Ok
         //[Rtm.CommandMethod("drz_AtrRotateAll", Rtm.CommandFlags.Modal)]
         public void AttS_Rotate()
         {
@@ -231,7 +231,7 @@ namespace DrzCadTools
         ///  <summary>
         /// Крутит выбранный атрибут блока в ноль
         /// </summary>
-        [Rtm.CommandMethod("drz_AtrRotateOne")]
+        [Rtm.CommandMethod("drz_AtrRotateOne")]//Ok
         public void AttRotate()
         {
             AtrRotate.AttSingleRotate();
@@ -242,9 +242,9 @@ namespace DrzCadTools
         /// <summary>
         /// Синхронизация атрибутов от Андрея Бушмана
         /// </summary>
-        [Rtm.CommandMethod("drz_AtrSynch")]
+        [Rtm.CommandMethod("drz_AtrSynch")]//ok
         //[Rtm.CommandMethod("drz_AtrSynch", Rtm.CommandFlags.Modal)]
-        public static void Att_MySynch()
+        public static void Att_MySynch()//кулик делал правки, проверить в бою, к AttSync добавил в класс остальные расширения
         {
             AttSynch.mySynch();
         }
@@ -253,15 +253,14 @@ namespace DrzCadTools
         /// Синхронизация атрибутов от Gilles Chanteau (Грубое обновление)
         /// </summary>
 
-        [Rtm.CommandMethod("drz_AtrSynchHard")]
+        [Rtm.CommandMethod("drz_AtrSynchHard")]//ok
         //[Rtm.CommandMethod("drz_AtrSynchHard", Rtm.CommandFlags.Modal)]
-        public void Att_MySynchHard()
+        public void Att_MySynchHard()//кулик делал правки, проверить в бою, к AttSync добавил в класс остальные расширения
         {
             AttSynch.mySynchHard();
         }
 
         #endregion
-
 
         #region Починка блоков
 

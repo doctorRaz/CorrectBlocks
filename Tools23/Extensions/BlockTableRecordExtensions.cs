@@ -16,6 +16,9 @@ using Exception = Autodesk.AutoCAD.Runtime.Exception;
 
 namespace DrzCadTools.Extensions
 {
+    /// <summary>
+    /// кулик делал правки, проверить в бою, к AttSync добавил в класс остальные расширения
+    /// </summary>
     public static class BlockTableRecordExtensions
     {
 
