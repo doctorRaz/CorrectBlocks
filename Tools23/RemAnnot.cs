@@ -35,7 +35,7 @@ namespace DrzCadTools
         /// <param name="bHowDfx"> 
         /// <br>true - сбросить анотативность с примитивов</br>
         /// <br>false - примитивы не трогать</br></param>
-        public static void Rem_annt(bool bHowHardAtrSynx = true, bool bHowDfx = false)
+        public static void Rem_annt(bool bHowDfx)
         {
             Document doc = App.Application.DocumentManager.MdiActiveDocument;
             Database db = doc.Database;

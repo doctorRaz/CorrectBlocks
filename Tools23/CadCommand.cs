@@ -134,7 +134,7 @@ namespace DrzCadTools
         #region Save
 
 #if DEBUG
-        [Rtm.CommandMethod("drz_SAVE_TEST")]//  ok
+        [Rtm.CommandMethod("drz_SAVE_TEST")]//ok
         public static void SaveTest()
         {
             //Database db = HostApplicationServices.WorkingDatabase;
@@ -170,34 +170,25 @@ namespace DrzCadTools
         #region Remove Annotate
 
         /// <summary>
-        /// Отключение аннотативности ВСЕХ блоков атрибуты на местах Бушман
+        /// Отключение аннотативности ВСЕХ блоков
         /// </summary>
-        [Rtm.CommandMethod("drz_rem_anntB")]
+        [Rtm.CommandMethod("drz_rem_anntB")]//Ok
         //[Rtm.CommandMethod("drz_rem_anntB", Rtm.CommandFlags.Session | Rtm.CommandFlags.Modal)]
-        public static void Blc_Remov_anntB_cmd()
+        public static void BlcRemovAnntCmd()
         {
             RemovAnnotate.Rem_annt(false);
         }
-        /// <summary>
-        /// Отключение аннотативности ВСЕХ блоков атрибуты на местах Бушман + снять аннотативность с сущностекй
-        /// </summary>
-        [Rtm.CommandMethod("drz_rem_anntBent")]
-        //[Rtm.CommandMethod("drz_rem_anntBent", Rtm.CommandFlags.Session | Rtm.CommandFlags.Modal)]
-        public static void Blc_Remov_anntBent_cmd()
-        {
-            RemovAnnotate.Rem_annt(false, true);
-        }
 
         /// <summary>
-        /// Отключение аннотативности ВСЕХ блоков полный сброс атрибутов Джилман
+        /// Отключение аннотативности ВСЕХ блоков + снять аннотативность с сущностекй
         /// </summary>
-        [Rtm.CommandMethod("drz_rem_anntG")]
-        //[Rtm.CommandMethod("drz_rem_anntG", Rtm.CommandFlags.Session | Rtm.CommandFlags.Modal)]
-        public static void Blc_Remov_anntG_cmd()
+        [Rtm.CommandMethod("drz_rem_anntBent")]//Ok
+        //[Rtm.CommandMethod("drz_rem_anntBent", Rtm.CommandFlags.Session | Rtm.CommandFlags.Modal)]
+        public static void BlcRemovAnntEntCmd()
         {
             RemovAnnotate.Rem_annt(true);
         }
-
+        
         #endregion
 
 
