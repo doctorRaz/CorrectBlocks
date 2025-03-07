@@ -212,7 +212,6 @@ namespace drz.Tools
             Document doc = Application.DocumentManager.MdiActiveDocument;
             if (doc == null) return;
             Editor ed = doc.Editor;
-            // by razygraevaa on 24.08.2023 at 12:05  Database db = doc.Database;
             PromptNestedEntityResult rs =
               ed.GetNestedEntity("\nВыбери атрибут: ");
             if (rs.Status == PromptStatus.OK)

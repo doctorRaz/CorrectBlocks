@@ -142,7 +142,7 @@ namespace drz.Tools
             */
 
             Document doc = Application.DocumentManager.MdiActiveDocument;
-          // by razygraevaa on 24.08.2023 at 12:06  Database db = doc.Database;
+
             if (doc == null) return;
             Editor ed = doc.Editor;
 

@@ -22,7 +22,7 @@ namespace DrzCadTools.CadCommands
         /// <summary>
         /// Saves the mod.
         /// </summary>
-        [CommandMethod("drz_save")]//Ok
+        [CommandMethod("drz_save")]
         public static void DrzSaveCommand()
         {
             saveMod.SaveMod();
