@@ -267,7 +267,7 @@ namespace DrzCadTools
         /// <summary>
         /// Топить маскировку выбранных блоков
         /// </summary>
-        [Rtm.CommandMethod("drz_blc_WipBot")]
+        [Rtm.CommandMethod("drz_blc_WipBot")] //Ok
         public void Blc_WipBot()
         {
             NLB.BlockNormalizeSettingsEnum fBlck = NLB.BlockNormalizeSettingsEnum.SetWipeoutBack;
@@ -279,7 +279,7 @@ namespace DrzCadTools
         /// <br> Все по слою (VL-CMDF "БЛКДЛГ" "Д" "Д" "С" "С" "С" "Д" "Д")</br>
         /// <br> Все по слою (VL-CMDF "drz-blc-SetDlg" "Д" "Д" "С" "С" "С" "Д" "Д")</br>
         /// </summary>
-        [Rtm.CommandMethod("drz_blc_SetDlg")]
+        [Rtm.CommandMethod("drz_blc_SetDlg")]//ok
         public void Blc_GetSetDlg()
         {
             NLB.GetBlc_SetDlg();
@@ -288,7 +288,7 @@ namespace DrzCadTools
         /// <summary>
         /// Примитивы на слой 0 
         /// </summary>
-        [Rtm.CommandMethod("drz_blc_EntityToZero")]
+        [Rtm.CommandMethod("drz_blc_EntityToZero")]//ok
         public void Blc_Zero()
         {
             NLB.BlockNormalizeSettingsEnum fBlck = NLB.BlockNormalizeSettingsEnum.SetLayer0;
@@ -298,17 +298,28 @@ namespace DrzCadTools
         /// <summary>
         /// Цвет  примитивов по слою
         /// </summary>
-        [Rtm.CommandMethod("drz_blc_ColorByLayer")]
-        public void Blc_Color()
+        [Rtm.CommandMethod("drz_blc_ColorByLayer")]//ok
+        public void Blc_Color_Layer()
         {
             NLB.BlockNormalizeSettingsEnum fBlck = NLB.BlockNormalizeSettingsEnum.ColorByLayer;
             NLB.GetBlc(fBlck);
         }
+
+        /// <summary>
+        /// Цвет  примитивов по блоку
+        /// </summary>
+        [Rtm.CommandMethod("drz_blc_ColorByBlock")]//OK
+        public void Blc_Color_Block()
+        {
+            NLB.BlockNormalizeSettingsEnum fBlck = NLB.BlockNormalizeSettingsEnum.ColorByBlock;
+            NLB.GetBlc(fBlck);
+        }
+
         /// <summary>
         /// Все свойства по слою
         /// </summary>
-        [Rtm.CommandMethod("drz_blc_AllPropByLayer")]
-        public void Blc_AllBL()
+        [Rtm.CommandMethod("drz_blc_AllPropByLayer")]//ok
+        public void Blc_All_Layer()
         {
             NLB.BlockNormalizeSettingsEnum fBlck = NLB.BlockNormalizeSettingsEnum.SetBlockExplodeable
                                 | NLB.BlockNormalizeSettingsEnum.EqualScaleOn
@@ -324,8 +335,8 @@ namespace DrzCadTools
         /// <summary>
         /// Все свойства по блоку
         /// </summary>
-        [Rtm.CommandMethod("drz_blc_AllPropByBlock")]
-        public void Blc_AllBB()
+        [Rtm.CommandMethod("drz_blc_AllPropByBlock")]//ok
+        public void Blc_All_Block()
         {
             NLB.BlockNormalizeSettingsEnum fBlck = NLB.BlockNormalizeSettingsEnum.SetBlockExplodeable
                                 | NLB.BlockNormalizeSettingsEnum.EqualScaleOn
