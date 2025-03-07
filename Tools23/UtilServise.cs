@@ -6,11 +6,6 @@ using System.Reflection;
 using Microsoft.Win32;
 using System.IO;
 
-
-
-
-
-
 #if NC
 using Teigha.DatabaseServices;
 using HostMgd.ApplicationServices;
@@ -30,7 +25,7 @@ using Rtm = Autodesk.AutoCAD.Runtime;
 
 #endif
 
-namespace drz.CorrectBlocks
+namespace DrzCadTools
 {
     /// <summary>Служебные утилиты</summary>
     class McUtilServise
@@ -162,10 +157,7 @@ namespace drz.CorrectBlocks
 #endregion
 
         #region  СЛУЖЕБНЫЕ
-
-
-
-
+        
         /// <summary> Расшифровка исключений </summary>
         /// <param name="ex">Исключение</param>
         /// <param name="sResp">Доп текст</param>
@@ -304,9 +296,6 @@ namespace drz.CorrectBlocks
 
 
         #endregion
-
-
-
-
+        
     }
 }

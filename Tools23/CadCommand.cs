@@ -1,12 +1,9 @@
-
+using System;
 
 #if NC
 using HostMgd.ApplicationServices;
 using HostMgd.EditorInput;
 
-//using QuickSaveAs;
-
-using System;
 
 using Teigha.DatabaseServices;
 
@@ -16,88 +13,34 @@ using Rtm = Teigha.Runtime;
 
 #elif AC
 
+using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.DatabaseServices;
+using Autodesk.AutoCAD.EditorInput;
+using Autodesk.AutoCAD.Windows;
 using App = Autodesk.AutoCAD.ApplicationServices;
 using Cad = Autodesk.AutoCAD.ApplicationServices.Application;
 using Db = Autodesk.AutoCAD.DatabaseServices;
-using Gem = Autodesk.AutoCAD.Geometry;
 using Ed = Autodesk.AutoCAD.EditorInput;
+using Gem = Autodesk.AutoCAD.Geometry;
 using Rtm = Autodesk.AutoCAD.Runtime;
-using Autodesk.AutoCAD.Windows;
-
-using Autodesk.AutoCAD.EditorInput;
-using Autodesk.AutoCAD.ApplicationServices;
-
-
 #endif
-[assembly: Rtm.CommandClass(typeof(drz.CorrectBlocks.CadCommand))]
+using drz.Tools;
 
-namespace drz.CorrectBlocks
+namespace DrzCadTools
 {
     /// <summary> Вызов всех модулей 
     /// <br>добавил импорт фильтров слоев</br>
     /// <br>выбор блоков для вращения атрибутов </br> 
-    /// 
     /// </summary>
     class CadCommand : Rtm.IExtensionApplication
     {
-        /// <summary>
-        /// Gets or sets a value indicating whether this instance is lisp.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if this instance is lisp; otherwise, <c>false</c>.
-        /// </value>
-        internal static bool IsLisp { get; set; }//x прибить
-
-#if NC
-        #region Lsp
-        // think убрать подписки и все что их касается, решение отличать команду от лисп выражения есть
-
-        /// <summary>
-        /// LWSs the specified sender.
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="args">The <see cref="LispWillStartEventArgs"/> instance containing the event data.</param>
-        private /*static*/ void lws(object sender, LispWillStartEventArgs args)
-        {
-            IsLisp = true;
-        }
-
-        /// <summary>
-        /// Lwes the specified sender.
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="args">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private /*static*/ void lwe(object sender, EventArgs args)
-        {
-            IsLisp = false;
-        }
-
-        /// <summary>
-        /// LispCancelled хз когда вызывается
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="args">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private /*static*/ void lwc(object sender, EventArgs args)
-        {
-            IsLisp = false;
-        }
-
-        #endregion
-#endif
         #region INIT
         public void Initialize()
         {
             //think добавить проверку есть ли doc
 
             App.DocumentCollection dm = App.Application.DocumentManager;
-
-#if NC
-            dm.MdiActiveDocument.LispWillStart += new LispWillStartEventHandler(lws);
-            dm.MdiActiveDocument.LispEnded += new EventHandler(lwe);
-            dm.MdiActiveDocument.LispCancelled += new EventHandler(lwc);
-#endif
-
+            
             Ed.Editor ed = dm.MdiActiveDocument.Editor;
             //!+Вывожу список команд определенных в библиотеке
             ed.WriteMessage("\nStart list of commands: \n");
@@ -110,13 +53,14 @@ namespace drz.CorrectBlocks
                 "drz_blc_SetDlg" + "\tДиалоговая настройки нормализации блоков\n" +
                 "drz_blc_EntityToZero" + "\tПримитивы на слой 0\n" +
                 "drz_blc_ColorByLayer" + "\tЦвет примитивов по слою\n" +
-                "drz_blc_ColorByBlock" + "\tЦвет примитивов по блоку\n" +
                 "drz_blc_AllPropByLayer" + "\tВсе свойства по слою\n" +
                 "drz_blc_AllPropByBlock" + "\tВсе свойства по блоку\n" +
                 "drz_AtrSynch" + "\tСинхронизация атрибутов от Андрея Бушмана\n" +
                 "drz_AtrSynchHard" + "\tСинхронизация атрибутов от Gilles Chanteau (Грубое обновление)\n" +
-                "drz_rem_annt" + "\tОтключение аннотативности ВСЕХ блоков\n" +
-                "drz_rem_anntE" + "\tОтключение аннотативности ВСЕХ блоков + снять аннотативность с сущностей\n"
+                "drz_LayerImport" + "\tИмпорт фильтров слоев\n)" +
+                "drz_rem_anntb" + "\tОтключение аннотативности ВСЕХ блоков\n" +
+                "drz_rem_anntG" + "\tОтключение аннотативности ВСЕХ блоков\n" +
+                "drz_rem_anntBent" + "\tОтключение аннотативности ВСЕХ блоков + снять аннотативность с сущностей\n"
                 ;
             ed.WriteMessage(sCom);
             ed.WriteMessage("\nEnd list of commands\n");
@@ -137,15 +81,6 @@ namespace drz.CorrectBlocks
         #region Command
 
         #region Save
-        /// <summary>
-        /// Saves the mod.
-        /// </summary>
-        [Rtm.CommandMethod("drz_save")]
-        //[Rtm.CommandMethod("drz_save",Rtm.CommandFlags.Session)]
-        public static void drzSaveMod()
-        {
-            saveMod.SaveMod();
-        }
 
 #if DEBUG
         [Rtm.CommandMethod("drz_SAVE_TEST")]
@@ -179,22 +114,6 @@ namespace drz.CorrectBlocks
         }
 #endif
 
-        /// <summary>
-        /// DRZs the q save mod.by kpbic
-        /// </summary>
-        [Rtm.CommandMethod("drz_Qsave")]
-        public static void drzQSaveMod()
-        {
-            qsave.QuickSaveCommand();
-        }
-
-#if NC
-        [Rtm.CommandMethod("drz_QSAVEAS")]
-        public static void QSAVEAS()
-        {
-            QS.QuickSaveAs();
-        }
-#endif
         #endregion
 
         #region Remove Annotate
@@ -202,22 +121,23 @@ namespace drz.CorrectBlocks
         /// <summary>
         /// Отключение аннотативности ВСЕХ блоков
         /// </summary>
-        [Rtm.CommandMethod("drz_rem_annt")]
+        [Rtm.CommandMethod("drz_rem_anntB")]
         //[Rtm.CommandMethod("drz_rem_anntB", Rtm.CommandFlags.Session | Rtm.CommandFlags.Modal)]
         public static void BlcRemovAnntCmd()
         {
             RemovAnnotate.Rem_annt(false);
         }
+
         /// <summary>
         /// Отключение аннотативности ВСЕХ блоков + снять аннотативность с сущностекй
         /// </summary>
-        [Rtm.CommandMethod("drz_rem_anntE")]
+        [Rtm.CommandMethod("drz_rem_anntBent")]
         //[Rtm.CommandMethod("drz_rem_anntBent", Rtm.CommandFlags.Session | Rtm.CommandFlags.Modal)]
         public static void BlcRemovAnntEntCmd()
         {
             RemovAnnotate.Rem_annt(true);
         }
-
+        
         #endregion
 
 
@@ -273,7 +193,7 @@ namespace drz.CorrectBlocks
         /// </summary>
         [Rtm.CommandMethod("drz_AtrSynch")]
         //[Rtm.CommandMethod("drz_AtrSynch", Rtm.CommandFlags.Modal)]
-        public static void Att_MySynch()
+        public static void Att_MySynch()//кулик делал правки, проверить в бою, к AttSync добавил в класс остальные расширения
         {
             AttSynch.mySynch();
         }
@@ -284,23 +204,22 @@ namespace drz.CorrectBlocks
 
         [Rtm.CommandMethod("drz_AtrSynchHard")]
         //[Rtm.CommandMethod("drz_AtrSynchHard", Rtm.CommandFlags.Modal)]
-        public void Att_MySynchHard()
+        public void Att_MySynchHard()//кулик делал правки, проверить в бою, к AttSync добавил в класс остальные расширения
         {
             AttSynch.mySynchHard();
         }
 
         #endregion
 
-
         #region Починка блоков
 
         /// <summary>
         /// Топить маскировку выбранных блоков
         /// </summary>
-        [Rtm.CommandMethod("drz_blc_WipBot")]
+        [Rtm.CommandMethod("drz_blc_WipBot")] 
         public void Blc_WipBot()
         {
-            NLB.FBlkSet fBlck = NLB.FBlkSet.fWipeBott;
+            NLB.BlockNormalizeSettingsEnum fBlck = NLB.BlockNormalizeSettingsEnum.SetWipeoutBack;
             NLB.GetBlc(fBlck);
         }
 
@@ -321,7 +240,7 @@ namespace drz.CorrectBlocks
         [Rtm.CommandMethod("drz_blc_EntityToZero")]
         public void Blc_Zero()
         {
-            NLB.FBlkSet fBlck = NLB.FBlkSet.fLayerEnZero;
+            NLB.BlockNormalizeSettingsEnum fBlck = NLB.BlockNormalizeSettingsEnum.SetLayer0;
             NLB.GetBlc(fBlck);
         }
 
@@ -331,17 +250,17 @@ namespace drz.CorrectBlocks
         [Rtm.CommandMethod("drz_blc_ColorByLayer")]
         public void Blc_Color_Layer()
         {
-            NLB.FBlkSet fBlck = NLB.FBlkSet.fColorBL;
+            NLB.BlockNormalizeSettingsEnum fBlck = NLB.BlockNormalizeSettingsEnum.ColorByLayer;
             NLB.GetBlc(fBlck);
         }
-
+        
         /// <summary>
         /// Цвет  примитивов по блоку
         /// </summary>
         [Rtm.CommandMethod("drz_blc_ColorByBlock")]
         public void Blc_Color_Block()
         {
-            NLB.FBlkSet fBlck = NLB.FBlkSet.fColorBB;
+            NLB.BlockNormalizeSettingsEnum fBlck = NLB.BlockNormalizeSettingsEnum.ColorByBlock;
             NLB.GetBlc(fBlck);
         }
 
@@ -351,13 +270,13 @@ namespace drz.CorrectBlocks
         [Rtm.CommandMethod("drz_blc_AllPropByLayer")]
         public void Blc_All_Layer()
         {
-            NLB.FBlkSet fBlck = NLB.FBlkSet.fExplodeOn
-                                | NLB.FBlkSet.fScaleEqOn
-                                | NLB.FBlkSet.fTypeBL
-                                | NLB.FBlkSet.fColorBL
-                                | NLB.FBlkSet.fWeightBL
-                                | NLB.FBlkSet.fLayerEnZero
-                                | NLB.FBlkSet.fWipeBott
+            NLB.BlockNormalizeSettingsEnum fBlck = NLB.BlockNormalizeSettingsEnum.SetBlockExplodeable
+                                | NLB.BlockNormalizeSettingsEnum.EqualScaleOn
+                                | NLB.BlockNormalizeSettingsEnum.SetByLayer
+                                | NLB.BlockNormalizeSettingsEnum.ColorByLayer
+                                | NLB.BlockNormalizeSettingsEnum.LineweightByLayer
+                                | NLB.BlockNormalizeSettingsEnum.SetLayer0
+                                | NLB.BlockNormalizeSettingsEnum.SetWipeoutBack
                                   ;
             NLB.GetBlc(fBlck);
         }
@@ -368,13 +287,13 @@ namespace drz.CorrectBlocks
         [Rtm.CommandMethod("drz_blc_AllPropByBlock")]
         public void Blc_All_Block()
         {
-            NLB.FBlkSet fBlck = NLB.FBlkSet.fExplodeOn
-                                | NLB.FBlkSet.fScaleEqOn
-                                | NLB.FBlkSet.fTypeBB
-                                | NLB.FBlkSet.fColorBB
-                                | NLB.FBlkSet.fWeightBB
-                                | NLB.FBlkSet.fLayerEnZero
-                                | NLB.FBlkSet.fWipeBott
+            NLB.BlockNormalizeSettingsEnum fBlck = NLB.BlockNormalizeSettingsEnum.SetBlockExplodeable
+                                | NLB.BlockNormalizeSettingsEnum.EqualScaleOn
+                                | NLB.BlockNormalizeSettingsEnum.SetByBlock
+                                | NLB.BlockNormalizeSettingsEnum.ColorByBlock
+                                | NLB.BlockNormalizeSettingsEnum.LineweightByBlock
+                                | NLB.BlockNormalizeSettingsEnum.SetLayer0
+                                | NLB.BlockNormalizeSettingsEnum.SetWipeoutBack
                                  ;
             NLB.GetBlc(fBlck);
         }

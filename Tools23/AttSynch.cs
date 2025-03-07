@@ -1,9 +1,7 @@
 //using static Samples;//.AutoCAD.DatabaseServices.BlockTableRecordExtensionMethods;
 
 //using Microsoft.VisualBasic.ApplicationServices;
-//using Bushman.AutoCAD.DatabaseServices;
-
-//using GillesChanteau;
+using DrzCadTools.Extensions;
 
 
 #if NC
@@ -31,7 +29,7 @@ using PlatformDb = Autodesk.AutoCAD;
 using Trtm = Autodesk.AutoCAD.Runtime;
 #endif
 
-namespace drz.CorrectBlocks
+namespace drz.Tools
 {
     /// <summary>
     /// Синхронизация атрибутов
@@ -111,8 +109,8 @@ namespace drz.CorrectBlocks
                         btr = (BlockTableRecord)t.GetObject(bt[br.Name], OpenMode.ForRead);
                     }
 
+                    btr.SynchronizeAttributes();
 
-                    ExtensionMethods.SynchronizeAttributes(btr);
                     t.Commit();
                 }
             }

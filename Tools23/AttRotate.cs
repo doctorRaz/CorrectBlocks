@@ -21,7 +21,7 @@ using Platform = Autodesk.AutoCAD;
 using PlatformDb = Autodesk.AutoCAD;
 using Cad = Autodesk.AutoCAD.ApplicationServices.Application;
 #endif
-namespace drz.CorrectBlocks
+namespace drz.Tools
 {
     /// <summary>
     ////крутим атрибуты блоков
@@ -212,7 +212,6 @@ namespace drz.CorrectBlocks
             Document doc = Application.DocumentManager.MdiActiveDocument;
             if (doc == null) return;
             Editor ed = doc.Editor;
-            // by razygraevaa on 24.08.2023 at 12:05  Database db = doc.Database;
             PromptNestedEntityResult rs =
               ed.GetNestedEntity("\nВыбери атрибут: ");
             if (rs.Status == PromptStatus.OK)

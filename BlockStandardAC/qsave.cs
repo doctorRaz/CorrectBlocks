@@ -21,7 +21,7 @@ using Autodesk.AutoCAD.EditorInput;
 #endif
 
 
-namespace drz.CorrectBlocks
+namespace drz.Tools
 {
      class qsave
     {
