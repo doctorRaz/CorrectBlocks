@@ -57,6 +57,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="bin\**" />
+	  <EmbeddedResource Remove="bin\**" />
+	  <None Remove="bin\**" />
+	  <Page Remove="bin\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<Reference Include="hostdbmgd">
 			<HintPath>..\..\SDK\NC23.1\include-x64\hostdbmgd.dll</HintPath>
 			<Private>False</Private>

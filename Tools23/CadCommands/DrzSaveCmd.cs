@@ -3,8 +3,10 @@
 #if NC
 using HostMgd.ApplicationServices;
 using HostMgd.EditorInput;
+
 using Teigha.DatabaseServices;
 using Teigha.Runtime;
+
 using Exception = Teigha.Runtime.Exception;
 #elif AC
 using Autodesk.AutoCAD.ApplicationServices;
@@ -20,7 +22,7 @@ namespace DrzCadTools.CadCommands
         /// <summary>
         /// Saves the mod.
         /// </summary>
-        [CommandMethod("drz_save")]
+        [CommandMethod("drz_save")]//Ok
         public static void DrzSaveCommand()
         {
             saveMod.SaveMod();
@@ -34,8 +36,9 @@ namespace DrzCadTools.CadCommands
             //[CommandMethod("drz_save")]
             public static void SaveMod()
             {
-                Database db = HostApplicationServices.WorkingDatabase;
+                //Database db = HostApplicationServices.WorkingDatabase;
                 Document doc = Application.DocumentManager.MdiActiveDocument;
+                Database db = doc.Database;
                 Editor ed = doc.Editor;
 
                 //ful name
@@ -148,118 +151,118 @@ namespace DrzCadTools.CadCommands
 
 
                 return;
-                    /*
-                    object objFILEDIA = Application.GetSystemVariable("FILEDIA");
-    
-                    ed.WriteMessage("CMDACTIVE\t" + cmdactive.ToString());
-                  
-                    //Активные команды отсутствуют	0
-                    //Активна обычная команда	1
-                    //Активна прозрачная команда	2
-                    //Активен сценарий	4
-                    //Активно диалоговое окно	8
-                    //Активен динамический обмен данными (DDE)	16
-                    //Активен AutoLISP (отображается только для команды, определенной в ObjectARX)	32
-                    //Активна команда ObjectARX	64
-                    
-                    //Application.SetSystemVariable("FILEDIA", FILEDIA );
-    
-                    bool IsFILEDIA = (int)objFILEDIA == 1;
-    
-                    if (CadCommand.IsLisp || (int)cmdactive != 0)
-                    {// ком строка
-    
-    
-    
-                        ed.WriteMessage("Lisp started");
-                    }
-                    else
-                    {//диалог save
-                     // HKEY_CURRENT_USER\SOFTWARE\Nanosoft\nanoCAD x64\23.1\Profiles\SPDS\IO\SaveProjects SaveInitDir
-                     // jgty
-                     // HKEY_CURRENT_USER\SOFTWARE\Nanosoft\nanoCAD x64\23.1\Profiles\SPDS\IO\AllOpenFileFormats OpenInitDir
-    
-                        swf.SaveFileDialog dlg = new swf.SaveFileDialog()
-                        {
-                            Filter =
-                               "AutOCAD 2018 (*.dwg)|*.dwg|"
-                             + "AutOCAD 2013 (*.dwg)|*.dwg|"
-                             + "AutOCAD 2010 (*.dwg)|*.dwg|"
-                             + "AutOCAD 2007 (*.dwg)|*.dwg|"
-                             + "AutOCAD 2004 (*.dwg)|*.dwg|"
-                             + "AutOCAD 2000 (*.dwg)|*.dwg"
-                             ,
-                            AddExtension = true,
-                            Title = "Сохранить файл: ",
-                            FileName = doc.Name,
-                            //RestoreDirectory = true
-                            //InitialDirectory=
-                        };
-    
-                        if (dlg.ShowDialog() != swf.DialogResult.OK) return;
-    
-    
-                        ed.WriteMessage("Lisp stopped");
-                    }
-    
-                    //PromptSaveFileOptions pfso = new PromptSaveFileOptions("Сохранить файл: ");
-    
-                    //https://www.keanw.com/2009/08/allowing-a-user-to-select-from-multiple-file-formats-inside-autocad-using-net.html
-                    pfso.Filter =
-                          "Drawing (*.dwg)|*.dwg|"
-                        + "Design Web Format (*.dwf)|*.dwf|"
-                        + "All files (*.*)|*.*";
-                    //pfso.DialogCaption = "Caption";
-                    //pfso.DialogName = "Name";
-                    //pfso.DeriveInitialFilenameFromDrawingName = true;
-                    //think добавить текущую директорию
-    
-                    pfso.InitialFileName = doc.Name;
-                    //pfso.InitialDirectory = "";
-                    //pfso.PreferCommandLine = true;  
-                    //pfso.Filter = "2018 (*.dwg)|*.dwg|"
-                    //            + "2013 (*.dwg)|*.dwg|"
-                    //            + "2010 (*.dwg)|*.dwg|"
-                    //            + "2007 (*.dwg)|*.dwg|"
-                    //            + "2004 (*.dwg)|*.dwg|"
-                    //            + "2000 (*.dwg)|*.dwg"
-                    //;
-                    //pfso.FilterIndex = 0;
-                    //PromptFileNameResult pfnr = ed.GetFileNameForSave(pfso);
-                    //DisplaySaveOptionsMenuItem  false   bool
-                    //PreferCommandLine   false   bool
-    
-                    if (pfnr.Status != PromptStatus.OK) return;
-    
-                    string fileName = pfnr.StringResult;
-    
-                    //https://adn-cis.org/forum/index.php?topic=9134.msg37359#msg37359
-                    // DocumentSaveFormat defFormat = Application.DocumentManager.DefaultFormatForSave;
-    
-                    //think обернуть  try catch
-                    db.SaveAs(fileName, DwgVersion.Current);
-                  
-                  
-                    //System.Windows.Forms.SaveFileDialog dlg = new System.Windows.Forms.SaveFileDialog()
-                    //{
-                    //    Filter = "dwg2000|*.dwg|dwg2007|*.dwg",
-                    //    AddExtension = true,
-                    //};
-                    //dlg.ShowDialog();
-    
-                    //System.Windows.Forms.MessageBox.Show(dlg.FileName
-                    // SafeFileName
-                    //);
-                //System.Windows.Forms.MessageBox.Show(dlg.FilterIndex.ToString());
+                /*
+                object objFILEDIA = Application.GetSystemVariable("FILEDIA");
 
-                //SaveFileDialog sfo = new SaveFileDialog("title", "def name", "*.dwg", "dialog name",SaveFileDialog.SaveFileDialogFlags.AllowAnyExtension);
-                //var ress = sfo.ShowDialog();
-                //var ress2 = sfo.ShowModal();
+                ed.WriteMessage("CMDACTIVE\t" + cmdactive.ToString());
 
-                //OpenFileDialog ofd = new OpenFileDialog(OpenFileDialog.OpenFileDialogFlags.DefaultIsFolder);
+                //Активные команды отсутствуют	0
+                //Активна обычная команда	1
+                //Активна прозрачная команда	2
+                //Активен сценарий	4
+                //Активно диалоговое окно	8
+                //Активен динамический обмен данными (DDE)	16
+                //Активен AutoLISP (отображается только для команды, определенной в ObjectARX)	32
+                //Активна команда ObjectARX	64
 
-                //PlatformDb.DatabaseServices.TransactionManager tm = db.TransactionManager;
-                */
+                //Application.SetSystemVariable("FILEDIA", FILEDIA );
+
+                bool IsFILEDIA = (int)objFILEDIA == 1;
+
+                if (CadCommand.IsLisp || (int)cmdactive != 0)
+                {// ком строка
+
+
+
+                    ed.WriteMessage("Lisp started");
+                }
+                else
+                {//диалог save
+                 // HKEY_CURRENT_USER\SOFTWARE\Nanosoft\nanoCAD x64\23.1\Profiles\SPDS\IO\SaveProjects SaveInitDir
+                 // jgty
+                 // HKEY_CURRENT_USER\SOFTWARE\Nanosoft\nanoCAD x64\23.1\Profiles\SPDS\IO\AllOpenFileFormats OpenInitDir
+
+                    swf.SaveFileDialog dlg = new swf.SaveFileDialog()
+                    {
+                        Filter =
+                           "AutOCAD 2018 (*.dwg)|*.dwg|"
+                         + "AutOCAD 2013 (*.dwg)|*.dwg|"
+                         + "AutOCAD 2010 (*.dwg)|*.dwg|"
+                         + "AutOCAD 2007 (*.dwg)|*.dwg|"
+                         + "AutOCAD 2004 (*.dwg)|*.dwg|"
+                         + "AutOCAD 2000 (*.dwg)|*.dwg"
+                         ,
+                        AddExtension = true,
+                        Title = "Сохранить файл: ",
+                        FileName = doc.Name,
+                        //RestoreDirectory = true
+                        //InitialDirectory=
+                    };
+
+                    if (dlg.ShowDialog() != swf.DialogResult.OK) return;
+
+
+                    ed.WriteMessage("Lisp stopped");
+                }
+
+                //PromptSaveFileOptions pfso = new PromptSaveFileOptions("Сохранить файл: ");
+
+                //https://www.keanw.com/2009/08/allowing-a-user-to-select-from-multiple-file-formats-inside-autocad-using-net.html
+                pfso.Filter =
+                      "Drawing (*.dwg)|*.dwg|"
+                    + "Design Web Format (*.dwf)|*.dwf|"
+                    + "All files (*.*)|*.*";
+                //pfso.DialogCaption = "Caption";
+                //pfso.DialogName = "Name";
+                //pfso.DeriveInitialFilenameFromDrawingName = true;
+                //think добавить текущую директорию
+
+                pfso.InitialFileName = doc.Name;
+                //pfso.InitialDirectory = "";
+                //pfso.PreferCommandLine = true;  
+                //pfso.Filter = "2018 (*.dwg)|*.dwg|"
+                //            + "2013 (*.dwg)|*.dwg|"
+                //            + "2010 (*.dwg)|*.dwg|"
+                //            + "2007 (*.dwg)|*.dwg|"
+                //            + "2004 (*.dwg)|*.dwg|"
+                //            + "2000 (*.dwg)|*.dwg"
+                //;
+                //pfso.FilterIndex = 0;
+                //PromptFileNameResult pfnr = ed.GetFileNameForSave(pfso);
+                //DisplaySaveOptionsMenuItem  false   bool
+                //PreferCommandLine   false   bool
+
+                if (pfnr.Status != PromptStatus.OK) return;
+
+                string fileName = pfnr.StringResult;
+
+                //https://adn-cis.org/forum/index.php?topic=9134.msg37359#msg37359
+                // DocumentSaveFormat defFormat = Application.DocumentManager.DefaultFormatForSave;
+
+                //think обернуть  try catch
+                db.SaveAs(fileName, DwgVersion.Current);
+
+
+                //System.Windows.Forms.SaveFileDialog dlg = new System.Windows.Forms.SaveFileDialog()
+                //{
+                //    Filter = "dwg2000|*.dwg|dwg2007|*.dwg",
+                //    AddExtension = true,
+                //};
+                //dlg.ShowDialog();
+
+                //System.Windows.Forms.MessageBox.Show(dlg.FileName
+                // SafeFileName
+                //);
+            //System.Windows.Forms.MessageBox.Show(dlg.FilterIndex.ToString());
+
+            //SaveFileDialog sfo = new SaveFileDialog("title", "def name", "*.dwg", "dialog name",SaveFileDialog.SaveFileDialogFlags.AllowAnyExtension);
+            //var ress = sfo.ShowDialog();
+            //var ress2 = sfo.ShowModal();
+
+            //OpenFileDialog ofd = new OpenFileDialog(OpenFileDialog.OpenFileDialogFlags.DefaultIsFolder);
+
+            //PlatformDb.DatabaseServices.TransactionManager tm = db.TransactionManager;
+            */
 
             }
         }

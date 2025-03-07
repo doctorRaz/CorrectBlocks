@@ -15,7 +15,7 @@ namespace DrzCadTools.CadCommands
 {
     public static class QSaveAsCmd
     {
-        [CommandMethod("qsaveas")]
+        [CommandMethod("drz_QSAVEAS")]//ok
         public static void QSaveAsCommand()
         {
             QS.QuickSaveAs();

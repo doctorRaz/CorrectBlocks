@@ -134,11 +134,12 @@ namespace DrzCadTools
         #region Save
 
 #if DEBUG
-        [Rtm.CommandMethod("ссс")]
+        [Rtm.CommandMethod("drz_SAVE_TEST")]//  ok
         public static void SaveTest()
         {
-            Database db = HostApplicationServices.WorkingDatabase;
+            //Database db = HostApplicationServices.WorkingDatabase;
             Document doc = Application.DocumentManager.MdiActiveDocument;
+            Database db = doc.Database;
             Editor ed = doc.Editor;
             ed.WriteMessage("CCC Ok");
             //---Y
@@ -199,7 +200,7 @@ namespace DrzCadTools
 
         #endregion
 
-   
+
         #region Маскировки
 
         /// <summary>
