@@ -14,7 +14,7 @@ using Autodesk.AutoCAD.Geometry;
 using Exception = Autodesk.AutoCAD.Runtime.Exception;
 #endif
 
-namespace DrzCadTools.Extensions
+namespace drzTools.Extensions
 {
     /// <summary>
     /// кулик делал правки, проверить в бою, к AttSync добавил в класс остальные расширения

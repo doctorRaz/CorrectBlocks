@@ -21,7 +21,7 @@ using Platform = Autodesk.AutoCAD;
 using PlatformDb = Autodesk.AutoCAD;
 using Cad = Autodesk.AutoCAD.ApplicationServices.Application;
 #endif
-namespace drz.Tools
+namespace drzTools
 {
     /// <summary>
     ////крутим атрибуты блоков
@@ -118,7 +118,7 @@ namespace drz.Tools
                 ed.Regen();
                 s.Stop();
                 var resultTime = s.Elapsed;
-     
+
                 ed.WriteMessage(
                      "\nвыполнено за {0}",
                 //    btrOID.Count,

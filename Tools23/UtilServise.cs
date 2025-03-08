@@ -25,13 +25,13 @@ using Rtm = Autodesk.AutoCAD.Runtime;
 
 #endif
 
-namespace DrzCadTools
+namespace drzTools.CadTools
 {
     /// <summary>Служебные утилиты</summary>
     class McUtilServise
     {
         #region Registry 
-              // think обернуть в using
+        // think обернуть в using
         internal class RegistryMod
         {
             internal RegistryMod()
@@ -42,7 +42,7 @@ namespace DrzCadTools
 #else
                 startupKey = curUserKey.OpenSubKey(HostApplicationServices.Current.UserRegistryProductRootKey);
 #endif
-                profilKey = startupKey.OpenSubKey(Path.Combine( profiles, sActiveProfile));
+                profilKey = startupKey.OpenSubKey(Path.Combine(profiles, sActiveProfile));
             }
 
             //Val
@@ -154,10 +154,10 @@ namespace DrzCadTools
 
 
 
-#endregion
+        #endregion
 
         #region  СЛУЖЕБНЫЕ
-        
+
         /// <summary> Расшифровка исключений </summary>
         /// <param name="ex">Исключение</param>
         /// <param name="sResp">Доп текст</param>
@@ -290,12 +290,12 @@ namespace DrzCadTools
             return null;
         }
 #endif
-#endregion
+        #endregion
 
         #endregion
 
 
         #endregion
-        
+
     }
 }

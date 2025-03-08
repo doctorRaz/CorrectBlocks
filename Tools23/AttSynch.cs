@@ -29,7 +29,7 @@ using PlatformDb = Autodesk.AutoCAD;
 using Trtm = Autodesk.AutoCAD.Runtime;
 #endif
 
-namespace drz.Tools
+namespace drzTools
 {
     /// <summary>
     /// Синхронизация атрибутов

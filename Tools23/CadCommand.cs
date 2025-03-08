@@ -32,11 +32,13 @@ namespace DrzCadTools
     /// <br>добавил импорт фильтров слоев</br>
     /// <br>выбор блоков для вращения атрибутов </br> 
     /// </summary>
-    class CadCommand : Rtm.IExtensionApplication
+   partial class CadCommand : Rtm.IExtensionApplication
     {
         #region INIT
         public void Initialize()
         {
+            ListCMD();//выводим список команд с описаниями
+
             //think добавить проверку есть ли doc
 
             App.DocumentCollection dm = App.Application.DocumentManager;
