@@ -6,7 +6,7 @@ using System.Reflection;
 [assembly: AssemblyInformationalVersion("AsmInfo for CAD")]
 #endif
 
-namespace drz.Infrastructure.CAD.Service
+namespace dRzTools.Servise
 {
     /// <summary>
     ///
@@ -42,7 +42,7 @@ namespace drz.Infrastructure.CAD.Service
         #region ВЕРСИЯ ПРОГРАММЫ
 
         /// <summary>Версия программы</summary>
-        public System.Version sysVersion => asm.GetName()?.Version ?? new Version();
+        public Version sysVersion => asm.GetName()?.Version ?? new Version();
 
         /// <summary>Версия мажор</summary>
         public int iMajor => sysVersion.Major;

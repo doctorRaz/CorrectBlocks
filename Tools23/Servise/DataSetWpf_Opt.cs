@@ -5,25 +5,25 @@ using System;
 using System.IO;
 using System.Reflection;
 
-using drz.McPublish;
 
 
-namespace drz.DataSetWpf
+
+namespace dRzTools.Servise
 {
     /// <summary> Пути разделители и пр.</summary>
     public class DataSetWpfOpt
     {
         #region Служебные
         /// <summary>Домен машины</summary>
-        internal static string Userdomain = System.Environment.GetEnvironmentVariable("USERDOMAIN");
+        internal static string Userdomain = Environment.GetEnvironmentVariable("USERDOMAIN");
 
         /// <summary>Почта</summary>
         internal static string sMailTo = "mailto:"
             + DataSetWpfConst.sMail1
             + "? subject="
-            + DataSetWpfOpt.sTitleAttribute
+            + sTitleAttribute
             + " v"
-            + DataSetWpfOpt.sVersionFull
+            + sVersionFull
             + "&CC="
             + DataSetWpfConst.sMail2;
 
@@ -31,7 +31,7 @@ namespace drz.DataSetWpf
         #endregion
         #region ВЕРСИЯ ПРОГРАММЫ
         /// <summary>Версия программы</summary>
-        internal static System.Version sysVersion => asm.GetName().Version;
+        internal static Version sysVersion => asm.GetName().Version;
 
         /// <summary>Версия мажор</summary>
         internal static int iMajor => sysVersion.Major;

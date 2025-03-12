@@ -11,7 +11,7 @@ using Autodesk.AutoCAD.Runtime;
 #endif
 using System.IO;
 
-namespace DrzCadTools.CadCommands
+namespace drzTools.CadCommand
 {
     public static class QSaveAsCmd
     {

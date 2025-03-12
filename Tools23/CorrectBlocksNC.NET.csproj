@@ -64,10 +64,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Remove="Infrastructure\MessageService old Kulik.cs" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<Reference Include="hostdbmgd">
 			<HintPath>..\..\SDK\NC23.1\include-x64\hostdbmgd.dll</HintPath>
 			<Private>False</Private>

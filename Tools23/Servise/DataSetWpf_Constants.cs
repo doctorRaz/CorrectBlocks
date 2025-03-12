@@ -1,5 +1,5 @@
 ﻿//!отрефакторил
-namespace drz.DataSetWpf
+namespace dRzTools.Servise
 {
     /// <summary> константы /const/</summary>
     public class DataSetWpfConst //: INotifyPropertyChanged

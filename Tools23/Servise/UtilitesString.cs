@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 //[assembly: AssemblyInformationalVersion("Utilites String")]
 #endif
 
-namespace drz.Infrastructure.Utility.String
+namespace dRzTools.Servise
 {
     /// <summary>Утилиты и подпрограммы для работы со строками
     /// </summary>
@@ -71,7 +71,7 @@ namespace drz.Infrastructure.Utility.String
         {
             var titles = new[] { nominativ, genetiv, plural };
             var cases = new[] { 2, 0, 1, 1, 1, 2 };
-            return titles[number % 100 > 4 && number % 100 < 20 ? 2 : cases[(number % 10 < 5) ? number % 10 : 5]];
+            return titles[number % 100 > 4 && number % 100 < 20 ? 2 : cases[number % 10 < 5 ? number % 10 : 5]];
         }
 
         /// <summary>

@@ -5,13 +5,15 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-using drz.Abstractions.Interfaces;
-using drz.Infrastructure.CAD.Service;
+using drzTools.Abstractions.Interfaces;
+
+using dRzTools;
+using dRzTools.Servise;
 
 //using DrzCadTools.Infrastructure;
-using drz.NCAD.Infrastructure;
+//using drzTools.CadCommand;
 
-namespace DrzCadTools
+namespace drzTools.CadCommand
 {
    partial class CadCommand
     {
@@ -31,7 +33,7 @@ namespace DrzCadTools
 
             AsmInfo AI = new AsmInfo(Assembly.GetExecutingAssembly());
 
-
+            //BUG переделать  на datasetWPF
             string sTitleAttribute = AI.sTitleAttribute;
             string sVersion = AI.sVersionFull;
             string sDateRliz = AI.sDateRelies;

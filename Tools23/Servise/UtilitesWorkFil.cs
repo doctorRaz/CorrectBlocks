@@ -6,13 +6,9 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows;
 
-using drz.DataSetWpf;
-using drz.Infrastructure.Utility.String;
-
-using DrzCadTools;
 
 
-//using drz.Infrastructure.Utility.String;
+
 
 #if NC
 using Cad = HostMgd.ApplicationServices.Application;
@@ -29,7 +25,7 @@ using Rtm = Autodesk.AutoCAD.Runtime;
 
 
 
-namespace drz.McPublish
+namespace dRzTools.Servise
 {
     /// <summary>Утилиты и подпрограммы</summary>
     internal partial class McUtilWorkFil
@@ -142,9 +138,9 @@ namespace drz.McPublish
                     Directory.CreateDirectory(FilPath);
                     return true;
                 }
-                catch (System.Exception ex)
+                catch (Exception ex)
                 {
-                    System.Windows.MessageBox.Show(FilPath + "\n" + ex.Message + "\n" + "Каталог не создан\n Проверьте права на запись в каталог\n Возможны ошибки в работе программы", DataSetWpfOpt.sTitleAttribute + " " + DataSetWpfOpt.sVersionFull, MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show(FilPath + "\n" + ex.Message + "\n" + "Каталог не создан\n Проверьте права на запись в каталог\n Возможны ошибки в работе программы", DataSetWpfOpt.sTitleAttribute + " " + DataSetWpfOpt.sVersionFull, MessageBoxButton.OK, MessageBoxImage.Warning);
                     return false;
                 }
             }
@@ -166,7 +162,7 @@ namespace drz.McPublish
             //string sFilExt = sFilExtDot.Replace( ".", "");
             //новое уникальное имя
             // перегрузка для имени файла
-            sFilTmp = McUtilWorkFil.GetFileNameUniqu(sPathTmp, sFilTmp, sFilExt);
+            sFilTmp = GetFileNameUniqu(sPathTmp, sFilTmp, sFilExt);
 
             return Path.Combine(sPathTmp, sFilTmp + "." + sFilExt);
         }
@@ -181,7 +177,7 @@ namespace drz.McPublish
             //string filename_initial = Path.Combine(sPlotPath, sFilName + "." + sFilExt);
             // sPlotPath
             //sPlotFilName
-            String filename_current =Path.Combine(sPlotPath,  $"{sFilName}.{sFilExt}");// filename_initial;
+            string filename_current =Path.Combine(sPlotPath,  $"{sFilName}.{sFilExt}");// filename_initial;
             int count = 0;
             while (File.Exists(filename_current))
             {
@@ -209,11 +205,11 @@ namespace drz.McPublish
             {
                 return Directory.GetFiles(sPath,
                                             sSerchPatern,
-                                            (WithSubfolders
+                                            WithSubfolders
                                             ? SearchOption.AllDirectories
-                                            : SearchOption.TopDirectoryOnly));
+                                            : SearchOption.TopDirectoryOnly);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
 #if NC||AC
                 Cad.DocumentManager.MdiActiveDocument.Editor.WriteMessage("\n" + ex.Message);

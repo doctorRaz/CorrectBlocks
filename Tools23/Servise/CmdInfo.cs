@@ -5,6 +5,10 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 
+
+
+
+
 #if NC
 
 using Teigha.Runtime;
@@ -15,7 +19,7 @@ using Autodesk.AutoCAD.Runtime;
 
 #endif
 
-namespace drz.Infrastructure.CAD.Service
+namespace dRzTools.Servise
 {
     /// <summary>
     /// Информация о командах CAD

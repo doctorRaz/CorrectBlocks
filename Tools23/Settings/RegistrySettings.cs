@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 using Teigha.DatabaseServices;
 using Teigha.Runtime;
 
-namespace DrzCadTools
+namespace dRzTools.Settings
 {
     public class RegistrySettings
     {

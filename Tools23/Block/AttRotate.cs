@@ -21,7 +21,7 @@ using Platform = Autodesk.AutoCAD;
 using PlatformDb = Autodesk.AutoCAD;
 using Cad = Autodesk.AutoCAD.ApplicationServices.Application;
 #endif
-namespace drzTools
+namespace drzTools.Block
 {
     /// <summary>
     ////крутим атрибуты блоков

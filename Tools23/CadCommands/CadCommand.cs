@@ -1,5 +1,12 @@
 using System;
 
+using drzTools.Block;
+
+using dRzTools.Settings;
+
+
+
+
 #if NC
 using HostMgd.ApplicationServices;
 using HostMgd.EditorInput;
@@ -23,10 +30,11 @@ using Db = Autodesk.AutoCAD.DatabaseServices;
 using Ed = Autodesk.AutoCAD.EditorInput;
 using Gem = Autodesk.AutoCAD.Geometry;
 using Rtm = Autodesk.AutoCAD.Runtime;
-#endif
-using drz.Tools;
 
-namespace DrzCadTools
+#endif
+
+
+namespace drzTools.CadCommand
 {
     /// <summary> Вызов всех модулей 
     /// <br>добавил импорт фильтров слоев</br>
@@ -115,6 +123,9 @@ namespace DrzCadTools
             db.SaveAs(fileSaveName, DwgVersion.Current);
         }
 #endif
+
+
+
 
         #endregion
 

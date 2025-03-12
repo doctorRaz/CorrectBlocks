@@ -1,5 +1,10 @@
 ﻿using System.IO;
 
+using dRzTools.Settings;
+
+
+
+
 #if NC
 using HostMgd.ApplicationServices;
 using HostMgd.EditorInput;
@@ -15,7 +20,7 @@ using Autodesk.AutoCAD.EditorInput;
 using Autodesk.AutoCAD.Runtime;
 #endif
 
-namespace DrzCadTools.CadCommands
+namespace drzTools.CadCommand
 {
     public static class DrzSaveCmd
     {

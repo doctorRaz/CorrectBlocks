@@ -1,5 +1,5 @@
 ﻿
-using drz.Abstractions.Interfaces;
+using drzTools.Abstractions.Interfaces;
 
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -8,7 +8,11 @@ using Microsoft.VisualBasic;
 using MessageBox = System.Windows.MessageBox;
 
 using System;
-using drz.DataSetWpf;
+
+
+
+
+
 
 
 
@@ -18,9 +22,9 @@ using HostMgd.EditorInput;
 using Application = HostMgd.ApplicationServices.Application;
 #endif
 
-namespace drz.NCAD.Infrastructure
+namespace dRzTools.Servise
 {
-    internal class MessageService :IAllMessageService// IMessageService,IInputBoxService,IQuestionService
+    internal class MessageService : IAllMessageService// IMessageService,IInputBoxService,IQuestionService
     {
         #region Console
 
@@ -52,7 +56,7 @@ namespace drz.NCAD.Infrastructure
 
 
         #region Message
-      
+
 
         public void InfoMessage(string Message,
                                 string Title = null,
@@ -116,7 +120,7 @@ namespace drz.NCAD.Infrastructure
         #region Question
 
         public WindowResult QuestionYesNo(string Message,
-                                          string Title=null,
+                                          string Title = null,
                                           WindowResult DefaultResult = WindowResult.Yes)
         {
             _title = Title;
@@ -133,7 +137,7 @@ namespace drz.NCAD.Infrastructure
         }
 
         public WindowResult QuestionYesNoCancel(string Message,
-                                                string Title=null,
+                                                string Title = null,
                                                 WindowResult DefaultResult = WindowResult.Yes)
         {
             _title = Title;
@@ -174,7 +178,7 @@ namespace drz.NCAD.Infrastructure
         /// </summary>
         /// <param name="MsgBoxRes">MessageBoxResult</param>
         /// <returns>WindowResult</returns>
-        /// <exception cref="System.ComponentModel.InvalidEnumArgumentException"></exception>
+        /// <exception cref="InvalidEnumArgumentException"></exception>
         WindowResult ConvertEnumMsgBoxToWindow(MessageBoxResult MsgBoxRes)
         {
             switch (MsgBoxRes)
@@ -193,7 +197,7 @@ namespace drz.NCAD.Infrastructure
         /// </summary>
         /// <param name="WinRes">WindowResult</param>
         /// <returns>MessageBoxResult</returns>
-        /// <exception cref="System.ComponentModel.InvalidEnumArgumentException"></exception>
+        /// <exception cref="InvalidEnumArgumentException"></exception>
         MessageBoxResult ConvertEnumWindowToMsgBox(WindowResult WinRes)
         {
             switch (WinRes)

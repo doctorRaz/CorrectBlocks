@@ -14,7 +14,7 @@ using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.EditorInput;
 #endif
 
-namespace DrzCadTools.CadCommands
+namespace drzTools.CadCommand
 {
     public static class DrzQsaveCmd
     {

@@ -6,6 +6,8 @@ using System.Reflection;
 using Microsoft.Win32;
 using System.IO;
 
+
+
 #if NC
 using Teigha.DatabaseServices;
 using HostMgd.ApplicationServices;
@@ -25,7 +27,7 @@ using Rtm = Autodesk.AutoCAD.Runtime;
 
 #endif
 
-namespace drzTools.CadTools
+namespace dRzTools.Settings
 {
     /// <summary>Служебные утилиты</summary>
     class McUtilServise
@@ -47,7 +49,7 @@ namespace drzTools.CadTools
 
             //Val
             RegistryKey InitDirKey;
-            internal Object objSaveInitDir
+            internal object objSaveInitDir
             {
                 get
                 {
@@ -63,7 +65,7 @@ namespace drzTools.CadTools
 
             }
 
-            internal Object objOpenInitDir
+            internal object objOpenInitDir
             {
                 get
                 {
@@ -77,7 +79,7 @@ namespace drzTools.CadTools
                 }
             }
 
-            internal Object objUserCfgDir => startupKey.GetValue(propUserDataDir);
+            internal object objUserCfgDir => startupKey.GetValue(propUserDataDir);
 
             //KEY
             RegistryKey startupKey { get; }
@@ -165,7 +167,7 @@ namespace drzTools.CadTools
         /// <param name="bMsg">Показывыть MsgBox</param>
         /// <param name="sTitle">Титул сообщения</param>
         /// <returns>Расшифровка исключения</returns>
-        public static string InterpretationExeption(System.Exception ex,
+        public static string InterpretationExeption(Exception ex,
                                                     string sResp = "Работа программы не может быть продолжена!",
                                                     MessageBoxIcon msgIco = MessageBoxIcon.Warning,
                                                     bool bMsg = false,
@@ -182,7 +184,7 @@ namespace drzTools.CadTools
 
             if (bMsg)
             {
-                System.Windows.Forms.MessageBox.Show(
+                MessageBox.Show(
                                               sAnswer,
                                                sTitle,
                                                MessageBoxButtons.OK,
@@ -233,7 +235,7 @@ namespace drzTools.CadTools
                 }
             }
 
-            App.Document doc = App.Application.DocumentManager.MdiActiveDocument;
+            Document doc = App.Application.DocumentManager.MdiActiveDocument;
             Ed.Editor ed = doc.Editor;
 
             foreach (var keyValuePair in map)
