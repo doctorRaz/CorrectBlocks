@@ -1,4 +1,5 @@
 using System;
+using System.Reflection;
 
 using drzTools.Block;
 
@@ -33,6 +34,9 @@ using Rtm = Autodesk.AutoCAD.Runtime;
 
 #endif
 
+#if NET
+[assembly: AssemblyInformationalVersion("drzTools for CAD")]
+#endif
 
 namespace drzTools.CadCommand
 {

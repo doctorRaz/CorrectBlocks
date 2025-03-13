@@ -31,12 +31,11 @@ namespace drzTools.CadCommand
             //выводим список команд с описаниями
             CmdInfo CDI = new CmdInfo(Assembly.GetExecutingAssembly(), bMethod);//эта сборка вывод имен классов
 
-            AsmInfo AI = new AsmInfo(Assembly.GetExecutingAssembly());
+            string sTitleAttribute = DataSetWpfOpt.sTitleAttribute;
 
-            //BUG переделать  на datasetWPF
-            string sTitleAttribute = AI.sTitleAttribute;
-            string sVersion = AI.sVersionFull;
-            string sDateRliz = AI.sDateRelies;
+            string sVersion = DataSetWpfOpt.sVersionFull;
+
+            string sDateRliz = DataSetWpfOpt.sDateRelies;
 
             IAllMessageService msgService = new MessageService();
             msgService.ConsoleMessage(sTitleAttribute + ": v." + sVersion + " от " + sDateRliz);

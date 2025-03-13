@@ -5,9 +5,11 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using Microsoft.VisualBasic;
-using MessageBox = System.Windows.MessageBox;
+//using MessageBox = System.Windows.MessageBox;
 
 using System;
+//using System.Windows.Forms;
+
 
 
 
@@ -39,14 +41,15 @@ namespace dRzTools.Servise
             }
             Editor ed = doc.Editor;
 #if DEBUG
-            ed.WriteMessage($"\n----------------\n{CallerName}:\n----------------\n{Message}");
+            //ed.WriteMessage($"\n----------------\n{CallerName}:\n----------------\n {Message}");
+            ed.WriteMessage($"{CallerName}: {Message}");
 #else
             ed.WriteMessage($"\n{Message}");
 #endif
 #else
 
 #if DEBUG
-            Console.WriteLine($"{CallerName} : {Message}");
+            Console.WriteLine($"{CallerName}: {Message}");
 #else
            Console.WriteLine($"\n{Message}");
 #endif

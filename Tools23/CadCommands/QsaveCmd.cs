@@ -19,7 +19,7 @@ namespace drzTools.CadCommand
     public static class DrzQsaveCmd
     {
         [CommandMethod("drz_Qsave")]
-        public static void DrzQSaveCommand()
+        public static void DrzQSaveCommand()//BUG вынести в CadCommand
         {
             qsave.QuickSaveCommand();
         }

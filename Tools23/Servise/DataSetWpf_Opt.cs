@@ -1,5 +1,4 @@
-﻿//!отрефакторил
-
+﻿
 
 using System;
 using System.IO;
@@ -55,7 +54,7 @@ namespace dRzTools.Servise
         /// <summary>Сборка содержащая текущий исполняемый код</summary>
         public static Assembly asm => Assembly.GetExecutingAssembly();
 
-        /// <summary> Титул программы печати</summary>
+        /// <summary> Титул программы</summary>
         public static string sTitleAttribute => (Attribute.GetCustomAttribute(
             asm,
             typeof(AssemblyTitleAttribute),
@@ -140,6 +139,23 @@ namespace dRzTools.Servise
                                              + iBuild.ToString()
                                              + "."
                                              + iRevision.ToString();
+
+        /// <summary>Дата сборки</summary>
+        public static string sDateRelies
+        {
+            get
+            {
+                DateTime result = new DateTime(2000, 1, 1).AddDays(iBuild).AddSeconds(iRevision * 2);
+
+
+#if DEBUG
+                return result.ToString();
+#else
+                return result.ToLongDateString();
+#endif
+            }
+        }
+
 
         /// <summary>Дата сборки</summary>
         public static string sDateRelis()

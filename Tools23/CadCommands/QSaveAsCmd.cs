@@ -16,7 +16,7 @@ namespace drzTools.CadCommand
     public static class QSaveAsCmd
     {
         [CommandMethod("drz_QSAVEAS")]
-        public static void QSaveAsCommand()
+        public static void QSaveAsCommand()//BUG вынести в CadCommand
         {
             QS.QuickSaveAs();
         }

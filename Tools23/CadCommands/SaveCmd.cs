@@ -28,7 +28,7 @@ namespace drzTools.CadCommand
         /// Saves the mod.
         /// </summary>
         [CommandMethod("drz_save")]
-        public static void DrzSaveCommand()
+        public static void DrzSaveCommand()//BUG вынести в CadCommand
         {
             saveMod.SaveMod();
         }
