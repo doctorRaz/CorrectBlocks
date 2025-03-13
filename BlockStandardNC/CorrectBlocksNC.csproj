@@ -104,6 +104,9 @@
     <Compile Include="..\Tools23\Interfaces\IQuestionService.cs">
       <Link>Interfaces\IQuestionService.cs</Link>
     </Compile>
+    <Compile Include="..\Tools23\SaveMod\Save_Test.cs">
+      <Link>SaveMod\Save_Test.cs</Link>
+    </Compile>
     <Compile Include="..\Tools23\Servise\CmdInfo.cs">
       <Link>Servise\CmdInfo.cs</Link>
     </Compile>

@@ -1,20 +1,14 @@
-using System;
 using System.Reflection;
 
 using drzTools.Block;
 
+using dRzTools.SaveMod;
 using dRzTools.Settings;
 
 
 
 
 #if NC
-using HostMgd.ApplicationServices;
-using HostMgd.EditorInput;
-
-
-using Teigha.DatabaseServices;
-
 using App = HostMgd.ApplicationServices;
 using Ed = HostMgd.EditorInput;
 using Rtm = Teigha.Runtime;
@@ -44,7 +38,7 @@ namespace drzTools.CadCommand
     /// <br>добавил импорт фильтров слоев</br>
     /// <br>выбор блоков для вращения атрибутов </br> 
     /// </summary>
-   partial class CadCommand : Rtm.IExtensionApplication
+    partial class CadCommand : Rtm.IExtensionApplication
     {
         #region INIT
         public void Initialize()
@@ -54,7 +48,7 @@ namespace drzTools.CadCommand
             //think добавить проверку есть ли doc
 
             App.DocumentCollection dm = App.Application.DocumentManager;
-            
+
             Ed.Editor ed = dm.MdiActiveDocument.Editor;
             //!+Вывожу список команд определенных в библиотеке
             ed.WriteMessage("\nStart list of commands: \n");
@@ -96,35 +90,35 @@ namespace drzTools.CadCommand
 
         #region Save
 
+        /// <summary>
+        /// Saves the mod.
+        /// </summary>
+        [Rtm.CommandMethod("drz_save")]
+        public static void DrzSaveCommand()//BUG вынести в CadCommand
+        {
+            SaveMod.Save_mod();
+        }
+
+
+        [Rtm.CommandMethod("drz_QSAVEAS")]
+        public static void QSaveAsCmd()//BUG вынести в CadCommand
+        {
+             QSaveAsKeanw.QuickSaveAs();
+        }
+
+
+        [Rtm.CommandMethod("drz_Qsave")]
+        public static void  QSaveCmdKpblc()//BUG вынести в CadCommand
+        {
+            QsaveKpblc.QuickSaveKpblc();
+        }
+
+
 #if DEBUG
         [Rtm.CommandMethod("drz_SAVE_TEST")]
-        public static void SaveTest()
+        public static void Save_test()
         {
-            //Database db = HostApplicationServices.WorkingDatabase;
-            Document doc = Application.DocumentManager.MdiActiveDocument;
-            Database db = doc.Database;
-            Editor ed = doc.Editor;
-            ed.WriteMessage("CCC Ok");
-            //---Y
-
-            PromptSaveFileOptions pfso = new PromptSaveFileOptions("Сохранить файл: ");
-            pfso.Filter =
-                          "Drawing (*.dwg)|*.dwg|"
-                        + "Design Web Format (*.dwf)|*.dwf|"
-                        + "All files (*.*)|*.*";
-            pfso.DialogCaption = "DialogCaption";
-            pfso.DialogName = "DialogName";
-            pfso.DeriveInitialFilenameFromDrawingName = true;
-            pfso.InitialFileName = doc.Name;
-            pfso.InitialDirectory = @"c:\temp\00";
-
-            PromptFileNameResult pfnr = ed.GetFileNameForSave(pfso);
-
-            if (pfnr.Status != PromptStatus.OK) return;
-
-            string fileSaveName = pfnr.StringResult;
-
-            db.SaveAs(fileSaveName, DwgVersion.Current);
+            SaveTest.Save_Test();
         }
 #endif
 
@@ -154,7 +148,7 @@ namespace drzTools.CadCommand
         {
             RemovAnnotate.Rem_annt(true);
         }
-        
+
         #endregion
 
 
@@ -233,7 +227,7 @@ namespace drzTools.CadCommand
         /// <summary>
         /// Топить маскировку выбранных блоков
         /// </summary>
-        [Rtm.CommandMethod("drz_blc_WipBot")] 
+        [Rtm.CommandMethod("drz_blc_WipBot")]
         public void Blc_WipBot()
         {
             NLB.BlockNormalizeSettingsEnum fBlck = NLB.BlockNormalizeSettingsEnum.SetWipeoutBack;
@@ -270,7 +264,7 @@ namespace drzTools.CadCommand
             NLB.BlockNormalizeSettingsEnum fBlck = NLB.BlockNormalizeSettingsEnum.ColorByLayer;
             NLB.GetBlc(fBlck);
         }
-        
+
         /// <summary>
         /// Цвет  примитивов по блоку
         /// </summary>
