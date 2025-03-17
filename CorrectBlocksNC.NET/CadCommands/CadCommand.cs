@@ -1,11 +1,11 @@
+using System.ComponentModel;
 using System.Reflection;
 
 using drzTools.Block;
 
-using dRzTools.SaveMod;
-using dRzTools.Settings;
+using drzTools.Servise;
 
-
+using dRzTools.SaveMods;
 
 
 #if NC
@@ -32,18 +32,18 @@ using Rtm = Autodesk.AutoCAD.Runtime;
 [assembly: AssemblyInformationalVersion("drzTools for CAD")]
 #endif
 
-namespace drzTools.CadCommand
+namespace dRzTools.CadCommands
 {
     /// <summary> Вызов всех модулей 
     /// <br>добавил импорт фильтров слоев</br>
     /// <br>выбор блоков для вращения атрибутов </br> 
     /// </summary>
-    partial class CadCommand : Rtm.IExtensionApplication
+    class CadCommand : Rtm.IExtensionApplication
     {
         #region INIT
         public void Initialize()
         {
-            ListCMD();//выводим список команд с описаниями
+            ListCmdInfo.ListCMD();//выводим список команд с описаниями
 
             //think добавить проверку есть ли doc
 
@@ -51,32 +51,32 @@ namespace drzTools.CadCommand
 
             Ed.Editor ed = dm.MdiActiveDocument.Editor;
             //!+Вывожу список команд определенных в библиотеке
-            ed.WriteMessage("\nStart list of commands: \n");
-            string sCom =
-                "drz_WipBot" + "\tМаскировки ВСЕХ блоков на задний план\n" +
-                "drz_blc_WipBot" + "\tМаскировки ВЫБРАННЫХ блоков на задний план\n" +
-                "drz_AtrRotateSel" + "\tКрутит в ВЫБРАННЫХ блоках ВСЕ атрибуты в ноль\n" +
-                "drz_AtrRotateAll" + "\tКрутит в блоке ВСЕ атрибуты в ноль\n" +
-                "drz_AtrRotateOne" + "\tКрутит выбранный атрибут блока в ноль\n" +
-                "drz_blc_SetDlg" + "\tДиалоговая настройки нормализации блоков\n" +
-                "drz_blc_EntityToZero" + "\tПримитивы на слой 0\n" +
-                "drz_blc_ColorByLayer" + "\tЦвет примитивов по слою\n" +
-                "drz_blc_AllPropByLayer" + "\tВсе свойства по слою\n" +
-                "drz_blc_AllPropByBlock" + "\tВсе свойства по блоку\n" +
-                "drz_AtrSynch" + "\tСинхронизация атрибутов от Андрея Бушмана\n" +
-                "drz_AtrSynchHard" + "\tСинхронизация атрибутов от Gilles Chanteau (Грубое обновление)\n" +
-                "drz_LayerImport" + "\tИмпорт фильтров слоев\n)" +
-                "drz_rem_anntb" + "\tОтключение аннотативности ВСЕХ блоков\n" +
-                "drz_rem_anntG" + "\tОтключение аннотативности ВСЕХ блоков\n" +
-                "drz_rem_anntBent" + "\tОтключение аннотативности ВСЕХ блоков + снять аннотативность с сущностей\n"
-                ;
-            ed.WriteMessage(sCom);
-            ed.WriteMessage("\nEnd list of commands\n");
-
-#if DEBUG
-            //для отладки список команд, чтоб лишнего не попало
-            McUtilServise.FindCmdDuplicates();
-#endif           
+            /*  ed.WriteMessage("\nStart list of commands: \n");
+              string sCom =
+                  "drz_WipBot" + "\tМаскировки ВСЕХ блоков на задний план\n" +
+                  "drz_blc_WipBot" + "\tМаскировки ВЫБРАННЫХ блоков на задний план\n" +
+                  "drz_AtrRotateSel" + "\tКрутит в ВЫБРАННЫХ блоках ВСЕ атрибуты в ноль\n" +
+                  "drz_AtrRotateAll" + "\tКрутит в блоке ВСЕ атрибуты в ноль\n" +
+                  "drz_AtrRotateOne" + "\tКрутит выбранный атрибут блока в ноль\n" +
+                  "drz_blc_SetDlg" + "\tДиалоговая настройки нормализации блоков\n" +
+                  "drz_blc_EntityToZero" + "\tПримитивы на слой 0\n" +
+                  "drz_blc_ColorByLayer" + "\tЦвет примитивов по слою\n" +
+                  "drz_blc_AllPropByLayer" + "\tВсе свойства по слою\n" +
+                  "drz_blc_AllPropByBlock" + "\tВсе свойства по блоку\n" +
+                  "drz_AtrSynch" + "\tСинхронизация атрибутов от Андрея Бушмана\n" +
+                  "drz_AtrSynchHard" + "\tСинхронизация атрибутов от Gilles Chanteau (Грубое обновление)\n" +
+                  "drz_LayerImport" + "\tИмпорт фильтров слоев\n)" +
+                  "drz_rem_anntb" + "\tОтключение аннотативности ВСЕХ блоков\n" +
+                  "drz_rem_anntG" + "\tОтключение аннотативности ВСЕХ блоков\n" +
+                  "drz_rem_anntBent" + "\tОтключение аннотативности ВСЕХ блоков + снять аннотативность с сущностей\n"
+                  ;
+              ed.WriteMessage(sCom);
+              ed.WriteMessage("\nEnd list of commands\n");
+            */
+            //#if DEBUG
+            //            //для отладки список команд, чтоб лишнего не попало
+            //            McUtilServise.FindCmdDuplicates();
+            //#endif           
         }
 
         public void Terminate()
@@ -91,39 +91,39 @@ namespace drzTools.CadCommand
         #region Save
 
         /// <summary>
-        /// Saves the mod.
+        /// Аналог команды SAVE AutoCAD.
         /// </summary>
         [Rtm.CommandMethod("drz_save")]
-        public static void DrzSaveCommand()//BUG вынести в CadCommand
+        [Description("Аналог команды SAVE AutoCAD, сохраняет копию чертежа с другим именем, но рабочим остается прежний чертеж")]
+        public static void SaveCmd()
         {
             SaveMod.Save_mod();
         }
 
-
+        /// <summary>
+        /// Программный Save as by Keanw
+        /// </summary>
         [Rtm.CommandMethod("drz_QSAVEAS")]
-        public static void QSaveAsCmd()//BUG вынести в CadCommand
+        [Description("Программно Сохранить как от Keanw")]
+        public static void QSaveAsCmd()
         {
-             QSaveAsKeanw.QuickSaveAs();
+            QSaveAsKeanw.QuickSaveAs();
         }
 
 
         [Rtm.CommandMethod("drz_Qsave")]
-        public static void  QSaveCmdKpblc()//BUG вынести в CadCommand
+        [Description("Программно Сохранить от Кулик")]
+        public static void QSaveCmdKpblc()
         {
             QsaveKpblc.QuickSaveKpblc();
         }
 
-
-#if DEBUG
         [Rtm.CommandMethod("drz_SAVE_TEST")]
+        [Description("Программно Сохранить ТЕСТ")]
         public static void Save_test()
         {
             SaveTest.Save_Test();
         }
-#endif
-
-
-
 
         #endregion
 
@@ -133,17 +133,17 @@ namespace drzTools.CadCommand
         /// Отключение аннотативности ВСЕХ блоков
         /// </summary>
         [Rtm.CommandMethod("drz_rem_anntB")]
-        //[Rtm.CommandMethod("drz_rem_anntB", Rtm.CommandFlags.Session | Rtm.CommandFlags.Modal)]
+        [Description("Отключение аннотативности ВСЕХ блоков")]
         public static void BlcRemovAnntCmd()
         {
             RemovAnnotate.Rem_annt(false);
         }
 
         /// <summary>
-        /// Отключение аннотативности ВСЕХ блоков + снять аннотативность с сущностекй
+        /// Отключение аннотативности ВСЕХ блоков + снять аннотативность с сущностей
         /// </summary>
         [Rtm.CommandMethod("drz_rem_anntBent")]
-        //[Rtm.CommandMethod("drz_rem_anntBent", Rtm.CommandFlags.Session | Rtm.CommandFlags.Modal)]
+        [Description("Отключение аннотативности ВСЕХ блоков + снять аннотативность с сущностей")]
         public static void BlcRemovAnntEntCmd()
         {
             RemovAnnotate.Rem_annt(true);

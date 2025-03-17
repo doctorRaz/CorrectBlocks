@@ -1,9 +1,31 @@
-﻿using HostMgd.ApplicationServices;
+﻿
+
+#if NC
+using HostMgd.ApplicationServices;
 using HostMgd.EditorInput;
 
 using Teigha.DatabaseServices;
 
-namespace dRzTools.SaveMod
+using App = HostMgd.ApplicationServices;
+using Ed = HostMgd.EditorInput;
+using Rtm = Teigha.Runtime;
+#elif AC
+
+using Autodesk.AutoCAD.ApplicationServices;
+using Autodesk.AutoCAD.DatabaseServices;
+using Autodesk.AutoCAD.EditorInput;
+
+using App = Autodesk.AutoCAD.ApplicationServices;
+using Cad = Autodesk.AutoCAD.ApplicationServices.Application;
+using Db = Autodesk.AutoCAD.DatabaseServices;
+using Ed = Autodesk.AutoCAD.EditorInput;
+using Gem = Autodesk.AutoCAD.Geometry;
+using Rtm = Autodesk.AutoCAD.Runtime;
+
+#endif
+
+
+namespace dRzTools.SaveMods
 {
     public class SaveTest
     {

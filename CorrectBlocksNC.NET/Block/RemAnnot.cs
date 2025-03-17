@@ -70,18 +70,6 @@ namespace drzTools.Block
                             //obj.Annotative = AnnotativeStates.True;
                             obj.Annotative = AnnotativeStates.False;
                             count++;
-                            // by razygraevaa on 12.10.2023 at 8:00
-                            //? бага портит настройки дин блоков, не отличает их от атрибутов
-                            //if (bHowHardAtrSynx)
-                            //{
-                            //    //!жестко синхроним атрибуты Жиль Шанто
-                            //    ExtensionMethods.SynchronizeAttributes(btr);
-                            //}
-                            //else
-                            //{
-                            //    //!атрибуты оставить на местах Бушман
-                            //    btr.AttSync(false, true, false);
-                            //}
                         }
                     }
                     else if (bHowDfx)

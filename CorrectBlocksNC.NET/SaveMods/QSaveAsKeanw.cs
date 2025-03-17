@@ -11,13 +11,13 @@ using Autodesk.AutoCAD.Runtime;
 #endif
 using System.IO;
 
-namespace dRzTools.SaveMod
+namespace dRzTools.SaveMods
 {
- 
+
     /// <summary>
     /// https://www.keanw.com/2009/10/implementing-a-quick-saveas-command-in-autocad-using-net.html
     /// </summary>
-    public class  QSaveAsKeanw
+    public class QSaveAsKeanw
     {
         // Set up static variable for the path to our folder
         // of drawings, as well as the base filename and a
@@ -32,7 +32,7 @@ namespace dRzTools.SaveMod
             pthSep = "\\",
             lspSep = "/",
             dwgExt = ".dwg";
-   
+
         /// <summary>
         /// Our QuickSaveAs command
         /// </summary>   

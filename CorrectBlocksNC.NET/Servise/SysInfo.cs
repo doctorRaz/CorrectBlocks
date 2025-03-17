@@ -5,12 +5,37 @@ using System.IO;
 using System.Reflection;
 
 
+#if NC
+using Teigha.DatabaseServices;
+
+using HostMgd.ApplicationServices;
+
+using App = HostMgd.ApplicationServices;
+using Ed = HostMgd.EditorInput;
+using Rtm = Teigha.Runtime;
+#elif AC
+
+using Autodesk.AutoCAD.DatabaseServices;
+using Autodesk.AutoCAD.ApplicationServices;
+
+using App = Autodesk.AutoCAD.ApplicationServices;
+using Cad = Autodesk.AutoCAD.ApplicationServices.Application;
+using Db = Autodesk.AutoCAD.DatabaseServices;
+using Gem = Autodesk.AutoCAD.Geometry;
+using Ed = Autodesk.AutoCAD.EditorInput;
+using Rtm = Autodesk.AutoCAD.Runtime;
+
+#endif
+
+
+
+
 
 
 namespace dRzTools.Servise
 {
     /// <summary> Пути разделители и пр.</summary>
-    public class DataSetWpfOpt
+    public class SysInfo
     {
         #region Служебные
         /// <summary>Домен машины</summary>
@@ -18,13 +43,13 @@ namespace dRzTools.Servise
 
         /// <summary>Почта</summary>
         internal static string sMailTo = "mailto:"
-            + DataSetWpfConst.sMail1
+            + SysConstant.sMail1
             + "? subject="
             + sTitleAttribute
             + " v"
             + sVersionFull
             + "&CC="
-            + DataSetWpfConst.sMail2;
+            + SysConstant.sMail2;
 
 
         #endregion
@@ -190,7 +215,7 @@ namespace dRzTools.Servise
         internal static string sAppMajor => ((System.Windows.Forms.Application.ProductVersion).Split('.'))[0];
 
 #else
-        internal static string sAppMajor => HostMgd.ApplicationServices.Application.Version.Major.ToString();
+        internal static string sAppMajor =>Application.Version.Major.ToString();
 
 #endif
 

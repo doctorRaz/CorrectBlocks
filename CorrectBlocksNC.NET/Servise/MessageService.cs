@@ -4,25 +4,42 @@ using drzTools.Abstractions.Interfaces;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
+
 using Microsoft.VisualBasic;
-//using MessageBox = System.Windows.MessageBox;
+
 
 using System;
-//using System.Windows.Forms;
-
-
-
-
-
-
-
 
 
 #if NC
+
+using Teigha.DatabaseServices;
 using HostMgd.ApplicationServices;
+
+using App = HostMgd.ApplicationServices;
+using Ed = HostMgd.EditorInput;
+using Rtm = Teigha.Runtime;
+ 
 using HostMgd.EditorInput;
+
 using Application = HostMgd.ApplicationServices.Application;
+
+#elif AC
+using Autodesk.AutoCAD.EditorInput;
+using Autodesk.AutoCAD.DatabaseServices;
+using Autodesk.AutoCAD.ApplicationServices;
+
+using App = Autodesk.AutoCAD.ApplicationServices;
+using Cad = Autodesk.AutoCAD.ApplicationServices.Application;
+using Db = Autodesk.AutoCAD.DatabaseServices;
+using Gem = Autodesk.AutoCAD.Geometry;
+using Ed = Autodesk.AutoCAD.EditorInput;
+using Rtm = Autodesk.AutoCAD.Runtime;
+
 #endif
+
+
+
 
 namespace dRzTools.Servise
 {
@@ -33,7 +50,7 @@ namespace dRzTools.Servise
         public void ConsoleMessage(string Message, string Title = null, [CallerMemberName] string CallerName = null)
         {
 #if NC || AC
-            Document doc = Application.DocumentManager.MdiActiveDocument;
+            Document doc = App.Application.DocumentManager.MdiActiveDocument;
             if (doc == null)
             {
                 InfoMessage(Message, CallerName);
@@ -222,7 +239,7 @@ namespace dRzTools.Servise
             get
             {
 
-                if (string.IsNullOrWhiteSpace(_title)) return DataSetWpfOpt.sTitleAttribute + " " + DataSetWpfOpt.sVersion;
+                if (string.IsNullOrWhiteSpace(_title)) return SysInfo.sTitleAttribute + " " + SysInfo.sVersion;
                 else return _title;
             }
         }

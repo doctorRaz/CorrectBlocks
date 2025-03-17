@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7548E40F-A58F-47B6-AEF5-A8AAACE5C15D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>drz</RootNamespace>
+    <AssemblyName>BlockStandardAC_2023</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;AC</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <!--<PlatformTarget>AnyCPU</PlatformTarget>-->
+    <TargetName>$(AssemblyName)$(PlatformTarget)</TargetName>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DefineConstants>AC</DefineConstants>
+    <Optimize>true</Optimize>
+    <!--<PlatformTarget>AnyCPU</PlatformTarget>-->
+    <TargetName>$(AssemblyName)$(PlatformTarget)</TargetName>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AcCoreMgd">
+      <HintPath>..\..\SDK\AC2024\inc\AcCoreMgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcCui">
+      <HintPath>..\..\SDK\AC2024\inc\AcCui.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcDbMgd">
+      <HintPath>..\..\SDK\AC2024\inc\AcDbMgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="acdbmgdbrep">
+      <HintPath>..\..\SDK\AC2024\inc\acdbmgdbrep.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcDx">
+      <HintPath>..\..\SDK\AC2024\inc\AcDx.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcMgd">
+      <HintPath>..\..\SDK\AC2024\inc\AcMgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcMr">
+      <HintPath>..\..\SDK\AC2024\inc\AcMr.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcSeamless">
+      <HintPath>..\..\SDK\AC2024\inc\AcSeamless.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcTcMgd">
+      <HintPath>..\..\SDK\AC2024\inc\AcTcMgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcWindows">
+      <HintPath>..\..\SDK\AC2024\inc\AcWindows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AdUIMgd">
+      <HintPath>..\..\SDK\AC2024\inc\AdUIMgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AdUiPalettes">
+      <HintPath>..\..\SDK\AC2024\inc\AdUiPalettes.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AdWindows">
+      <HintPath>..\..\SDK\AC2024\inc\AdWindows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\CorrectBlocksNC.NET\Block\AttRotate.cs">
+      <Link>Block\AttRotate.cs</Link>
+    </Compile>
+    <Compile Include="..\CorrectBlocksNC.NET\Block\AttSynch.cs">
+      <Link>Block\AttSynch.cs</Link>
+    </Compile>
+    <Compile Include="..\CorrectBlocksNC.NET\Block\BlockNormalized.cs">
+      <Link>Block\BlockNormalized.cs</Link>
+    </Compile>
+    <Compile Include="..\CorrectBlocksNC.NET\Block\RemAnnot.cs">
+      <Link>Block\RemAnnot.cs</Link>
+    </Compile>
+    <Compile Include="..\CorrectBlocksNC.NET\Block\WipBot.cs">
+      <Link>Block\WipBot.cs</Link>
+    </Compile>
+    <Compile Include="..\CorrectBlocksNC.NET\CadCommands\CadCommand.cs">
+      <Link>CadCommands\CadCommand.cs</Link>
+    </Compile>
+    <Compile Include="..\CorrectBlocksNC.NET\Extensions\BlockTableRecordExtensions.cs">
+      <Link>Extensions\BlockTableRecordExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\CorrectBlocksNC.NET\Interfaces\IAllMessageService.cs">
+      <Link>Interfaces\IAllMessageService.cs</Link>
+    </Compile>
+    <Compile Include="..\CorrectBlocksNC.NET\Interfaces\IInputBoxService.cs">
+      <Link>Interfaces\IInputBoxService.cs</Link>
+    </Compile>
+    <Compile Include="..\CorrectBlocksNC.NET\Interfaces\IMessageService.cs">
+      <Link>Interfaces\IMessageService.cs</Link>
+    </Compile>
+    <Compile Include="..\CorrectBlocksNC.NET\Interfaces\IQuestionService.cs">
+      <Link>Interfaces\IQuestionService.cs</Link>
+    </Compile>
+    <Compile Include="..\CorrectBlocksNC.NET\SaveMods\QSaveAsKeanw.cs">
+      <Link>SaveMods\QSaveAsKeanw.cs</Link>
+    </Compile>
+    <Compile Include="..\CorrectBlocksNC.NET\SaveMods\QsaveKpblc.cs">
+      <Link>SaveMods\QsaveKpblc.cs</Link>
+    </Compile>
+    <Compile Include="..\CorrectBlocksNC.NET\SaveMods\SaveMod.cs">
+      <Link>SaveMods\SaveMod.cs</Link>
+    </Compile>
+    <Compile Include="..\CorrectBlocksNC.NET\SaveMods\SaveTest.cs">
+      <Link>SaveMods\SaveTest.cs</Link>
+    </Compile>
+    <Compile Include="..\CorrectBlocksNC.NET\Servise\CmdInfo.cs">
+      <Link>Servise\CmdInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\CorrectBlocksNC.NET\Servise\ListCMDInfo.cs">
+      <Link>Servise\ListCMDInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\CorrectBlocksNC.NET\Servise\MessageService.cs">
+      <Link>Servise\MessageService.cs</Link>
+    </Compile>
+    <Compile Include="..\CorrectBlocksNC.NET\Servise\SysConstant.cs">
+      <Link>Servise\SysConstant.cs</Link>
+    </Compile>
+    <Compile Include="..\CorrectBlocksNC.NET\Servise\SysInfo.cs">
+      <Link>Servise\SysInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\CorrectBlocksNC.NET\Servise\UtilitesString.cs">
+      <Link>Servise\UtilitesString.cs</Link>
+    </Compile>
+    <Compile Include="..\CorrectBlocksNC.NET\Servise\UtilitesWorkFil.cs">
+      <Link>Servise\UtilitesWorkFil.cs</Link>
+    </Compile>
+    <Compile Include="..\CorrectBlocksNC.NET\Servise\WorkingDatabaseSwitcher.cs">
+      <Link>Servise\WorkingDatabaseSwitcher.cs</Link>
+    </Compile>
+    <Compile Include="..\CorrectBlocksNC.NET\Settings\RegistrySettings.cs">
+      <Link>Settings\RegistrySettings.cs</Link>
+    </Compile>
+    <Compile Include="..\CorrectBlocksNC.NET\Settings\UtilServise.cs">
+      <Link>Settings\UtilServise.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="qsave.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

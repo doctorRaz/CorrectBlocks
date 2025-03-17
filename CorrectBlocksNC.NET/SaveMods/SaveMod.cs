@@ -1,5 +1,4 @@
 ﻿using System.IO;
-
 using dRzTools.Settings;
 
 
@@ -20,7 +19,7 @@ using Autodesk.AutoCAD.EditorInput;
 using Autodesk.AutoCAD.Runtime;
 #endif
 
-namespace dRzTools.SaveMod
+namespace dRzTools.SaveMods
 {
     public class SaveMod
     {
@@ -99,7 +98,7 @@ namespace dRzTools.SaveMod
             //? затычка шоб это работало 
             fileSaveName = Path.ChangeExtension(fileSaveName, "dwg");
 
-            //? поведение АК
+            //todo поведение АК
             /*
                 файл вообще без каталога посылает нах (можем писать в последнюю сохраненную)
                 не сохраненный файл без расширения сохраняет в dwg  версия последняя заданная
@@ -125,7 +124,7 @@ namespace dRzTools.SaveMod
 
 
 
-            //? вот не надо этот путь сохранять save path from registry
+            //x вот не надо этот путь сохранять save path from registry
             //rm.objSaveInitDir = Path.GetDirectoryName(fileSaveName);
 
 
@@ -162,7 +161,7 @@ namespace dRzTools.SaveMod
 
             bool IsFILEDIA = (int)objFILEDIA == 1;
 
-            if (CadCommand.IsLisp || (int)cmdactive != 0)
+            if (ListCmdInfo.IsLisp || (int)cmdactive != 0)
             {// ком строка
 
 

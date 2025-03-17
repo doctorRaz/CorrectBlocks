@@ -1,16 +1,17 @@
 using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
-using System.Reflection;
 using Microsoft.Win32;
+
 using System.IO;
 
 
 
 #if NC
 using Teigha.DatabaseServices;
+
 using HostMgd.ApplicationServices;
+
 using App = HostMgd.ApplicationServices;
 using Ed = HostMgd.EditorInput;
 using Rtm = Teigha.Runtime;
@@ -192,109 +193,6 @@ namespace dRzTools.Settings
             }
             return sAnswer;
         }
-
-
-
-        #region  ПОЛУЧЕНИЕ КОМАНД
-
-        #region от Ривилиса
-#if NC || AC
-        /// <summary>
-        /// Получение списка команд
-        /// https://adn-cis.org/programmnoe-opredelenie-dublirovannyix-imen-.net-komand.html
-        /// </summary>
-        public static void FindCmdDuplicates()
-        {
-            Dictionary<string, List<MethodInfo>> map =
-                new Dictionary<string, List<MethodInfo>>();
-
-            // razygraevaa on 23.09.2022 at 11:37   Assembly asm = Assembly.LoadFile(asmPath);
-            Assembly asm = Assembly.GetExecutingAssembly();
-            Type[] expTypes = asm.GetTypes();
-
-            foreach (Type type in expTypes)
-            {
-                MethodInfo[] methods = type.GetMethods();
-
-                foreach (MethodInfo method in methods)
-                {
-                    Rtm.CommandMethodAttribute attribute =
-                          GetCommandMethodAttribute(method);
-
-                    if (attribute == null)
-                        continue;
-
-                    if (!map.ContainsKey(attribute.GlobalName))
-                    {
-                        var methodInfo = new List<MethodInfo>();
-
-                        map.Add(attribute.GlobalName, methodInfo);
-                    }
-
-                    map[attribute.GlobalName].Add(method);
-                }
-            }
-
-            Document doc = App.Application.DocumentManager.MdiActiveDocument;
-            Ed.Editor ed = doc.Editor;
-
-            foreach (var keyValuePair in map)
-            {
-                // razygraevaa on 23.09.2022 at 11:38    if (keyValuePair.Value.Count > 1)
-                string sDuplicate;//= string.Empty;
-                string sDuplicateTab = string.Empty;
-                if (keyValuePair.Value.Count > 1)
-                {
-                    sDuplicate = "\n****************************\tДубль ********\n\t";
-                    sDuplicateTab = "\t";
-                }
-                else
-                {
-                    sDuplicate = "\n";
-                    //sDuplicateTab = "\n\t";
-                }
-                // razygraevaa on 23.09.2022 at 11:39      "\nДублированный атрибут: " + keyValuePair.Key);
-                ed.WriteMessage(
-                                sDuplicate + "Команда- " + keyValuePair.Key
-                                );
-
-                foreach (var method in keyValuePair.Value)
-                {
-                    ed.WriteMessage(
-                                    sDuplicateTab + "= Метод: " + method.Name
-                                    );
-                }
-                if (keyValuePair.Value.Count > 1)
-                {
-                    ed.WriteMessage("\n************************");
-                }
-            }
-        }
-
-        /// <summary>
-        /// Методы и команды
-        /// </summary>
-        /// <param name="method"></param>
-        /// <returns></returns>
-        public static Rtm.CommandMethodAttribute GetCommandMethodAttribute(
-                MethodInfo method)
-        {
-            object[] attributes = method.GetCustomAttributes(true);
-
-            foreach (object attribute in attributes)
-            {
-                if (attribute is Rtm.CommandMethodAttribute)
-                {
-                    return attribute as Rtm.CommandMethodAttribute;
-                }
-            }
-
-            return null;
-        }
-#endif
-        #endregion
-
-        #endregion
 
 
         #endregion

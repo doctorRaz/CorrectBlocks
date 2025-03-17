@@ -11,18 +11,18 @@ using dRzTools;
 using dRzTools.Servise;
 
 //using DrzCadTools.Infrastructure;
-//using drzTools.CadCommand;
+//using drzTools.ListCmdInfo;
 
-namespace drzTools.CadCommand
+namespace drzTools.Servise
 {
-   partial class CadCommand
+     class ListCmdInfo
     {
         #region LIST CMD
 
         /// <summary>
         /// Lists the command.
         /// </summary>
-        public void ListCMD()
+        public static void ListCMD()
         {
             bool bMethod = false;//не выводить имена методов
 #if DEBUG
@@ -31,14 +31,14 @@ namespace drzTools.CadCommand
             //выводим список команд с описаниями
             CmdInfo CDI = new CmdInfo(Assembly.GetExecutingAssembly(), bMethod);//эта сборка вывод имен классов
 
-            string sTitleAttribute = DataSetWpfOpt.sTitleAttribute;
+            string sTitleAttribute = SysInfo.sTitleAttribute;
 
-            string sVersion = DataSetWpfOpt.sVersionFull;
+            string sVersion = SysInfo.sVersionFull;
 
-            string sDateRliz = DataSetWpfOpt.sDateRelies;
+            string sDateRliz = SysInfo.sDateRelies;
 
             IAllMessageService msgService = new MessageService();
-            msgService.ConsoleMessage(sTitleAttribute + ": v." + sVersion + " от " + sDateRliz);
+            msgService.ConsoleMessage(sTitleAttribute + ": v." + sVersion + " от " + sDateRliz+"\n");
 
             if (!string.IsNullOrWhiteSpace(CDI.sCmdInfo))
             {

@@ -2,12 +2,10 @@
 
 //using Microsoft.VisualBasic.ApplicationServices;
 
+using drzTools.Extensions;
 
 
 #if NC
-
-
-using drzTools.Extensions;
 
 using HostMgd.ApplicationServices;
 using HostMgd.EditorInput;
@@ -24,6 +22,8 @@ using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.EditorInput;
 using Autodesk.AutoCAD.Geometry;
 using Autodesk.AutoCAD.Runtime;
+
+
 using acad = Autodesk.AutoCAD.ApplicationServices.Application;
 using AcadApp = Autodesk.AutoCAD.ApplicationServices.Application;
 using Platform = Autodesk.AutoCAD;

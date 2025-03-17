@@ -1,10 +1,7 @@
 ﻿using System.Reflection;
 using System.Text.RegularExpressions;
 
-
-#if NET
-//[assembly: AssemblyInformationalVersion("Utilites String")]
-#endif
+ 
 
 namespace dRzTools.Servise
 {

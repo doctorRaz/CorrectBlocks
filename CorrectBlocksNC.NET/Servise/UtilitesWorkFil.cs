@@ -140,7 +140,7 @@ namespace dRzTools.Servise
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(FilPath + "\n" + ex.Message + "\n" + "Каталог не создан\n Проверьте права на запись в каталог\n Возможны ошибки в работе программы", DataSetWpfOpt.sTitleAttribute + " " + DataSetWpfOpt.sVersionFull, MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show(FilPath + "\n" + ex.Message + "\n" + "Каталог не создан\n Проверьте права на запись в каталог\n Возможны ошибки в работе программы", SysInfo.sTitleAttribute + " " + SysInfo.sVersionFull, MessageBoxButton.OK, MessageBoxImage.Warning);
                     return false;
                 }
             }
