@@ -28,7 +28,7 @@ using Rtm = Autodesk.AutoCAD.Runtime;
 
 #endif
 
-namespace dRzTools.Settings
+namespace drzTools.Settings
 {
     /// <summary>Служебные утилиты</summary>
     class McUtilServise

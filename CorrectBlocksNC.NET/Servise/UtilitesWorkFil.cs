@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
-using System.Runtime.InteropServices;
-using System.Text;
 using System.Windows;
 
 
@@ -25,7 +21,7 @@ using Rtm = Autodesk.AutoCAD.Runtime;
 
 
 
-namespace dRzTools.Servise
+namespace drzTools.Servise
 {
     /// <summary>Утилиты и подпрограммы</summary>
     internal partial class UtilitesWorkFil
@@ -72,7 +68,7 @@ namespace dRzTools.Servise
             }
         }
 
-       
+
 
         //https://stackoverflow.com/questions/1410127/c-sharp-test-if-user-has-write-access-to-a-folder
         /// <summary>
@@ -177,7 +173,7 @@ namespace dRzTools.Servise
             //string filename_initial = Path.Combine(sPlotPath, sFilName + "." + sFilExt);
             // sPlotPath
             //sPlotFilName
-            string filename_current =Path.Combine(sPlotPath,  $"{sFilName}.{sFilExt}");// filename_initial;
+            string filename_current = Path.Combine(sPlotPath, $"{sFilName}.{sFilExt}");// filename_initial;
             int count = 0;
             while (File.Exists(filename_current))
             {
@@ -232,7 +228,7 @@ namespace dRzTools.Servise
             return string.Join("\\", splitPaths);
         }
 
-     
+
 
         #endregion
 

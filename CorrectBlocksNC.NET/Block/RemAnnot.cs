@@ -1,8 +1,10 @@
 #if NC
 using HostMgd.ApplicationServices;
 using HostMgd.EditorInput;
+
 using Teigha.DatabaseServices;
 using Teigha.Runtime;
+
 using App = HostMgd.ApplicationServices;
 using Ed = HostMgd.EditorInput;
 using Rtm = Teigha.Runtime;
@@ -27,7 +29,7 @@ namespace drzTools.Block
     {
         // идея https://adn-cis.org/forum/index.php?topic=10382.msg48321#msg48321
 
-      
+
         /// <summary>
         /// Отключение аннотативности ВСЕХ блоков
         /// </summary>

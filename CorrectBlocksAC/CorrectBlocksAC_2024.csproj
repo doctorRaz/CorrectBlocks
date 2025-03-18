@@ -8,7 +8,7 @@
     <ProjectGuid>{7548E40F-A58F-47B6-AEF5-A8AAACE5C15D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>drz</RootNamespace>
+    <RootNamespace>drzTools</RootNamespace>
     <AssemblyName>BlockStandardAC_2023</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

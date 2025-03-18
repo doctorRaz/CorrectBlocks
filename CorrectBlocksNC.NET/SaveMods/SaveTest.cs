@@ -25,7 +25,7 @@ using Rtm = Autodesk.AutoCAD.Runtime;
 #endif
 
 
-namespace dRzTools.SaveMods
+namespace drzTools.SaveMods
 {
     public class SaveTest
     {

@@ -12,6 +12,7 @@ using System.Collections.Generic;
 #if NC
 using HostMgd.ApplicationServices;
 using HostMgd.EditorInput;
+
 using Teigha.DatabaseServices;
 using Teigha.Runtime;
 #elif AC
@@ -21,7 +22,7 @@ using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.EditorInput;
 #endif
 
-namespace dRzTools.SaveMods
+namespace drzTools.SaveMods
 {
     /// <summary>
     /// Quick Save Kpblc

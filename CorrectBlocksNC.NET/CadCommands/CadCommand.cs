@@ -5,7 +5,10 @@ using drzTools.Block;
 
 using drzTools.Servise;
 
-using dRzTools.SaveMods;
+using drzTools.SaveMods;
+
+using dzTools.SaveMods;
+
 
 
 #if NC
@@ -33,7 +36,7 @@ using Rtm = Autodesk.AutoCAD.Runtime;
 [assembly: AssemblyInformationalVersion("drzTools for CAD")]
 #endif
 
-namespace dRzTools.CadCommands
+namespace drzTools.CadCommands
 {
     /// <summary> Вызов всех модулей 
     /// <br>добавил импорт фильтров слоев</br>

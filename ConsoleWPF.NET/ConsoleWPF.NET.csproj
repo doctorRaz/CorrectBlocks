@@ -8,7 +8,7 @@
 		<UseWPF>true</UseWPF>
 		<ProduceReferenceAssembly>False</ProduceReferenceAssembly>
 		<BaseOutputPath>..\bin.NET\</BaseOutputPath>
-		<RootNamespace>drzTools</RootNamespace>
+		<RootNamespace>dRzTools</RootNamespace>
 		<PlatformTarget>x64</PlatformTarget>
 		<ProduceReferenceAssembly>false</ProduceReferenceAssembly>
 		<SignAssembly>False</SignAssembly>

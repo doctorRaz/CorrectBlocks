@@ -1,9 +1,8 @@
-﻿using System.Reflection;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
- 
 
-namespace dRzTools.Servise
+
+namespace drzTools.Servise
 {
     /// <summary>Утилиты и подпрограммы для работы со строками
     /// </summary>

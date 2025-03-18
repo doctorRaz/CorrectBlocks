@@ -1,7 +1,7 @@
 ﻿
 
 
-namespace dRzTools.Servise
+namespace drzTools.Servise
 {
     /// <summary> константы /const/</summary>
     public class SysConstant //: INotifyPropertyChanged
@@ -18,7 +18,7 @@ namespace dRzTools.Servise
         #endregion
 
         #region  СЕКЦИЯ О ПРОГАРММЕ
-  
+
 
         #region АДРЕСА
 

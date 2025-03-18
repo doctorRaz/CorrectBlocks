@@ -2,7 +2,7 @@ using System.IO;
 
 using Microsoft.Win32;
 
-namespace dRzTools.Settings
+namespace drzTools.Settings
 {
     public class RegistrySettings
     {

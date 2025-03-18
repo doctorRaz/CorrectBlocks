@@ -32,7 +32,7 @@ using Rtm = Autodesk.AutoCAD.Runtime;
 
 
 
-namespace dRzTools.Servise
+namespace drzTools.Servise
 {
     /// <summary> Пути разделители и пр.</summary>
     public class SysInfo
@@ -215,7 +215,7 @@ namespace dRzTools.Servise
         internal static string sAppMajor => ((System.Windows.Forms.Application.ProductVersion).Split('.'))[0];
 
 #else
-        internal static string sAppMajor =>Application.Version.Major.ToString();
+        internal static string sAppMajor => Application.Version.Major.ToString();
 
 #endif
 

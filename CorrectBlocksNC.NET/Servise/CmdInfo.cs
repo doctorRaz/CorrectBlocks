@@ -19,7 +19,7 @@ using Autodesk.AutoCAD.Runtime;
 
 #endif
 
-namespace dRzTools.Servise
+namespace drzTools.Servise
 {
     /// <summary>
     /// Информация о командах CAD
