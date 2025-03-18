@@ -28,7 +28,7 @@ using Rtm = Autodesk.AutoCAD.Runtime;
 namespace dRzTools.Servise
 {
     /// <summary>Утилиты и подпрограммы</summary>
-    internal partial class McUtilWorkFil
+    internal partial class UtilitesWorkFil
     {
         #region РАБОТА С ФАЙЛАМИ
 

@@ -245,7 +245,7 @@ namespace dRzTools.Servise
 
                 _VersionSetingPath = Path.Combine(_sUserAppData, sProduct, sAppProductName, sAppMajor);
 
-                McUtilWorkFil.CreateDirMod(_VersionSetingPath);
+                UtilitesWorkFil.CreateDirMod(_VersionSetingPath);
                 return _VersionSetingPath;
             }
         }
@@ -259,7 +259,7 @@ namespace dRzTools.Servise
                 string _GeneralSettingPath;
                 _GeneralSettingPath = Path.Combine(_sUserAppData, sProduct);
 
-                McUtilWorkFil.CreateDirMod(_GeneralSettingPath);
+                UtilitesWorkFil.CreateDirMod(_GeneralSettingPath);
 
                 return _GeneralSettingPath;
             }
@@ -273,7 +273,7 @@ namespace dRzTools.Servise
                 string _LicPath;
                 _LicPath = Path.Combine(GeneralSettingPath, "lic");
 
-                McUtilWorkFil.CreateDirMod(_LicPath);
+                UtilitesWorkFil.CreateDirMod(_LicPath);
 
                 return _LicPath;
             }
