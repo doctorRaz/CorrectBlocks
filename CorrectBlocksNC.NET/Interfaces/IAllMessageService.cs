@@ -1,7 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-
-
-namespace drzTools.Abstractions.Interfaces
+﻿namespace drzTools.Abstractions.Interfaces
 {
     public interface IAllMessageService : IInputBoxService, IMessageService, IQuestionService
     {

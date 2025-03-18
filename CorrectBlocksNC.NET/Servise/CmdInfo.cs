@@ -171,7 +171,7 @@ namespace dRzTools.Servise
             }
         }
 
-        private CmdList GetCmdInf(MethodInfo method)
+        private static CmdList GetCmdInf(MethodInfo method)
         {
             object[] attributes = method.GetCustomAttributes(true);
             CmdList res = new CmdList();

@@ -59,7 +59,7 @@ namespace dRzTools.Servise
             Editor ed = doc.Editor;
 #if DEBUG
             //ed.WriteMessage($"\n----------------\n{CallerName}:\n----------------\n {Message}");
-            ed.WriteMessage($"{CallerName}: {Message}");
+            ed.WriteMessage($"\n{CallerName}:\n{Message}");
 #else
             ed.WriteMessage($"\n{Message}");
 #endif

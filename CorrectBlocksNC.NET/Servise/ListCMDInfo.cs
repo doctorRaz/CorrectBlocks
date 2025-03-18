@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Reflection;
 
 using drzTools.Abstractions.Interfaces;
 
-using dRzTools;
 using dRzTools.Servise;
 
 //using DrzCadTools.Infrastructure;
@@ -15,7 +9,7 @@ using dRzTools.Servise;
 
 namespace drzTools.Servise
 {
-     class ListCmdInfo
+    class ListCmdInfo
     {
         #region LIST CMD
 
@@ -38,7 +32,9 @@ namespace drzTools.Servise
             string sDateRliz = SysInfo.sDateRelies;
 
             IAllMessageService msgService = new MessageService();
-            msgService.ConsoleMessage(sTitleAttribute + ": v." + sVersion + " от " + sDateRliz+"\n");
+            msgService.ConsoleMessage($"{sTitleAttribute}: v.{sVersion} от {sDateRliz}");
+
+            msgService.ConsoleMessage("------------------------------------------");
 
             if (!string.IsNullOrWhiteSpace(CDI.sCmdInfo))
             {
@@ -54,6 +50,8 @@ namespace drzTools.Servise
             {
                 msgService.ConsoleMessage(CDI.sDuplInfo);
             }
+
+            msgService.ConsoleMessage("------------------------------------------");
         }
         #endregion
     }

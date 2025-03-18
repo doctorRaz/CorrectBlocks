@@ -31,7 +31,7 @@ namespace dRzTools.SaveMods
         /// <summary>
         /// Quicks the save command. by Kpblc
         /// </summary>
-        public static void QuickSaveKpblc()
+        public static void QuickSave()
         {
             Document doc = Application.DocumentManager.MdiActiveDocument;
             Editor ed = doc.Editor;
