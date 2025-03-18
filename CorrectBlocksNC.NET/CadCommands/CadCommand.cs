@@ -113,7 +113,7 @@ namespace dRzTools.CadCommands
         /// <summary>
         /// Отключение аннотативности ВСЕХ блоков
         /// </summary>
-        [Rtm.CommandMethod("drz_rem_anntB")]
+        [Rtm.CommandMethod("drz_rem_annt")]
         [Description("Отключение аннотативности ВСЕХ блоков")]
         public static void RemovAnntBlcCmd()
         {
@@ -123,7 +123,7 @@ namespace dRzTools.CadCommands
         /// <summary>
         /// Отключение аннотативности ВСЕХ блоков + снять аннотативность с примитивов
         /// </summary>
-        [Rtm.CommandMethod("drz_rem_anntBent")]
+        [Rtm.CommandMethod("drz_rem_anntE")]
         [Description("Отключение аннотативности ВСЕХ блоков и отключить аннотативность с примитивов")]
         public static void RemovAnntAllCmd()
         {
