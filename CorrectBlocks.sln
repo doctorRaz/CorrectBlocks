@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorrectBlocksNC", "BlockStandardNC\CorrectBlocksNC.csproj", "{045A02B6-25B6-4CB9-A82D-962632A33D83}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorrectBlocksNC.NET", "CorrectBlocksNC.NET\CorrectBlocksNC.NET.csproj", "{BA50A8DF-8C03-3499-EE39-A970A78614DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorrectBlocksAC_2018", "BlockStandardAC\CorrectBlocksAC_2018.csproj", "{6639C2D0-E869-47E6-892D-0ECB5D422549}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorrectBlocksNC", "CorrectBlocksNC\CorrectBlocksNC.csproj", "{045A02B6-25B6-4CB9-A82D-962632A33D83}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CorrectBlocksNC.NET", "Tools23\CorrectBlocksNC.NET.csproj", "{51441ABC-7A16-455B-9B81-676D1BD10125}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorrectBlocksAC_2018", "CorrectBlocksAC\CorrectBlocksAC_2018.csproj", "{6639C2D0-E869-47E6-892D-0ECB5D422549}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorrectBlocksAC_2024", "CorrectBlocksAC\CorrectBlocksAC_2024.csproj", "{7548E40F-A58F-47B6-AEF5-A8AAACE5C15D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BA50A8DF-8C03-3499-EE39-A970A78614DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA50A8DF-8C03-3499-EE39-A970A78614DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA50A8DF-8C03-3499-EE39-A970A78614DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA50A8DF-8C03-3499-EE39-A970A78614DE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{045A02B6-25B6-4CB9-A82D-962632A33D83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{045A02B6-25B6-4CB9-A82D-962632A33D83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{045A02B6-25B6-4CB9-A82D-962632A33D83}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -23,10 +29,10 @@ Global
 		{6639C2D0-E869-47E6-892D-0ECB5D422549}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6639C2D0-E869-47E6-892D-0ECB5D422549}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6639C2D0-E869-47E6-892D-0ECB5D422549}.Release|Any CPU.Build.0 = Release|Any CPU
-		{51441ABC-7A16-455B-9B81-676D1BD10125}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{51441ABC-7A16-455B-9B81-676D1BD10125}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{51441ABC-7A16-455B-9B81-676D1BD10125}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{51441ABC-7A16-455B-9B81-676D1BD10125}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7548E40F-A58F-47B6-AEF5-A8AAACE5C15D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7548E40F-A58F-47B6-AEF5-A8AAACE5C15D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7548E40F-A58F-47B6-AEF5-A8AAACE5C15D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7548E40F-A58F-47B6-AEF5-A8AAACE5C15D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

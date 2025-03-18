@@ -57,7 +57,7 @@ using Trtm = Autodesk.AutoCAD.Runtime;
 using Platform = Autodesk.AutoCAD;
 using PlatformDb = Autodesk.AutoCAD;
 #endif
-namespace drz.Tools
+namespace drzTools.Block
 {
     /// <summary>
     ///<br> для чего?</br>

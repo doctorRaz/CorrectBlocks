@@ -1,12 +1,14 @@
-using System;
+using System.ComponentModel;
+using System.Reflection;
+
+using drzTools.Block;
+
+using drzTools.Servise;
+
+using dRzTools.SaveMods;
+
 
 #if NC
-using HostMgd.ApplicationServices;
-using HostMgd.EditorInput;
-
-
-using Teigha.DatabaseServices;
-
 using App = HostMgd.ApplicationServices;
 using Ed = HostMgd.EditorInput;
 using Rtm = Teigha.Runtime;
@@ -17,16 +19,21 @@ using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.EditorInput;
 using Autodesk.AutoCAD.Windows;
+
 using App = Autodesk.AutoCAD.ApplicationServices;
 using Cad = Autodesk.AutoCAD.ApplicationServices.Application;
 using Db = Autodesk.AutoCAD.DatabaseServices;
 using Ed = Autodesk.AutoCAD.EditorInput;
 using Gem = Autodesk.AutoCAD.Geometry;
 using Rtm = Autodesk.AutoCAD.Runtime;
-#endif
-using drz.Tools;
 
-namespace DrzCadTools
+#endif
+
+#if NET
+[assembly: AssemblyInformationalVersion("drzTools for CAD")]
+#endif
+
+namespace dRzTools.CadCommands
 {
     /// <summary> Вызов всех модулей 
     /// <br>добавил импорт фильтров слоев</br>
@@ -37,38 +44,9 @@ namespace DrzCadTools
         #region INIT
         public void Initialize()
         {
-            //think добавить проверку есть ли doc
+            ListCmdInfo.ListCMD();//выводим список команд с описаниями
 
-            App.DocumentCollection dm = App.Application.DocumentManager;
-            
-            Ed.Editor ed = dm.MdiActiveDocument.Editor;
-            //!+Вывожу список команд определенных в библиотеке
-            ed.WriteMessage("\nStart list of commands: \n");
-            string sCom =
-                "drz_WipBot" + "\tМаскировки ВСЕХ блоков на задний план\n" +
-                "drz_blc_WipBot" + "\tМаскировки ВЫБРАННЫХ блоков на задний план\n" +
-                "drz_AtrRotateSel" + "\tКрутит в ВЫБРАННЫХ блоках ВСЕ атрибуты в ноль\n" +
-                "drz_AtrRotateAll" + "\tКрутит в блоке ВСЕ атрибуты в ноль\n" +
-                "drz_AtrRotateOne" + "\tКрутит выбранный атрибут блока в ноль\n" +
-                "drz_blc_SetDlg" + "\tДиалоговая настройки нормализации блоков\n" +
-                "drz_blc_EntityToZero" + "\tПримитивы на слой 0\n" +
-                "drz_blc_ColorByLayer" + "\tЦвет примитивов по слою\n" +
-                "drz_blc_AllPropByLayer" + "\tВсе свойства по слою\n" +
-                "drz_blc_AllPropByBlock" + "\tВсе свойства по блоку\n" +
-                "drz_AtrSynch" + "\tСинхронизация атрибутов от Андрея Бушмана\n" +
-                "drz_AtrSynchHard" + "\tСинхронизация атрибутов от Gilles Chanteau (Грубое обновление)\n" +
-                "drz_LayerImport" + "\tИмпорт фильтров слоев\n)" +
-                "drz_rem_anntb" + "\tОтключение аннотативности ВСЕХ блоков\n" +
-                "drz_rem_anntG" + "\tОтключение аннотативности ВСЕХ блоков\n" +
-                "drz_rem_anntBent" + "\tОтключение аннотативности ВСЕХ блоков + снять аннотативность с сущностей\n"
-                ;
-            ed.WriteMessage(sCom);
-            ed.WriteMessage("\nEnd list of commands\n");
 
-#if DEBUG
-            //для отладки список команд, чтоб лишнего не попало
-            McUtilServise.FindCmdDuplicates();
-#endif           
         }
 
         public void Terminate()
@@ -80,39 +58,53 @@ namespace DrzCadTools
 
         #region Command
 
+        #region INFO
+
+        [Rtm.CommandMethod("drz_ToolsInfo")]
+        [Description("Информация о командах сборки")]
+        public static void ListCMD()
+        {
+            ListCmdInfo.ListCMD();//выводим список команд с описаниями
+        }
+
+        #endregion
+
         #region Save
 
-#if DEBUG
-        [Rtm.CommandMethod("drz_SAVE_TEST")]
-        public static void SaveTest()
+        /// <summary>
+        /// Аналог команды SAVE AutoCAD.
+        /// </summary>
+        [Rtm.CommandMethod("drz_save")]
+        [Description("Аналог команды SAVE AutoCAD, сохраняет копию чертежа с другим именем, но рабочим остается прежний чертеж")]
+        public static void SaveCmd()
         {
-            //Database db = HostApplicationServices.WorkingDatabase;
-            Document doc = Application.DocumentManager.MdiActiveDocument;
-            Database db = doc.Database;
-            Editor ed = doc.Editor;
-            ed.WriteMessage("CCC Ok");
-            //---Y
-
-            PromptSaveFileOptions pfso = new PromptSaveFileOptions("Сохранить файл: ");
-            pfso.Filter =
-                          "Drawing (*.dwg)|*.dwg|"
-                        + "Design Web Format (*.dwf)|*.dwf|"
-                        + "All files (*.*)|*.*";
-            pfso.DialogCaption = "DialogCaption";
-            pfso.DialogName = "DialogName";
-            pfso.DeriveInitialFilenameFromDrawingName = true;
-            pfso.InitialFileName = doc.Name;
-            pfso.InitialDirectory = @"c:\temp\00";
-
-            PromptFileNameResult pfnr = ed.GetFileNameForSave(pfso);
-
-            if (pfnr.Status != PromptStatus.OK) return;
-
-            string fileSaveName = pfnr.StringResult;
-
-            db.SaveAs(fileSaveName, DwgVersion.Current);
+            SaveMod.Save_mod();
         }
-#endif
+
+        /// <summary>
+        /// Программный Save as by Keanw
+        /// </summary>
+        [Rtm.CommandMethod("drz_QSAVEAS")]
+        [Description("Программное СОХРАНИТЬ КАК от Keanw")]
+        public static void QSaveAsCmd()
+        {
+            QSaveAsKeanw.QuickSaveAs();
+        }
+
+
+        [Rtm.CommandMethod("drz_Qsave")]
+        [Description("Программное СОХРАНИТЬ от Кулик")]
+        public static void QSaveCmdKpblcCmd()
+        {
+            QsaveKpblc.QuickSave();
+        }
+
+        [Rtm.CommandMethod("drz_SAVE_TEST")]
+        [Description("Программно СОХРАНИТЬ ТЕСТ в разработке")]
+        public static void Save_testCmd()
+        {
+            SaveTest.Save_Test();
+        }
 
         #endregion
 
@@ -122,33 +114,33 @@ namespace DrzCadTools
         /// Отключение аннотативности ВСЕХ блоков
         /// </summary>
         [Rtm.CommandMethod("drz_rem_anntB")]
-        //[Rtm.CommandMethod("drz_rem_anntB", Rtm.CommandFlags.Session | Rtm.CommandFlags.Modal)]
-        public static void BlcRemovAnntCmd()
+        [Description("Отключение аннотативности ВСЕХ блоков")]
+        public static void RemovAnntBlcCmd()
         {
             RemovAnnotate.Rem_annt(false);
         }
 
         /// <summary>
-        /// Отключение аннотативности ВСЕХ блоков + снять аннотативность с сущностекй
+        /// Отключение аннотативности ВСЕХ блоков + снять аннотативность с примитивов
         /// </summary>
         [Rtm.CommandMethod("drz_rem_anntBent")]
-        //[Rtm.CommandMethod("drz_rem_anntBent", Rtm.CommandFlags.Session | Rtm.CommandFlags.Modal)]
-        public static void BlcRemovAnntEntCmd()
+        [Description("Отключение аннотативности ВСЕХ блоков и отключить аннотативность с примитивов")]
+        public static void RemovAnntAllCmd()
         {
             RemovAnnotate.Rem_annt(true);
         }
-        
+
         #endregion
 
 
         #region Маскировки
 
         /// <summary>
-        /// Move to bottom in blocks wipe out
+        /// Маскировки ВСЕХ блоков на задний план
         /// </summary>
         [Rtm.CommandMethod("drz_WipBot")]
-        //[Rtm.CommandMethod("drz_WipBot", Rtm.CommandFlags.Modal)]
-        public void Blc_WipeoutToBotton()
+        [Description("Переместить маскировки ВСЕХ блоков на задний план")]
+        public static void Blc_WipeoutToBotton()
         {
             WipBot.WipeoutToBotton();
         }
@@ -160,8 +152,8 @@ namespace DrzCadTools
         /// Крутит в выбранных блоках ВСЕ атрибуты в ноль
         /// </summary>
         [Rtm.CommandMethod("drz_AtrRotateSel")]
-        //[Rtm.CommandMethod("drz_AtrRotateSel", Rtm.CommandFlags.Modal)]
-        public void AttS_RotateSelect()
+        [Description("Повернуть в ВЫБРАННЫХ блоках ВСЕ атрибуты в ноль")]
+        public static void AttS_RotateSelect()
         {
             //? сделать по аналогии с топить маскировки блоков
             AtrRotate.AttAllRotateSel();
@@ -171,8 +163,8 @@ namespace DrzCadTools
         /// Крутит в блоке ВСЕ атрибуты в ноль
         /// </summary>
         [Rtm.CommandMethod("drz_AtrRotateAll")]
-        //[Rtm.CommandMethod("drz_AtrRotateAll", Rtm.CommandFlags.Modal)]
-        public void AttS_Rotate()
+        [Description("Повернуть в блоке ВСЕ атрибуты в ноль")]
+        public static void AttS_Rotate()
         {
             AtrRotate.AttAllRotate();
         }
@@ -181,7 +173,8 @@ namespace DrzCadTools
         /// Крутит выбранный атрибут блока в ноль
         /// </summary>
         [Rtm.CommandMethod("drz_AtrRotateOne")]
-        public void AttRotate()
+        [Description("Повернуть выбранный атрибут блока в ноль")]
+        public static void AttRotate()
         {
             AtrRotate.AttSingleRotate();
         }
@@ -192,8 +185,8 @@ namespace DrzCadTools
         /// Синхронизация атрибутов от Андрея Бушмана
         /// </summary>
         [Rtm.CommandMethod("drz_AtrSynch")]
-        //[Rtm.CommandMethod("drz_AtrSynch", Rtm.CommandFlags.Modal)]
-        public static void Att_MySynch()//кулик делал правки, проверить в бою, к AttSync добавил в класс остальные расширения
+        [Description("Синхронизация атрибутов от Андрея Бушмана, атрибуты остаются на своих местах и не меняют размер")]
+        public static void Att_MySynch()//x кулик делал правки, проверить в бою, к AttSync добавил в класс остальные расширения
         {
             AttSynch.mySynch();
         }
@@ -203,8 +196,8 @@ namespace DrzCadTools
         /// </summary>
 
         [Rtm.CommandMethod("drz_AtrSynchHard")]
-        //[Rtm.CommandMethod("drz_AtrSynchHard", Rtm.CommandFlags.Modal)]
-        public void Att_MySynchHard()//кулик делал правки, проверить в бою, к AttSync добавил в класс остальные расширения
+        [Description("Синхронизация атрибутов от Gilles Chanteau (Грубое обновление), размер и положение блоков, как в референтом")]
+        public static void AtrSynchHard()//кулик делал правки, проверить в бою, к AttSync добавил в класс остальные расширения
         {
             AttSynch.mySynchHard();
         }
@@ -216,8 +209,9 @@ namespace DrzCadTools
         /// <summary>
         /// Топить маскировку выбранных блоков
         /// </summary>
-        [Rtm.CommandMethod("drz_blc_WipBot")] 
-        public void Blc_WipBot()
+        [Rtm.CommandMethod("drz_blc_WipBot")]
+        [Description("Маскировки ВЫБРАННЫХ блоков на задний план")]
+        public static void Blc_WipBot()
         {
             NLB.BlockNormalizeSettingsEnum fBlck = NLB.BlockNormalizeSettingsEnum.SetWipeoutBack;
             NLB.GetBlc(fBlck);
@@ -229,7 +223,8 @@ namespace DrzCadTools
         /// <br> Все по слою (VL-CMDF "drz-blc-SetDlg" "Д" "Д" "С" "С" "С" "Д" "Д")</br>
         /// </summary>
         [Rtm.CommandMethod("drz_blc_SetDlg")]
-        public void Blc_GetSetDlg()
+        [Description("Диалог настройки нормализации блоков, командная строка")]
+        public static void Blc_GetSetDlg()
         {
             NLB.GetBlc_SetDlg();
         }
@@ -238,7 +233,8 @@ namespace DrzCadTools
         /// Примитивы на слой 0 
         /// </summary>
         [Rtm.CommandMethod("drz_blc_EntityToZero")]
-        public void Blc_Zero()
+        [Description("Примитивы блока на слой 0")]
+        public static void Blc_Zero()
         {
             NLB.BlockNormalizeSettingsEnum fBlck = NLB.BlockNormalizeSettingsEnum.SetLayer0;
             NLB.GetBlc(fBlck);
@@ -248,17 +244,19 @@ namespace DrzCadTools
         /// Цвет  примитивов по слою
         /// </summary>
         [Rtm.CommandMethod("drz_blc_ColorByLayer")]
-        public void Blc_Color_Layer()
+        [Description("Цвет примитивов блока по слою")]
+        public static void Blc_Color_Layer()
         {
             NLB.BlockNormalizeSettingsEnum fBlck = NLB.BlockNormalizeSettingsEnum.ColorByLayer;
             NLB.GetBlc(fBlck);
         }
-        
+
         /// <summary>
         /// Цвет  примитивов по блоку
         /// </summary>
         [Rtm.CommandMethod("drz_blc_ColorByBlock")]
-        public void Blc_Color_Block()
+        [Description("Цвет примитивов блока по блоку")]
+        public static void Blc_Color_Block()
         {
             NLB.BlockNormalizeSettingsEnum fBlck = NLB.BlockNormalizeSettingsEnum.ColorByBlock;
             NLB.GetBlc(fBlck);
@@ -268,7 +266,8 @@ namespace DrzCadTools
         /// Все свойства по слою
         /// </summary>
         [Rtm.CommandMethod("drz_blc_AllPropByLayer")]
-        public void Blc_All_Layer()
+        [Description("Все свойства примитивов блока по слою")]
+        public static void Blc_All_Layer()
         {
             NLB.BlockNormalizeSettingsEnum fBlck = NLB.BlockNormalizeSettingsEnum.SetBlockExplodeable
                                 | NLB.BlockNormalizeSettingsEnum.EqualScaleOn
@@ -285,7 +284,8 @@ namespace DrzCadTools
         /// Все свойства по блоку
         /// </summary>
         [Rtm.CommandMethod("drz_blc_AllPropByBlock")]
-        public void Blc_All_Block()
+        [Description("Все свойства примитивов блока по блоку")]
+        public static void Blc_All_Block()
         {
             NLB.BlockNormalizeSettingsEnum fBlck = NLB.BlockNormalizeSettingsEnum.SetBlockExplodeable
                                 | NLB.BlockNormalizeSettingsEnum.EqualScaleOn

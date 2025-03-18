@@ -1,19 +1,8 @@
-using HostMgd.ApplicationServices;
-using HostMgd.EditorInput;
+using System.IO;
 
 using Microsoft.Win32;
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Teigha.DatabaseServices;
-using Teigha.Runtime;
-
-namespace DrzCadTools
+namespace dRzTools.Settings
 {
     public class RegistrySettings
     {

@@ -1,11 +1,11 @@
 //using static Samples;//.AutoCAD.DatabaseServices.BlockTableRecordExtensionMethods;
 
 //using Microsoft.VisualBasic.ApplicationServices;
-using DrzCadTools.Extensions;
+
+using drzTools.Extensions;
 
 
 #if NC
-
 
 using HostMgd.ApplicationServices;
 using HostMgd.EditorInput;
@@ -22,6 +22,8 @@ using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.EditorInput;
 using Autodesk.AutoCAD.Geometry;
 using Autodesk.AutoCAD.Runtime;
+
+
 using acad = Autodesk.AutoCAD.ApplicationServices.Application;
 using AcadApp = Autodesk.AutoCAD.ApplicationServices.Application;
 using Platform = Autodesk.AutoCAD;
@@ -29,7 +31,7 @@ using PlatformDb = Autodesk.AutoCAD;
 using Trtm = Autodesk.AutoCAD.Runtime;
 #endif
 
-namespace drz.Tools
+namespace drzTools.Block
 {
     /// <summary>
     /// Синхронизация атрибутов

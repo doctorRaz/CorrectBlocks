@@ -2,12 +2,15 @@
 
 using System;
 
+
+
+
 #if NC
 using Teigha.DatabaseServices;
 #else
 using Autodesk.AutoCAD.DatabaseServices;
 #endif
-namespace DrzCadTools
+namespace dRzTools.Servise
 {
     /// <summary>
     /// Изменяя базу данных чертежей, очень важно контролировать то, какая база данных является текущей. 

@@ -25,6 +25,7 @@
     <Prefer32Bit>false</Prefer32Bit>
     <!--<PlatformTarget>AnyCPU</PlatformTarget>-->
     <TargetName>$(AssemblyName)$(PlatformTarget)</TargetName>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -37,6 +38,7 @@
     <TargetName>$(AssemblyName)$(PlatformTarget)</TargetName>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="hostdbmgd">
@@ -47,6 +49,8 @@
       <HintPath>..\..\SDK\NC22\include-x64\hostmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms" />
@@ -57,44 +61,80 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Tools23\AttRotate.cs">
-      <Link>AttRotate.cs</Link>
+    <Compile Include="..\CorrectBlocksNC.NET\Block\AttRotate.cs">
+      <Link>Block\AttRotate.cs</Link>
     </Compile>
-    <Compile Include="..\Tools23\AttSynch.cs">
-      <Link>AttSynch.cs</Link>
+    <Compile Include="..\CorrectBlocksNC.NET\Block\AttSynch.cs">
+      <Link>Block\AttSynch.cs</Link>
     </Compile>
-    <Compile Include="..\Tools23\BlockNormalized.cs">
-      <Link>BlockNormalized.cs</Link>
+    <Compile Include="..\CorrectBlocksNC.NET\Block\BlockNormalized.cs">
+      <Link>Block\BlockNormalized.cs</Link>
     </Compile>
-    <Compile Include="..\Tools23\CadCommand.cs">
-      <Link>CadCommand.cs</Link>
+    <Compile Include="..\CorrectBlocksNC.NET\Block\RemAnnot.cs">
+      <Link>Block\RemAnnot.cs</Link>
     </Compile>
-    <Compile Include="..\Tools23\CadCommands\DrzQsaveCmd.cs">
-      <Link>CadCommands\DrzQsaveCmd.cs</Link>
+    <Compile Include="..\CorrectBlocksNC.NET\Block\WipBot.cs">
+      <Link>Block\WipBot.cs</Link>
     </Compile>
-    <Compile Include="..\Tools23\CadCommands\DrzSaveCmd.cs">
-      <Link>CadCommands\DrzSaveCmd.cs</Link>
+    <Compile Include="..\CorrectBlocksNC.NET\CadCommands\CadCommand.cs">
+      <Link>CadCommands\CadCommand.cs</Link>
     </Compile>
-    <Compile Include="..\Tools23\CadCommands\QSaveAsCmd.cs">
-      <Link>CadCommands\QSaveAsCmd.cs</Link>
-    </Compile>
-    <Compile Include="..\Tools23\Extensions\BlockTableRecordExtensions.cs">
+    <Compile Include="..\CorrectBlocksNC.NET\Extensions\BlockTableRecordExtensions.cs">
       <Link>Extensions\BlockTableRecordExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\Tools23\Infrastructure\MessageService.cs">
-      <Link>Infrastructure\MessageService.cs</Link>
+    <Compile Include="..\CorrectBlocksNC.NET\Interfaces\IAllMessageService.cs">
+      <Link>Interfaces\IAllMessageService.cs</Link>
     </Compile>
-    <Compile Include="..\Tools23\RemAnnot.cs">
-      <Link>RemAnnot.cs</Link>
+    <Compile Include="..\CorrectBlocksNC.NET\Interfaces\IInputBoxService.cs">
+      <Link>Interfaces\IInputBoxService.cs</Link>
     </Compile>
-    <Compile Include="..\Tools23\UtilServise.cs">
-      <Link>UtilServise.cs</Link>
+    <Compile Include="..\CorrectBlocksNC.NET\Interfaces\IMessageService.cs">
+      <Link>Interfaces\IMessageService.cs</Link>
     </Compile>
-    <Compile Include="..\Tools23\WipBot.cs">
-      <Link>WipBot.cs</Link>
+    <Compile Include="..\CorrectBlocksNC.NET\Interfaces\IQuestionService.cs">
+      <Link>Interfaces\IQuestionService.cs</Link>
     </Compile>
-    <Compile Include="..\Tools23\WorkingDatabaseSwitcher.cs">
-      <Link>WorkingDatabaseSwitcher.cs</Link>
+    <Compile Include="..\CorrectBlocksNC.NET\SaveMods\QSaveAsKeanw.cs">
+      <Link>SaveMods\QSaveAsKeanw.cs</Link>
+    </Compile>
+    <Compile Include="..\CorrectBlocksNC.NET\SaveMods\QsaveKpblc.cs">
+      <Link>SaveMods\QsaveKpblc.cs</Link>
+    </Compile>
+    <Compile Include="..\CorrectBlocksNC.NET\SaveMods\SaveMod.cs">
+      <Link>SaveMods\SaveMod.cs</Link>
+    </Compile>
+    <Compile Include="..\CorrectBlocksNC.NET\SaveMods\SaveTest.cs">
+      <Link>SaveMods\SaveTest.cs</Link>
+    </Compile>
+    <Compile Include="..\CorrectBlocksNC.NET\Servise\CmdInfo.cs">
+      <Link>Servise\CmdInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\CorrectBlocksNC.NET\Servise\ListCMDInfo.cs">
+      <Link>Servise\ListCMDInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\CorrectBlocksNC.NET\Servise\MessageService.cs">
+      <Link>Servise\MessageService.cs</Link>
+    </Compile>
+    <Compile Include="..\CorrectBlocksNC.NET\Servise\SysConstant.cs">
+      <Link>Servise\SysConstant.cs</Link>
+    </Compile>
+    <Compile Include="..\CorrectBlocksNC.NET\Servise\SysInfo.cs">
+      <Link>Servise\SysInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\CorrectBlocksNC.NET\Servise\UtilitesString.cs">
+      <Link>Servise\UtilitesString.cs</Link>
+    </Compile>
+    <Compile Include="..\CorrectBlocksNC.NET\Servise\UtilitesWorkFil.cs">
+      <Link>Servise\UtilitesWorkFil.cs</Link>
+    </Compile>
+    <Compile Include="..\CorrectBlocksNC.NET\Servise\WorkingDatabaseSwitcher.cs">
+      <Link>Servise\WorkingDatabaseSwitcher.cs</Link>
+    </Compile>
+    <Compile Include="..\CorrectBlocksNC.NET\Settings\RegistrySettings.cs">
+      <Link>Settings\RegistrySettings.cs</Link>
+    </Compile>
+    <Compile Include="..\CorrectBlocksNC.NET\Settings\UtilServise.cs">
+      <Link>Settings\UtilServise.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
