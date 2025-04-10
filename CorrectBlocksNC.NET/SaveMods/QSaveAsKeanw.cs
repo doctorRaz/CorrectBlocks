@@ -13,7 +13,7 @@ using Autodesk.AutoCAD.Runtime;
 #endif
 using System.IO;
 
-namespace dzTools.SaveMods
+namespace drzTools.SaveMods
 {
 
     /// <summary>

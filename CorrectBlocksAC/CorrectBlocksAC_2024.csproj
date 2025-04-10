@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>drzTools</RootNamespace>
-    <AssemblyName>BlockStandardAC_2023</AssemblyName>
+    <AssemblyName>CorrectBlocksAC_2024</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -114,11 +114,11 @@
     <Compile Include="..\CorrectBlocksNC.NET\Block\BlockNormalized.cs">
       <Link>Block\BlockNormalized.cs</Link>
     </Compile>
+    <Compile Include="..\correctblocksnc.net\block\Down.cs">
+      <Link>Block\Down.cs</Link>
+    </Compile>
     <Compile Include="..\CorrectBlocksNC.NET\Block\RemAnnot.cs">
       <Link>Block\RemAnnot.cs</Link>
-    </Compile>
-    <Compile Include="..\CorrectBlocksNC.NET\Block\WipBot.cs">
-      <Link>Block\WipBot.cs</Link>
     </Compile>
     <Compile Include="..\CorrectBlocksNC.NET\CadCommands\CadCommand.cs">
       <Link>CadCommands\CadCommand.cs</Link>

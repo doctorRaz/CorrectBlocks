@@ -7,8 +7,6 @@ using drzTools.Servise;
 
 using drzTools.SaveMods;
 
-using dzTools.SaveMods;
-
 
 
 #if NC
@@ -145,7 +143,17 @@ namespace drzTools.CadCommands
         [Description("Переместить маскировки ВСЕХ блоков на задний план")]
         public static void Blc_WipeoutToBotton()
         {
-            WipBot.WipeoutToBotton();
+            Down.Wipeout();
+        }
+
+        /// <summary>
+        /// Штриховки ВСЕХ блоков на задний план
+        /// </summary>
+        [Rtm.CommandMethod("drz_HatchBot")]
+        [Description("Переместить штриховки ВСЕХ блоков на задний план")]
+        public static void Blc_HatchToBotton()
+        {
+            Down.Hatch();
         }
 
         #endregion
@@ -217,6 +225,17 @@ namespace drzTools.CadCommands
         public static void Blc_WipBot()
         {
             NLB.BlockNormalizeSettingsEnum fBlck = NLB.BlockNormalizeSettingsEnum.SetWipeoutBack;
+            NLB.GetBlc(fBlck);
+        }
+
+        /// <summary>
+        /// Топить штриховку выбранных блоков
+        /// </summary>
+        [Rtm.CommandMethod("drz_blc_HatchBot")]
+        [Description("Штриховки ВЫБРАННЫХ блоков на задний план")]
+        public static void Blc_HatchBot()
+        {
+            NLB.BlockNormalizeSettingsEnum fBlck = NLB.BlockNormalizeSettingsEnum.SetHatchtBack;
             NLB.GetBlc(fBlck);
         }
 
