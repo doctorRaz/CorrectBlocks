@@ -8,8 +8,8 @@
     <ProjectGuid>{7548E40F-A58F-47B6-AEF5-A8AAACE5C15D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>drz</RootNamespace>
-    <AssemblyName>BlockStandardAC_2023</AssemblyName>
+    <RootNamespace>drzTools</RootNamespace>
+    <AssemblyName>CorrectBlocksAC_2024</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -114,11 +114,11 @@
     <Compile Include="..\CorrectBlocksNC.NET\Block\BlockNormalized.cs">
       <Link>Block\BlockNormalized.cs</Link>
     </Compile>
+    <Compile Include="..\correctblocksnc.net\block\Down.cs">
+      <Link>Block\Down.cs</Link>
+    </Compile>
     <Compile Include="..\CorrectBlocksNC.NET\Block\RemAnnot.cs">
       <Link>Block\RemAnnot.cs</Link>
-    </Compile>
-    <Compile Include="..\CorrectBlocksNC.NET\Block\WipBot.cs">
-      <Link>Block\WipBot.cs</Link>
     </Compile>
     <Compile Include="..\CorrectBlocksNC.NET\CadCommands\CadCommand.cs">
       <Link>CadCommands\CadCommand.cs</Link>
@@ -181,7 +181,6 @@
       <Link>Settings\UtilServise.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="qsave.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

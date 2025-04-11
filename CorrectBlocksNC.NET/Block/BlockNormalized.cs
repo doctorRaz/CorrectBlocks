@@ -107,6 +107,8 @@ namespace drzTools.Block
             SetLayer0 = 1 << 7,
             /// <summary>trye-топить маскировку<br>false-не топить маскировку</br>  </summary>
             SetWipeoutBack = 1 << 8,
+            /// <summary>trye-топить штриховку<br>false-не топить маскировку</br>  </summary>
+            SetHatchtBack = 1 << 9,
             //одинаковые масштабы Block если оба нули, значит не менять
             /// <summary>одинаковые масштабы Block On</summary>
             EqualScaleOn = 1 << 10,
@@ -321,7 +323,7 @@ namespace drzTools.Block
                 return;
             }
 
-            pko = new PromptKeywordOptions("\nПереместить маскировки назад? ")
+            pko = new PromptKeywordOptions("\nПереместить маскировки назад? ") 
             {
                 AllowNone = false
             };
@@ -345,6 +347,32 @@ namespace drzTools.Block
             {
                 return;
             }
+
+            pko = new PromptKeywordOptions("\nПереместить штриховки назад? ")
+            {
+                AllowNone = false
+            };
+            //pko.Keywords.Clear();
+            pko.Keywords.Add("Да");
+            pko.Keywords.Add("неМенять");
+            pko.Keywords.Default = "неМенять";
+            pr = ed.GetKeywords(pko);
+            if (pr.Status == PromptStatus.OK)
+            {
+                if (pr.StringResult == "неМенять")
+                {
+                    //пропускаем 
+                }
+                else if (pr.StringResult == "Да")
+                {
+                    fBlck |= BlockNormalizeSettingsEnum.SetHatchtBack;
+                }
+            }
+            else
+            {
+                return;
+            }
+
             if (fBlck != BlockNormalizeSettingsEnum.Default)
             {
                 GetBlc(fBlck);
@@ -667,6 +695,26 @@ namespace drzTools.Block
                                 {
                                     wpt.ObjectId
                                 };
+                                drawOrder.UpgradeOpen();
+                                drawOrder.MoveToBottom(idsw); //топим маскировку
+                            }
+                        }
+                        //топим штриховки
+                        if (fBlck.HasFlag(BlockNormalizeSettingsEnum.SetHatchtBack))
+                        {
+                            Hatch hatch = ent as Hatch;
+                            if (hatch != null)//если штриховка
+                            {
+                                // получаем таблицу порядка отрисовки блока
+                                DrawOrderTable drawOrder =
+                                                     tr.GetObject(btr.DrawOrderTableId,
+                                                    OpenMode.ForRead)
+                                                     as DrawOrderTable;
+
+                                ObjectIdCollection idsw = new ObjectIdCollection
+                                    {
+                                        hatch.ObjectId
+                                    };
                                 drawOrder.UpgradeOpen();
                                 drawOrder.MoveToBottom(idsw); //топим маскировку
                             }

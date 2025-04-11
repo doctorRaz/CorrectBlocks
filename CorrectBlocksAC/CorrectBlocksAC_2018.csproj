@@ -8,7 +8,7 @@
     <ProjectGuid>{6639C2D0-E869-47E6-892D-0ECB5D422549}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>drz</RootNamespace>
+    <RootNamespace>drzTools</RootNamespace>
     <AssemblyName>CorrectBlocksAC_2018</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -114,11 +114,11 @@
     <Compile Include="..\CorrectBlocksNC.NET\Block\BlockNormalized.cs">
       <Link>Block\BlockNormalized.cs</Link>
     </Compile>
+    <Compile Include="..\correctblocksnc.net\block\Down.cs">
+      <Link>Block\Down.cs</Link>
+    </Compile>
     <Compile Include="..\CorrectBlocksNC.NET\Block\RemAnnot.cs">
       <Link>Block\RemAnnot.cs</Link>
-    </Compile>
-    <Compile Include="..\CorrectBlocksNC.NET\Block\WipBot.cs">
-      <Link>Block\WipBot.cs</Link>
     </Compile>
     <Compile Include="..\CorrectBlocksNC.NET\CadCommands\CadCommand.cs">
       <Link>CadCommands\CadCommand.cs</Link>

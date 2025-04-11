@@ -14,12 +14,13 @@ using System;
 #if NC
 
 using Teigha.DatabaseServices;
+
 using HostMgd.ApplicationServices;
 
 using App = HostMgd.ApplicationServices;
 using Ed = HostMgd.EditorInput;
 using Rtm = Teigha.Runtime;
- 
+
 using HostMgd.EditorInput;
 
 using Application = HostMgd.ApplicationServices.Application;
@@ -41,7 +42,7 @@ using Rtm = Autodesk.AutoCAD.Runtime;
 
 
 
-namespace dRzTools.Servise
+namespace drzTools.Servise
 {
     internal class MessageService : IAllMessageService// IMessageService,IInputBoxService,IQuestionService
     {

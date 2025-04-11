@@ -42,6 +42,8 @@
 		<GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
 		<Deterministic>false</Deterministic>
 		<AssemblyVersion>1.1.*</AssemblyVersion>
+		<OutputType>Exe</OutputType>
+		<ApplicationIcon>nmenu-195.ico</ApplicationIcon>
 		<!--<Version />-->
 		
 
@@ -64,14 +66,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Reference Include="hostdbmgd">
-			<HintPath>..\..\SDK\NC23.1\include-x64\hostdbmgd.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
-		<Reference Include="hostmgd">
-			<HintPath>..\..\SDK\NC23.1\include-x64\hostmgd.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
+	  <Content Include="nmenu-195.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Interfaces\" />
+	  <Folder Include="Servise\" />
+	  <Folder Include="Settings\" />
 	</ItemGroup>
 
 </Project>

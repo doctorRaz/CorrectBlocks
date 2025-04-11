@@ -1,5 +1,6 @@
 ﻿using System.IO;
-using dRzTools.Settings;
+
+using drzTools.Settings;
 
 
 
@@ -19,7 +20,7 @@ using Autodesk.AutoCAD.EditorInput;
 using Autodesk.AutoCAD.Runtime;
 #endif
 
-namespace dRzTools.SaveMods
+namespace drzTools.SaveMods
 {
     public class SaveMod
     {

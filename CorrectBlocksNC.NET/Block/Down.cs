@@ -13,14 +13,16 @@ using Autodesk.AutoCAD.Runtime;
 #endif
 namespace drzTools.Block
 {
-    /*Топит маскировку внутри всех блоков
-     */
-    public class WipBot
+    /// <summary>
+    /// Топить
+    /// </summary>
+    public class Down
+
     {
         /// <summary>
-        /// Move to bottom in blocks wipe out
+        /// Маскировку блоков на задний план
         /// </summary>
-        public static void WipeoutToBotton()
+        public static void Wipeout()
         {
             Document doc = Application.DocumentManager.MdiActiveDocument;
             Database db = doc.Database;
@@ -81,5 +83,68 @@ namespace drzTools.Block
                 );
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public static void Hatch()
+        {
+            Document doc = Application.DocumentManager.MdiActiveDocument;
+            Database db = doc.Database;
+            Editor ed = doc.Editor;
+            int count = 0;
+            //ObjectId SpaceId = db.CurrentSpaceId;
+            using (Transaction tr = db.TransactionManager.StartTransaction())
+            {
+                BlockTable bt = tr.GetObject(
+                                            db.BlockTableId,
+                                            OpenMode.ForRead
+                                            ) as BlockTable;
+                foreach (ObjectId btrId in bt)
+                {
+                    BlockTableRecord btr = tr.GetObject(
+                                                        btrId,
+                                                        OpenMode.ForRead
+                                                        ) as BlockTableRecord;
+                    if (!btr.IsFromExternalReference
+                        && !btr.IsDependent
+                        && !btr.IsLayout)//not xref and
+                                         //not xref|block and
+                                         //not Layout
+                    {
+                        foreach (ObjectId id in btr)
+                        {
+                            Entity ent = tr.GetObject(id,
+                                                      OpenMode.ForRead
+                                                      ) as Entity;
+                            if (ent != null)
+                            {
+                                Hatch hatch = ent as Hatch;
+                                if (hatch != null)//если маскировка
+                                {
+                                    // получаем таблицу порядка отрисовки блока
+                                    DrawOrderTable drawOrder = tr.GetObject(
+                                                                            btr.DrawOrderTableId,
+                                                                            OpenMode.ForWrite
+                                                                            ) as DrawOrderTable;
+                                    ObjectIdCollection ids = new ObjectIdCollection
+                                          {
+                                              hatch.ObjectId
+                                          };
+                                    drawOrder.MoveToBottom(ids);//топим маскировку
+                                    count++;
+                                }
+                            }
+                        }
+                    }
+                }
+                tr.Commit();
+            }
+            ed.Regen();
+            ed.WriteMessage(
+                "Move to bottom in blocks "
+                                + count
+                                + " wipeout"
+                );
+        }
     }
 }

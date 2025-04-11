@@ -70,11 +70,11 @@
     <Compile Include="..\CorrectBlocksNC.NET\Block\BlockNormalized.cs">
       <Link>Block\BlockNormalized.cs</Link>
     </Compile>
+    <Compile Include="..\CorrectBlocksNC.NET\Block\Down.cs">
+      <Link>Block\Down.cs</Link>
+    </Compile>
     <Compile Include="..\CorrectBlocksNC.NET\Block\RemAnnot.cs">
       <Link>Block\RemAnnot.cs</Link>
-    </Compile>
-    <Compile Include="..\CorrectBlocksNC.NET\Block\WipBot.cs">
-      <Link>Block\WipBot.cs</Link>
     </Compile>
     <Compile Include="..\CorrectBlocksNC.NET\CadCommands\CadCommand.cs">
       <Link>CadCommands\CadCommand.cs</Link>
