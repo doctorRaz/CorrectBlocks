@@ -1,19 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace drzTools.VM
+namespace drzTools.VievModel
 {
-    public class VM : INotifyPropertyChanged
+    public partial class VM : INotifyPropertyChanged
     {
+        /// <summary>
+        /// титул окна
+        /// </summary>
+        /// <value>
+        /// The title.
+        /// </value>
+        public string Title { get; set; }
 
-
-
-
+       
 
 
 
