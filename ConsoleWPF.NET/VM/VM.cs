@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace drzTools.VievModel
 {
+    [Serializable]
     public partial class VM : INotifyPropertyChanged
     {
         /// <summary>
@@ -17,9 +18,9 @@ namespace drzTools.VievModel
         /// <value>
         /// The title.
         /// </value>
-        public string Title { get; set; }
+        public string Title => DataSetWpfOpt.AppProductName + " " + DataSetWpfOpt.Version;
 
-       
+
 
 
 

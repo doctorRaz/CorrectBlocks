@@ -1,0 +1,64 @@
+﻿<Window
+    x:Class="DemoBoundRadioButtons.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:DemoBoundRadioButtons="clr-namespace:DemoBoundRadioButtons"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    MaxWidth="300"
+    MaxHeight="200"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <!--<DemoBoundRadioButtons:RadioButtonConverter x:Key="RadioButtonConverter" />-->
+        <DemoBoundRadioButtons:EnumToBooleanConverter x:Key="RadioButtonConverter" />
+    </Window.Resources>
+    <Grid
+        x:Name="LayoutRoot"
+        Margin="30"
+        Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock
+            Margin="0,0,0,10"
+            HorizontalAlignment="Center"
+            Text="Choose a t-shirt size:" />
+        <StackPanel
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            Orientation="Horizontal">
+            <RadioButton
+                Margin="0,0,10,0"
+                Content="Small"
+                GroupName="Sizes"
+                IsChecked="{Binding Size, Mode=TwoWay, ConverterParameter=Small, Converter={StaticResource RadioButtonConverter}}" />
+            <RadioButton
+                Margin="0,0,10,0"
+                Content="Medium"
+                GroupName="Sizes"
+                IsChecked="{Binding Size, Mode=TwoWay, ConverterParameter=Medium, Converter={StaticResource RadioButtonConverter}}" />
+            <RadioButton
+                Margin="0,0,10,0"
+                Content="Large"
+                GroupName="Sizes"
+                IsChecked="{Binding Size, Mode=TwoWay, ConverterParameter=Large, Converter={StaticResource RadioButtonConverter}}" />
+        </StackPanel>
+        <TextBox
+            Grid.Row="2"
+            Width="100"
+            Margin="0,10,0,0"
+            HorizontalAlignment="Center"
+            Text="{Binding Size, Mode=TwoWay}"
+            TextAlignment="Center" />
+        <StackPanel Grid.Row="3" Orientation="Horizontal">
+            <CheckBox Content="Test1" IsChecked="{Binding Size, Mode=TwoWay, ConverterParameter=Test1, Converter={StaticResource RadioButtonConverter}}" />
+            <CheckBox Content="Test2" IsChecked="{Binding Size, Mode=TwoWay, ConverterParameter=Test2, Converter={StaticResource RadioButtonConverter}}" />
+            <CheckBox Content="Test3" IsChecked="{Binding Size, Mode=TwoWay, ConverterParameter=Test3, Converter={StaticResource RadioButtonConverter}}" />
+
+        </StackPanel>
+
+    </Grid>
+</Window>

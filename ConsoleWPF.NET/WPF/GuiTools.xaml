@@ -5,6 +5,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:drzTools.WPF"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vievmodel="clr-namespace:drzTools.VievModel"
+    d:DataContext="{d:DesignInstance Type=vievmodel:VM}"
     Title="{Binding Title}"
     MinWidth="200"
     MinHeight="200"
@@ -381,7 +383,7 @@
                             </Grid>
                         </StackPanel>
                     </GroupBox>
-                    <GroupBox Header="Прочее" >
+                    <GroupBox Header="Прочее">
                         <StackPanel>
                             <CheckBox Margin="5" Content="Слой 0" />
                             <CheckBox Margin="5" Content="Ширина полилиний 0" />

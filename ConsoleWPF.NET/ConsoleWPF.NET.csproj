@@ -25,7 +25,7 @@
 		<SignAssembly>False</SignAssembly>
 
 		<!-- <Title>PlotSPDSn.Nas</Title> -->
-		<Product>drzTools</Product>
+		<Product>drzBLFIX</Product>
 		<Company>doctorRaz@gmail.com</Company>
 		<Authors>Разыграев Андрей</Authors>
 		<Description>Сборник утилит для работы с подосновой</Description>
@@ -41,7 +41,7 @@
 		<GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
 		<GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
 		<Deterministic>false</Deterministic>
-		<AssemblyVersion>1.1.*</AssemblyVersion>
+		<AssemblyVersion>0.1.*</AssemblyVersion>
 		<OutputType>Exe</OutputType>
 		<ApplicationIcon>nmenu-195.ico</ApplicationIcon>
 		<!--<Version />-->
@@ -63,6 +63,16 @@
 	  <EmbeddedResource Remove="bin\**" />
 	  <None Remove="bin\**" />
 	  <Page Remove="bin\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Shirt\ConverterEnum.cs" />
+	  <Compile Remove="Shirt\Shirt.cs" />
+	  <Compile Remove="Shirt\Window1.xaml.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Page Remove="Shirt\Window1.xaml" />
 	</ItemGroup>
 
 	<ItemGroup>

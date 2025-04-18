@@ -2,11 +2,39 @@
 using System.Globalization;
 using System.Text;
 
+using DemoBoundRadioButtons;
+
 using drzTools.VievModel;
 using drzTools.WPF;
 
 namespace drzTools.CMD
 {
+    [Flags]
+    public enum S
+    {
+
+        S1 = 1 << 1,
+        S2 = 1 << 2,
+        S3 = 1 << 3,
+    }
+
+    [Flags]
+    public enum T
+    {
+        T1 = 1 << 4,
+        T2 = 1 << 5,
+        T3 = 1 << 6,
+    }
+
+    public enum ST
+    {
+        S1 = 1 << 1,
+        S2 = 1 << 2,
+        S3 = 1 << 3,
+        T1 = 1 << 4,
+        T2 = 1 << 5,
+        T3 = 1 << 6,
+    }
 
     internal class Program
     {
@@ -18,17 +46,44 @@ namespace drzTools.CMD
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 #endif
 
-            BlockNormalizeSettingsEnum en=new BlockNormalizeSettingsEnum();
-            en = BlockNormalizeSettingsEnum.SetLayer0 |BlockNormalizeSettingsEnum.SetByLayer;
-            bool bb = (bool)en.HasFlag(BlockNormalizeSettingsEnum.SetLayer0);
-            VM vm = new VM();
+            S s = new S();
+            T t = new T();
 
-            string product = "drzBLFIX";
-            string version = "0.0.1";
-            vm.Title = $"{product} v {version}";
+            s = S.S1 | S.S2;
+            t = T.T1 | T.T2;
 
-            GuiTools win =new GuiTools(vm);
+            var i = (int)s + (int)t;
+
+            ST st = (ST)i;
+            bool bs1 = (bool)st.HasFlag(ST.S1);
+            bs1 = (bool)st.HasFlag(ST.S2);
+            bs1 = (bool)st.HasFlag(ST.S3);
+            bs1 = (bool)st.HasFlag(ST.T1);
+            bs1 = (bool)st.HasFlag(ST.T2); 
+            bs1 = (bool)st.HasFlag(ST.T3);
+
+            //BlockNormalizeSettingsEnum en=new BlockNormalizeSettingsEnum();
+            //en = BlockNormalizeSettingsEnum.SetLayer0 |BlockNormalizeSettingsEnum.SetByLayer;
+            //bool bb = (bool)en.HasFlag(BlockNormalizeSettingsEnum.SetLayer0);
+
+
+
+            MainPage mp = new MainPage();
+
+            mp.ShowDialog();
+
+            Config cfg = new Config(); //читаю конфигурацию
+            var vm = cfg.vm;
+
+            //string product = "drzBLFIX";
+            //string version = "0.0.1";
+            //vm.Title = $"{product} v {version}";
+
+            GuiTools win = new GuiTools(vm);
+
             bool? isOk = win.ShowDialog();
+
+            cfg.Serialize();
 
             if (isOk == true)
             {
@@ -44,40 +99,5 @@ namespace drzTools.CMD
     }
 
 
-    public enum BlockNormalizeSettingsEnum
-    {
-        /// <summary>умолчание </summary>
-        Default = 0,
-        //тип Entity если оба нули, значит не менять
-        /// <summary>тип Entity по слою </summary>
-        SetByLayer = 1 << 1,
-        /// <summary> тип Entity по блоку</summary>
-        SetByBlock = 1 << 2,
-        //цвет если оба нули, значит не менять
-        /// <summary> цвет Entity по слою</summary>
-        ColorByLayer = 1 << 3,
-        /// <summary> цвет Entity по блоку</summary>
-        ColorByBlock = 1 << 4,
-        // вес Entity если оба нули, значит не менять
-        /// <summary> вес Entity по слою</summary>
-        LineweightByLayer = 1 << 5,
-        /// <summary> вес Entity по блоку</summary>
-        LineweightByBlock = 1 << 6,
-        /// <summary>trye-Entity на слой zero<br>false-Entity слой не менять</br></summary>
-        SetLayer0 = 1 << 7,
-        /// <summary>trye-топить маскировку<br>false-не топить маскировку</br>  </summary>
-        SetWipeoutBack = 1 << 8,
-        /// <summary>trye-топить штриховку<br>false-не топить маскировку</br>  </summary>
-        SetHatchtBack = 1 << 9,
-        //одинаковые масштабы Block если оба нули, значит не менять
-        /// <summary>одинаковые масштабы Block On</summary>
-        EqualScaleOn = 1 << 10,
-        /// <summary>одинаковые масштабы Block Off</summary>
-        EqualScaleOff = 1 << 11,
-        //Разрешить расчленение Block если оба нули, значит не менять
-        /// <summary>Explodable Block On</summary>
-        SetBlockExplodeable = 1 << 12,
-        /// <summary>Explodable Block Off</summary>
-        SetBlockUnexplodeable = 1 << 13
-    }
+
 }

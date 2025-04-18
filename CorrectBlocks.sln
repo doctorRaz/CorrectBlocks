@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorrectBlocksAC_2024", "Cor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleWPF.NET", "ConsoleWPF.NET\ConsoleWPF.NET.csproj", "{9B26CBA2-AF90-F7F9-8522-A0DE36291AD6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoBoundRadioButtons1", "DemoBoundRadioButtons1\DemoBoundRadioButtons1.csproj", "{446D6344-2CE1-4754-8F20-19224C787081}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{9B26CBA2-AF90-F7F9-8522-A0DE36291AD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B26CBA2-AF90-F7F9-8522-A0DE36291AD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B26CBA2-AF90-F7F9-8522-A0DE36291AD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{446D6344-2CE1-4754-8F20-19224C787081}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{446D6344-2CE1-4754-8F20-19224C787081}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{446D6344-2CE1-4754-8F20-19224C787081}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{446D6344-2CE1-4754-8F20-19224C787081}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
