@@ -368,3 +368,5 @@ MigrationBackup/
 FodyWeavers.xsd
 *.zip
 @release
+DemoBoundRadioButtons
+ConsoleWPF.NET/Silverlight

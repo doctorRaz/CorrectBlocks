@@ -86,13 +86,14 @@ namespace drzTools.Block
         [Flags()]
         public enum BlockNormalizeSettingsEnum
         {
+
             /// <summary>умолчание </summary>
             Default = 0,
-            //тип Entity если оба нули, значит не менять
             /// <summary>тип Entity по слою </summary>
-            SetByLayer = 1 << 1,
+            LineTypeByLayer = 1 << 1,
+            //тип линий Entity если оба нули, значит не менять
             /// <summary> тип Entity по блоку</summary>
-            SetByBlock = 1 << 2,
+            LineTypeByBlock = 1 << 2,
             //цвет если оба нули, значит не менять
             /// <summary> цвет Entity по слою</summary>
             ColorByLayer = 1 << 3,
@@ -100,9 +101,9 @@ namespace drzTools.Block
             ColorByBlock = 1 << 4,
             // вес Entity если оба нули, значит не менять
             /// <summary> вес Entity по слою</summary>
-            LineweightByLayer = 1 << 5,
+            LineWeightByLayer = 1 << 5,
             /// <summary> вес Entity по блоку</summary>
-            LineweightByBlock = 1 << 6,
+            LineWeightByBlock = 1 << 6,
             /// <summary>trye-Entity на слой zero<br>false-Entity слой не менять</br></summary>
             SetLayer0 = 1 << 7,
             /// <summary>trye-топить маскировку<br>false-не топить маскировку</br>  </summary>
@@ -222,15 +223,15 @@ namespace drzTools.Block
             {
                 if (pr.StringResult == "неМенять")
                 {
-                    //пропускаем SetByBlock
+                    //пропускаем LineTypeByBlock
                 }
                 else if (pr.StringResult == "поСлою")
                 {
-                    fBlck |= BlockNormalizeSettingsEnum.SetByLayer;
+                    fBlck |= BlockNormalizeSettingsEnum.LineTypeByLayer;
                 }
                 else if (pr.StringResult == "поБлоку")
                 {
-                    fBlck |= BlockNormalizeSettingsEnum.SetByBlock;
+                    fBlck |= BlockNormalizeSettingsEnum.LineTypeByBlock;
                 }
             }
             else
@@ -252,7 +253,7 @@ namespace drzTools.Block
             {
                 if (pr.StringResult == "неМенять")
                 {
-                    //пропускаем SetByBlock
+                    //пропускаем LineTypeByBlock
                 }
                 else if (pr.StringResult == "поСлою")
                 {
@@ -286,11 +287,11 @@ namespace drzTools.Block
                 }
                 else if (pr.StringResult == "поСлою")
                 {
-                    fBlck |= BlockNormalizeSettingsEnum.LineweightByLayer;
+                    fBlck |= BlockNormalizeSettingsEnum.LineWeightByLayer;
                 }
                 else if (pr.StringResult == "поБлоку")
                 {
-                    fBlck |= BlockNormalizeSettingsEnum.LineweightByBlock;
+                    fBlck |= BlockNormalizeSettingsEnum.LineWeightByBlock;
                 }
             }
             else
@@ -570,9 +571,9 @@ namespace drzTools.Block
             //тип линии
             string stypeEn = "ByLayer";
             bool btypeEn = true;
-            if (fBlck.HasFlag(BlockNormalizeSettingsEnum.SetByBlock))//если по блоку
+            if (fBlck.HasFlag(BlockNormalizeSettingsEnum.LineTypeByBlock))//если по блоку
                 stypeEn = "ByBlock";
-            else if (fBlck.HasFlag(BlockNormalizeSettingsEnum.SetByLayer))//по слою
+            else if (fBlck.HasFlag(BlockNormalizeSettingsEnum.LineTypeByLayer))//по слою
                 stypeEn = "ByLayer";
             else//никак
                 btypeEn = false;
@@ -580,9 +581,9 @@ namespace drzTools.Block
             //вес
             LineWeight weightEn = LineWeight.ByLayer;
             bool bweightEn = true;
-            if (fBlck.HasFlag(BlockNormalizeSettingsEnum.LineweightByBlock))//если по блоку
+            if (fBlck.HasFlag(BlockNormalizeSettingsEnum.LineWeightByBlock))//если по блоку
                 weightEn = LineWeight.ByBlock;
-            else if (fBlck.HasFlag(BlockNormalizeSettingsEnum.LineweightByLayer))
+            else if (fBlck.HasFlag(BlockNormalizeSettingsEnum.LineWeightByLayer))
                 weightEn = LineWeight.ByLayer;
             else
                 bweightEn = false;

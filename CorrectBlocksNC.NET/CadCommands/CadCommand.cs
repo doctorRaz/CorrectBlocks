@@ -293,9 +293,9 @@ namespace drzTools.CadCommands
         {
             NLB.BlockNormalizeSettingsEnum fBlck = NLB.BlockNormalizeSettingsEnum.SetBlockExplodeable
                                 | NLB.BlockNormalizeSettingsEnum.EqualScaleOn
-                                | NLB.BlockNormalizeSettingsEnum.SetByLayer
+                                | NLB.BlockNormalizeSettingsEnum.LineTypeByLayer
                                 | NLB.BlockNormalizeSettingsEnum.ColorByLayer
-                                | NLB.BlockNormalizeSettingsEnum.LineweightByLayer
+                                | NLB.BlockNormalizeSettingsEnum.LineWeightByLayer
                                 | NLB.BlockNormalizeSettingsEnum.SetLayer0
                                 | NLB.BlockNormalizeSettingsEnum.SetWipeoutBack
                                   ;
@@ -311,9 +311,9 @@ namespace drzTools.CadCommands
         {
             NLB.BlockNormalizeSettingsEnum fBlck = NLB.BlockNormalizeSettingsEnum.SetBlockExplodeable
                                 | NLB.BlockNormalizeSettingsEnum.EqualScaleOn
-                                | NLB.BlockNormalizeSettingsEnum.SetByBlock
+                                | NLB.BlockNormalizeSettingsEnum.LineTypeByBlock
                                 | NLB.BlockNormalizeSettingsEnum.ColorByBlock
-                                | NLB.BlockNormalizeSettingsEnum.LineweightByBlock
+                                | NLB.BlockNormalizeSettingsEnum.LineWeightByBlock
                                 | NLB.BlockNormalizeSettingsEnum.SetLayer0
                                 | NLB.BlockNormalizeSettingsEnum.SetWipeoutBack
                                  ;
