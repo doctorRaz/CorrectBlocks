@@ -34,7 +34,7 @@ namespace DemoBoundRadioButtons
             get { return _size; }
             set
             {
-                _size = _size | value;
+                _size = value;
                 RaisePropertyChanged("Size");
             }
         }
