@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Globalization;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Data;
 
@@ -22,44 +23,64 @@ namespace DemoBoundRadioButtons
 
     public class Shirt : INotifyPropertyChanged
     {
-        private Sizes _size;
+        private Sizes _size; 
+        private Sizes _size2;
 
         public Shirt()
         {
-            Size = Sizes.Small;
+            Size = Sizes.Large;
         }
 
+        public Sizes Size2
+        {
+            get { return _size2; }
+            set
+            {
+                _size2 = value;
+                OnPropertyChanged();
+            }
+        }
         public Sizes Size
         {
             get { return _size; }
             set
             {
-                _size =_size| value;
-                RaisePropertyChanged("Size");
+                _size = value;
+                OnPropertyChanged();
             }
         }
 
+
+
+        /// <summary>Оповещатель</summary>
         public event PropertyChangedEventHandler PropertyChanged;
-        public void RaisePropertyChanged(string propertyName)
+
+        /// <summary>Оповещатель</summary>
+        /// <param name="prop">Имя свойства вызвавшего событие</param>
+        public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
             if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
+                PropertyChanged(this,
+                                new PropertyChangedEventArgs(prop));
         }
+
+
+        //    public event PropertyChangedEventHandler PropertyChanged;
+        //    public void RaisePropertyChanged(string propertyName)
+        //    {
+        //        if (PropertyChanged != null)
+        //        {
+        //            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        //        }
+        //    }
     }
 
-    [Flags]
     public enum Sizes
     {
-        Small=1<<1,
-        Medium=1<<2,
-        Large=1<<3,
-        Test1=1<<4,
-        Test2=1<<5,
-        Test3=1<<6,
+        Small,
+        Medium,
+        Large
     }
-
     public class RadioButtonConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
@@ -70,51 +91,6 @@ namespace DemoBoundRadioButtons
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             return (bool)value ? Enum.Parse(typeof(Sizes), parameter.ToString(), true) : null;
-        }
-    }
-    public class RadioButtonConverter0 : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-        {
-            //bool en = ((Enum)value).HasFlag((Enum)parameter);
-            //return en;
-            return ((Enum)value).HasFlag((Enum)parameter);
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-        {
-            return value.Equals(true) ? parameter : Binding.DoNothing;
-        }
-    }
-
-    public class EnumToBooleanConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            string paramString = parameter as string;
-            if (paramString == null)
-            {
-                return DependencyProperty.UnsetValue;
-            }
-
-            if (Enum.IsDefined(value.GetType(), value) == false)
-            {
-                return DependencyProperty.UnsetValue;
-            }
-
-            object paramValue = Enum.Parse(value.GetType(), paramString);
-            return paramValue.Equals(value);
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            string paramString = parameter as string;
-            if (paramString == null)
-            {
-                return DependencyProperty.UnsetValue;
-            }
-
-            return Enum.Parse(targetType, paramString);
         }
     }
 }
