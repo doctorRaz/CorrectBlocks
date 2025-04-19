@@ -34,7 +34,7 @@ namespace DemoBoundRadioButtons
             get { return _size; }
             set
             {
-                _size =_size| value;
+                _size = _size | value;
                 RaisePropertyChanged("Size");
             }
         }
@@ -52,12 +52,12 @@ namespace DemoBoundRadioButtons
     [Flags]
     public enum Sizes
     {
-        Small=1<<1,
-        Medium=1<<2,
-        Large=1<<3,
-        Test1=1<<4,
-        Test2=1<<5,
-        Test3=1<<6,
+        Small = 1 << 1,
+        Medium = 1 << 2,
+        Large = 1 << 3,
+        Test1 = 1 << 4,
+        Test2 = 1 << 5,
+        Test3 = 1 << 6,
     }
 
     public class RadioButtonConverter : IValueConverter
@@ -76,8 +76,6 @@ namespace DemoBoundRadioButtons
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            //bool en = ((Enum)value).HasFlag((Enum)parameter);
-            //return en;
             return ((Enum)value).HasFlag((Enum)parameter);
         }
 
@@ -87,6 +85,7 @@ namespace DemoBoundRadioButtons
         }
     }
 
+    //https://stackoverflow.com/questions/397556/how-to-bind-radiobuttons-to-an-enum
     public class EnumToBooleanConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

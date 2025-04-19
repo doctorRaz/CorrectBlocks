@@ -6,6 +6,27 @@ using System.Threading.Tasks;
 
 namespace drzTools.Enum
 {
+    public enum LineType
+    {
+
+    }
+    public enum Color
+    {
+
+    }
+    public enum LineWeigh
+    {
+
+    }
+    public enum SetWipeout
+    {
+
+    }
+    public enum SetHatch
+    {
+
+    }
+
     public enum BlockNormalizeEnum
     {
         /// <summary>умолчание </summary>
