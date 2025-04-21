@@ -10,7 +10,8 @@
     mc:Ignorable="d">
     <Window.Resources>
         <!--<DemoBoundRadioButtons:RadioButtonConverter x:Key="RadioButtonConverter" />-->
-        <DemoBoundRadioButtons:RadioButtonConverter x:Key="RadioButtonConverter" />
+        <!--<DemoBoundRadioButtons:RadioButtonConverter x:Key="RadioButtonConverter" />-->
+        <DemoBoundRadioButtons:EnumToBooleanConverter x:Key="RadioButtonConverter" />
     </Window.Resources>
     <Grid
         x:Name="LayoutRoot"
@@ -35,17 +36,17 @@
                 Margin="0,0,10,0"
                 Content="Small"
                 GroupName="Sizes"
-                IsChecked="{Binding Size, Mode=TwoWay, ConverterParameter=Small, Converter={StaticResource RadioButtonConverter}}" />
+                IsChecked="{Binding Size, Mode=TwoWay, ConverterParameter={x:Static DemoBoundRadioButtons:EntityDrawOrder.Back}, Converter={StaticResource RadioButtonConverter}}" />
             <RadioButton
                 Margin="0,0,10,0"
                 Content="Medium"
                 GroupName="Sizes"
-                IsChecked="{Binding Size, Mode=TwoWay, ConverterParameter=Medium, Converter={StaticResource RadioButtonConverter}}" />
+                IsChecked="{Binding Size, Mode=TwoWay, ConverterParameter={x:Static DemoBoundRadioButtons:EntityDrawOrder.Forward}, Converter={StaticResource RadioButtonConverter}}" />
             <RadioButton
                 Margin="0,0,10,0"
                 Content="Large"
                 GroupName="Sizes"
-                IsChecked="{Binding Size, Mode=TwoWay, ConverterParameter=Large, Converter={StaticResource RadioButtonConverter}}" />
+                IsChecked="{Binding Size, Mode=TwoWay, ConverterParameter={x:Static DemoBoundRadioButtons:EntityDrawOrder.DoNotChange}, Converter={StaticResource RadioButtonConverter}}" />
         </StackPanel>
         <StackPanel
             Grid.Row="2"
@@ -55,17 +56,17 @@
                 Margin="0,0,10,0"
                 Content="Small"
                 GroupName="Sizes2"
-                IsChecked="{Binding Size2, Mode=TwoWay, ConverterParameter=Small, Converter={StaticResource RadioButtonConverter}}" />
+                IsChecked="{Binding Size2, Mode=TwoWay, ConverterParameter={x:Static DemoBoundRadioButtons:EntityProperties.ByBlock}, Converter={StaticResource RadioButtonConverter}}" />
             <RadioButton
                 Margin="0,0,10,0"
                 Content="Medium"
                 GroupName="Sizes2"
-                IsChecked="{Binding Size2, Mode=TwoWay, ConverterParameter=Medium, Converter={StaticResource RadioButtonConverter}}" />
+                IsChecked="{Binding Size2, Mode=TwoWay, ConverterParameter={x:Static DemoBoundRadioButtons:EntityProperties.ByLayer}, Converter={StaticResource RadioButtonConverter}}" />
             <RadioButton
                 Margin="0,0,10,0"
                 Content="Large"
                 GroupName="Sizes2"
-                IsChecked="{Binding Size2, Mode=TwoWay, ConverterParameter=Large, Converter={StaticResource RadioButtonConverter}}" />
+                IsChecked="{Binding Size2, Mode=TwoWay, ConverterParameter={x:Static DemoBoundRadioButtons:EntityProperties.DoNotChange}, Converter={StaticResource RadioButtonConverter}}" />
         </StackPanel>
         <TextBox
             Grid.Row="3"

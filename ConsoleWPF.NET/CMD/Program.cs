@@ -46,6 +46,11 @@ namespace drzTools.CMD
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 #endif
 
+
+            var dd = ST.T2;
+
+            string sd=dd.ToString();
+
             S s = new S();
             T t = new T();
 
