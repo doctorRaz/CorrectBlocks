@@ -7,7 +7,9 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace drzTools.VievModel
+using drzTools.Enums;
+
+namespace drzTools.ViewModel
 {
     [Serializable]
     public partial class VM : INotifyPropertyChanged
@@ -23,7 +25,7 @@ namespace drzTools.VievModel
 
 
 
-
+        public ByAll Layer { get; set; }
 
 
 

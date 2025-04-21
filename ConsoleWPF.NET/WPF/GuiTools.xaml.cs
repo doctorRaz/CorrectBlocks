@@ -10,7 +10,8 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Interop;
 
-using drzTools.VievModel;
+ 
+using drzTools.ViewModel;
 
 namespace drzTools.WPF
 {

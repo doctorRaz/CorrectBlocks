@@ -20,7 +20,8 @@ using System.IO;
 using System.Reflection;
 using System.Xml.Serialization;
 
-using drzTools.VievModel;
+ 
+using drzTools.ViewModel;
 
 
 

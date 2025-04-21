@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace drzTools.VievModel
+namespace drzTools.ViewModel
 {
     public partial class VM : INotifyPropertyChanged
     {

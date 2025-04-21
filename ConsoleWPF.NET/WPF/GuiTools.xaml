@@ -5,8 +5,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:drzTools.WPF"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:vievmodel="clr-namespace:drzTools.VievModel"
-    d:DataContext="{d:DesignInstance Type=vievmodel:VM}"
+    xmlns:VieWmodel="clr-namespace:drzTools.ViewModel"
+    xmlns:enums="clr-ndrzTools.Enums"
+    d:DataContext="{d:DesignInstance Type=VieWmodel:VM}"
     Title="{Binding Title}"
     MinWidth="200"
     MinHeight="200"
@@ -17,6 +18,9 @@
     WindowStartupLocation="CenterOwner"
     WindowStyle="SingleBorderWindow"
     mc:Ignorable="d">
+    <Window.Resources>
+        <VieWmodel:RadioButtonConverterBy x:Key="RadioButtonConverterBy" />
+    </Window.Resources>
     <GroupBox Margin="0">
         <Grid Grid.IsSharedSizeScope="True" ShowGridLines="False">
             <Grid.RowDefinitions>
@@ -260,7 +264,8 @@
                                     Grid.Column="1"
                                     Margin="5"
                                     Content="По блоку"
-                                    GroupName="Line" />
+                                    GroupName="Line"
+                                    />
                                 <RadioButton
                                     Grid.Row="0"
                                     Grid.Column="2"

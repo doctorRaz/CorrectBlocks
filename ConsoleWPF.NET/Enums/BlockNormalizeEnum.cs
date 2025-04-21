@@ -4,28 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace drzTools.Enum
+
+using System.ComponentModel;
+using System.Globalization;
+using System.Runtime.CompilerServices;
+using System.Windows;
+using System.Windows.Data;
+
+namespace drzTools.Enums
 {
-    public enum LineType
+    public enum ByAll
     {
+        BackOrByBlock,
 
-    }
-    public enum Color
-    {
+        FrontOrByLayer,
 
+        None,
     }
-    public enum LineWeigh
-    {
 
-    }
-    public enum SetWipeout
-    {
-
-    }
-    public enum SetHatch
-    {
-
-    }
 
     public enum BlockNormalizeEnum
     {
