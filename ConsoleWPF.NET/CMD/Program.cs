@@ -9,32 +9,7 @@ using drzTools.WPF;
 
 namespace drzTools.CMD
 {
-    [Flags]
-    public enum S
-    {
-
-        S1 = 1 << 1,
-        S2 = 1 << 2,
-        S3 = 1 << 3,
-    }
-
-    [Flags]
-    public enum T
-    {
-        T1 = 1 << 4,
-        T2 = 1 << 5,
-        T3 = 1 << 6,
-    }
-
-    public enum ST
-    {
-        S1 = 1 << 1,
-        S2 = 1 << 2,
-        S3 = 1 << 3,
-        T1 = 1 << 4,
-        T2 = 1 << 5,
-        T3 = 1 << 6,
-    }
+   
 
     internal class Program
     {
@@ -103,6 +78,31 @@ namespace drzTools.CMD
         }
     }
 
+    [Flags]
+    public enum S
+    {
 
+        S1 = 1 << 1,
+        S2 = 1 << 2,
+        S3 = 1 << 3,
+    }
+
+    [Flags]
+    public enum T
+    {
+        T1 = 1 << 4,
+        T2 = 1 << 5,
+        T3 = 1 << 6,
+    }
+
+    public enum ST
+    {
+        S1 = 1 << 1,
+        S2 = 1 << 2,
+        S3 = 1 << 3,
+        T1 = 1 << 4,
+        T2 = 1 << 5,
+        T3 = 1 << 6,
+    }
 
 }
