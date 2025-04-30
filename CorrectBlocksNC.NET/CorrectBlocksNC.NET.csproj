@@ -9,60 +9,41 @@
 		<ProduceReferenceAssembly>False</ProduceReferenceAssembly>
 		<BaseOutputPath>..\bin.NET\</BaseOutputPath>
 		<RootNamespace>drzTools</RootNamespace>
-		<PlatformTarget>x64</PlatformTarget>
-		<ProduceReferenceAssembly>false</ProduceReferenceAssembly>
+		<PlatformTarget>x64</PlatformTarget>	
 		<SignAssembly>False</SignAssembly>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-
-
-	
-		
-		
 		<!--атрибуты сборки-->
 		<!--<GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>-->
-		<!--<AssemblyName></AssemblyName>-->
-		<ProduceReferenceAssembly>false</ProduceReferenceAssembly>
-		<SignAssembly>False</SignAssembly>
-
+		<!--<AssemblyName></AssemblyName>-->	
 		<!-- <Title>PlotSPDSn.Nas</Title> -->
 		<Product>drzTools</Product>
 		<Company>doctorRaz@gmail.com</Company>
 		<Authors>Разыграев Андрей</Authors>
 		<Description>Сборник утилит для работы с подосновой</Description>
 		<Copyright>Разыграев Андрей</Copyright>
-
 		<!--<GenerateAssemblyInformationalVersionAttribute>true</GenerateAssemblyInformationalVersionAttribute>
 		<InformationalVersion>1, PlotSPDS for nanoCAD</InformationalVersion>-->
-
 		<Trademark>©doctorRAZ 2014-2025</Trademark>
 		<!--атрибуты сборки-->
-
 		<!--<Version />-->
 		<GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
 		<GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
 		<Deterministic>false</Deterministic>
 		<AssemblyVersion>1.1.*</AssemblyVersion>
 		<!--<Version />-->
-		
-
-
 	</PropertyGroup>
-
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 		<DefineConstants>$(DefineConstants);NC;NC23</DefineConstants>
 	</PropertyGroup>
-
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 		<DefineConstants>$(DefineConstants);NC;NC23</DefineConstants>
 	</PropertyGroup>
-
 	<ItemGroup>
 	  <Compile Remove="bin\**" />
 	  <EmbeddedResource Remove="bin\**" />
 	  <None Remove="bin\**" />
 	  <Page Remove="bin\**" />
 	</ItemGroup>
-
 	<ItemGroup>
 		<Reference Include="hostdbmgd">
 			<HintPath>..\..\SDK\NC23.1\include-x64\hostdbmgd.dll</HintPath>
@@ -73,5 +54,4 @@
 			<Private>False</Private>
 		</Reference>
 	</ItemGroup>
-
 </Project>
