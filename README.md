@@ -4,7 +4,7 @@
 Вы тестируете этот код на свой страх и риск\
 Если что то поломается я не виноват
 
-https://deepwiki.com/doctorRaz/CorrectBlocks
+## [Описание проекта](https://deepwiki.com/doctorRaz/CorrectBlocks) [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/doctorRaz/CorrectBlocks)
 
 ## Сборник утилит для CAD
  
